@@ -1,7 +1,12 @@
 import React from "react";
 import "./style.css";
+import M from "materialize-css";
 
 function Carousel2() {
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.carousel');
+        var instances = M.Carousel.init(elems);
+    });
     return (
         <div id="secondCarousel">
             <h4>Customer Testimonials</h4>
