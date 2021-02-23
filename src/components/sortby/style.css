@@ -1,0 +1,9 @@
+#sort-btn {
+  margin-top: 1%;
+  background-color: rgb(82, 82, 82);
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}

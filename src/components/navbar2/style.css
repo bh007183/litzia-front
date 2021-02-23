@@ -1,0 +1,15 @@
+.tabs {
+  margin-right: 7vw;
+  color: white;
+  background-color: rgb(80, 79, 79);
+}
+
+#lowerNav {
+  background-color: rgb(80, 79, 79);
+}
+
+#lowerNav {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
