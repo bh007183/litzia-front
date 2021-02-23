@@ -1,16 +1,30 @@
 import React from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 function Navbar1() {
+  // document.querySelector("#litzia").onClick = function 
+
+
   return (
     <div>
       <nav className="nav-extended" id="topNav">
         <div className="nav-wrapper">
           <div className="row">
             <div className="col s2">
-              <a href="#" className="brand-logo">
+              <Link
+                to="/"
+                className={
+                  window.location.pathname === "/"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+                id="litzia"
+
+
+              >
                 Litzia
-              </a>
+              </Link>
             </div>
             <a href="#" data-target="mobile-demo" className="sidenav-trigger">
               <i className="material-icons">menu</i>
