@@ -9,7 +9,7 @@ function Navbar1() {
           <div className="row">
             <div className="col s2">
               <a href="#" className="brand-logo">
-                Home
+                Litzia
               </a>
             </div>
             <a href="#" data-target="mobile-demo" className="sidenav-trigger">
