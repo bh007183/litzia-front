@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 import M from "materialize-css";
 
 function Carousel1() {
-    document.addEventListener('DOMContentLoaded', function () {
+    useEffect(() => {
         var elems = document.querySelectorAll('.carousel');
         var instances = M.Carousel.init(elems);
-    });
+    }, [])
+
+
     return (
         <div className="carousel" id="carousel1">
             <a className="carousel-item image" href="#one!"><img
