@@ -1,0 +1,14 @@
+.product-header {
+  text-decoration: underline;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+#header-container {
+  background-color: rgb(105, 105, 105);
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

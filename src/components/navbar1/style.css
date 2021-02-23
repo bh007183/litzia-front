@@ -1,0 +1,26 @@
+#search {
+  display: flex;
+  justify-content: center;
+  width: 65vw;
+}
+#searchButton {
+  background-color: transparent;
+  border: none;
+}
+#searchInput {
+  width: 44vw;
+  color: rgb(22, 22, 22);
+  background-color: white;
+  padding: 0.3vw;
+}
+
+#topNav {
+  background-color: rgb(39, 38, 38);
+}
+
+.row {
+  margin-bottom: 0;
+}
+.nav-content {
+  width: 100%;
+}
