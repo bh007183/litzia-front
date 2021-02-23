@@ -36,7 +36,7 @@ updateOneProduct: function (title){
 }
 ///////////////////////////////////////
 const [product, setproduct] = useState ({
-    title: null,
+    title: '',
     image: '',
     description: '',
     category: '',
