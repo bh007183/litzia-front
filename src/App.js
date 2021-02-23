@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar1 from "./components/navbar1";
 import Navbar2 from "./components/navbar2";
+import Landingpage from "./pages/Landingpage"
 import Productpage from "./pages/Productpage";
 import Computers from "./pages/Computer";
 import Xerox from "./pages/Xerox";
@@ -16,6 +17,7 @@ function App() {
       <div className="App">
         <Navbar1 />
         <Navbar2 />
+        <Route exact path="/home" component={Landingpage} />
         <Route exact path="/product" component={Productpage} />
         <Route exact path="/computer" component={Computers} />
         <Route exact path="/xerox" component={Xerox} />
