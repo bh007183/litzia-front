@@ -4,6 +4,11 @@ import Navbar1 from "./components/navbar1";
 import Navbar2 from "./components/navbar2";
 import Landingpage from "./pages/Landingpage"
 import Productpage from "./pages/Productpage";
+import Computers from "./pages/Computer";
+import Xerox from "./pages/Xerox";
+import Cloud from "./pages/Cloud";
+import Security from "./pages/Security";
+import Services from "./pages/Services";
 import "./App.css";
 
 function App() {
@@ -14,6 +19,11 @@ function App() {
         <Navbar2 />
         <Route exact path="/home" component={Landingpage} />
         <Route exact path="/product" component={Productpage} />
+        <Route exact path="/computer" component={Computers} />
+        <Route exact path="/xerox" component={Xerox} />
+        <Route exact path="/cloud" component={Cloud} />
+        <Route exact path="/security" component={Security} />
+        <Route exact path="/services" component={Services} />
       </div>
     </Router>
   );
