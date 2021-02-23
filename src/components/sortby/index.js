@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 import M from "materialize-css";
 
 function Sortby() {
-  document.addEventListener("DOMContentLoaded", function () {
+  useEffect(() => {
     var elems = document.querySelectorAll(".dropdown-trigger");
     var instances = M.Dropdown.init(elems);
-  });
+  }, []);
+
   return (
     <div className="button-wrapper">
       <a
