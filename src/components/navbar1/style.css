@@ -1,3 +1,11 @@
+#home{
+  padding-left: 2vw;
+}
+
+.navRightIcons {
+  padding-right: 2vw;
+}
+
 #search {
   display: flex;
   justify-content: center;
