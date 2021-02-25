@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 
 function Navbar2() {
+
+
   return (
     <div>
       <nav id="lowerNav">
