@@ -1,15 +1,16 @@
 .tabs {
-  margin-right: 7vw;
   color: white;
   background-color: rgb(80, 79, 79);
 }
 
 #lowerNav {
   background-color: rgb(80, 79, 79);
+  display: flex;
+  justify-content: space-evenly;
 }
 
-#lowerNav {
-  text-align: center;
+.nav-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }

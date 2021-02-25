@@ -1,29 +1,31 @@
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar1 from "./components/navbar1";
 import Navbar2 from "./components/navbar2";
-import Sidebar from "./components/sidebar";
-import Product from "./components/product";
-import Header from "./components/header";
-import Sortby from "./components/sortby";
+import Landingpage from "./pages/Landingpage"
+import Productpage from "./pages/Productpage";
+import Computers from "./pages/Computer";
+import Xerox from "./pages/Xerox";
+import Cloud from "./pages/Cloud";
+import Security from "./pages/Security";
+import Services from "./pages/Services";
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar1 />
-      <Navbar2 />
-      <div className="container">
-        <div className="row" id="app-row">
-          <div className="col s3">
-            <Sidebar />
-          </div>
-          <div className="col s9">
-            <Header />
-            <Sortby />
-            <Product />
-          </div>
-        </div>
+    <Router>
+      <div className="App">
+        <Navbar1 />
+        <Navbar2 />
+        <Route exact path="/" component={Landingpage} />
+        <Route exact path="/product" component={Productpage} />
+        <Route exact path="/computer" component={Computers} />
+        <Route exact path="/xerox" component={Xerox} />
+        <Route exact path="/cloud" component={Cloud} />
+        <Route exact path="/security" component={Security} />
+        <Route exact path="/services" component={Services} />
       </div>
-    </div>
+    </Router>
   );
 }
 

@@ -1,0 +1,23 @@
+.carousel2{
+    color: black;
+    padding: 2vw;
+    min-height: 20vw;
+    min-width: 30vw;
+    font-style: italic;
+    background: white;
+    
+}
+
+h4 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+hr{
+    width: 50%;
+}
+
+#carouselBottom{
+    max-height: 25vw;
+    
+}
