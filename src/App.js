@@ -2,14 +2,18 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar1 from "./components/navbar1";
 import Navbar2 from "./components/navbar2";
-import Landingpage from "./pages/Landingpage"
+import Landingpage from "./pages/Landingpage";
 import Productpage from "./pages/Productpage";
 import Computers from "./pages/Computer";
 import Xerox from "./pages/Xerox";
 import Cloud from "./pages/Cloud";
 import Security from "./pages/Security";
 import Services from "./pages/Services";
+<<<<<<< HEAD
+import Checkout from "./pages/Checkout";
+=======
 import IndividualProduct from "./pages/IndividualProduct"
+>>>>>>> dev
 import "./App.css";
 
 function App() {
@@ -25,7 +29,11 @@ function App() {
         <Route exact path="/cloud" component={Cloud} />
         <Route exact path="/security" component={Security} />
         <Route exact path="/services" component={Services} />
+<<<<<<< HEAD
+        <Route exact path="/checkout" component={Checkout} />
+=======
         <Route exact path="/item" component={IndividualProduct} />
+>>>>>>> dev
       </div>
     </Router>
   );

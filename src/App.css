@@ -2,8 +2,8 @@
   text-align: center;
 }
 
-.container {
-  width: 100vw;
+.page-container {
+  width: 100%;
   margin: 0 0;
 }
 
