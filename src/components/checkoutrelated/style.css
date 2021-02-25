@@ -1,0 +1,9 @@
+.related-items {
+  width: 300px;
+  margin-right: 0%;
+}
+
+.related-items-container {
+  display: flex;
+  justify-content: center;
+}

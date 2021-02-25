@@ -1,4 +1,4 @@
-#home{
+#home {
   padding-left: 2vw;
 }
 
@@ -33,4 +33,8 @@
 }
 .nav-content {
   width: 100%;
+}
+
+#litzia {
+  font-size: 40px;
 }

@@ -3,8 +3,7 @@ import "./style.css";
 import { Link } from "react-router-dom";
 
 function Navbar1() {
-  // document.querySelector("#litzia").onClick = function 
-
+  // document.querySelector("#litzia").onClick = function
 
   return (
     <div>
@@ -20,8 +19,6 @@ function Navbar1() {
                     : "nav-link"
                 }
                 id="litzia"
-
-
               >
                 Litzia
               </Link>
@@ -55,14 +52,21 @@ function Navbar1() {
               </ul>
             </div>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li></li>
               <li>
                 <a href="Login.html">Login</a>
               </li>
               <li>
-                <a href="badges.html">
+                <a href="/checkout">
                   <i className="material-icons">shopping_cart</i>
                 </a>
+                <Link
+                  to="/checkout"
+                  className={
+                    window.location.pathname === "/checkout"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                ></Link>
               </li>
             </ul>
           </div>
