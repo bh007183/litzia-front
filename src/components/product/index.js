@@ -22,8 +22,8 @@ function Product(props) {
                 {props.description}
               </p>
             </div>
+            <button>{props.id}</button>
           </div>
-  <button>{props.id}</button>
         </div>
       {/* </div> */}
     </div>
