@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import LoginModal from "../LoginModal"
 
 function Navbar1() {
-  // document.querySelector("#litzia").onClick = function 
-
+  // document.querySelector("#litzia").onClick = function
 
   return (
     <div>
@@ -21,8 +20,6 @@ function Navbar1() {
                     : "nav-link"
                 }
                 id="litzia"
-
-
               >
                 Litzia
               </Link>
@@ -64,6 +61,14 @@ function Navbar1() {
                       <a href="badges.html" id="shoppingCart">
                         <i className="material-icons">shopping_cart</i>
                       </a>
+                      <Link
+                        to="/checkout"
+                        className={
+                          window.location.pathname === "/checkout"
+                            ? "nav-link active"
+                            : "nav-link"
+                        }
+                      ></Link>
                     </li>
                   </div>
                   <div className="col s8">
@@ -74,6 +79,8 @@ function Navbar1() {
                 </div>
               </ul>
             </div>
+
+
           </div>
         </div>
 
