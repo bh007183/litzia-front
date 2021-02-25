@@ -34,3 +34,20 @@
 .nav-content {
   width: 100%;
 }
+
+#loginMod{
+  text-align: left;
+  display: flex;
+  justify-content: left;
+}
+
+.row .col.s3 {
+  width: 18%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+#shoppingCart {
+  padding-left: 0vw;
+}

@@ -12,5 +12,11 @@
 }
 
 #singleProduct{
-  padding-top: vw;
+  width: 100%!important;
+}
+
+#rowID{
+  margin: 0 auto;
+  /* margin-left: 5vw; */
+  width: 100%;
 }

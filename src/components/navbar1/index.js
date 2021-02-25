@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
+import LoginModal from "../LoginModal"
 
 function Navbar1() {
   // document.querySelector("#litzia").onClick = function 
@@ -29,7 +30,7 @@ function Navbar1() {
             <a href="#" data-target="mobile-demo" className="sidenav-trigger">
               <i className="material-icons">menu</i>
             </a>
-            <div className="col s8">
+            <div className="col s7">
               <ul id="nav-mobile" className="left hide-on-med-and-down">
                 <li>
                   <div className="nav-wrapper" id="search">
@@ -54,21 +55,30 @@ function Navbar1() {
                 </li>
               </ul>
             </div>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li></li>
-              <li>
-                <a href="Login.html">Login</a>
-              </li>
-              <li>
-                <a href="badges.html">
-                  <i className="material-icons">shopping_cart</i>
-                </a>
-              </li>
-            </ul>
+            <div className="col s3" id="modal">
+              <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <div className="row">
+
+                  <div className="col s4">
+                    <li>
+                      <a href="badges.html" id="shoppingCart">
+                        <i className="material-icons">shopping_cart</i>
+                      </a>
+                    </li>
+                  </div>
+                  <div className="col s8">
+                    <li id="loginMod">
+                      <LoginModal />
+                    </li>
+                  </div>
+                </div>
+              </ul>
+            </div>
           </div>
         </div>
+
       </nav>
-    </div>
+    </div >
   );
 }
 

@@ -1,0 +1,48 @@
+/* body{
+    background:#EF9A9A;
+  } */
+  
+  
+  .modal{
+   max-height:100%;
+   overflow:hidden;
+   background-color:  rgb(80, 79, 79);
+  }
+  
+  input[type="submit"]{
+    width: 100%;
+    margin-top: 50px;
+  }
+  .modal-close{
+    position: absolute;
+    top:10px;
+    right:10px;
+    padding:0;
+    margin:0;
+  }
+
+
+.container{
+width: 4vw!important;
+}
+
+#loginBtn{
+    margin-left: 0;
+    margin-right: 2vw;
+}
+
+.modal-content{
+    background-color:  rgb(80, 79, 79);
+}
+
+.modal{
+    background:  rgba(117, 81, 81, 1);
+    border-radius: 1vw;
+    color: white;
+    text-align: center;
+}
+.modal-overlay{
+    backdrop-filter: blur(6px);
+    opacity: 1 !important;
+    background: rgba(0,0,0,0.3)
+}
