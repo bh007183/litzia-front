@@ -9,7 +9,7 @@ function LoginModal() {
     }, [])
     return (
         <div className="loginModal">
-            <div className="container center">
+            <div className="container center" id='modalLog'>
                 <a href="#login" className="btn btn-large transparent modal-trigger" id="loginBtn">Login</a>
             </div>
 
