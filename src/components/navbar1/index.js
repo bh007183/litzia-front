@@ -54,7 +54,7 @@ function Navbar1() {
             </div>
             <div className="col s3" id="modal">
               <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <div className="row">
+                <div className="row" id="modalRow">
 
                   <div className="col s4">
                     <li>

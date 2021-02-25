@@ -44,7 +44,7 @@
   justify-content: left;
 }
 
-.row .col.s3 {
+#modal, #rowModal{
   width: 18%;
   margin-left: auto;
   left: auto;
