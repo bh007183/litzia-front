@@ -17,6 +17,10 @@ getAllProduct: function (){
     return axios.get("http://localhost:8080/api/product")
 
 },
+getAllSubCategories: function (){
+    return axios.get("http://localhost:8080/api/subcategory")
+
+},
 
 getAllProductCategory: function (category){
     return axios.get("http://localhost:8080/api/product/" + category)
