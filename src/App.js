@@ -9,6 +9,7 @@ import Xerox from "./pages/Xerox";
 import Cloud from "./pages/Cloud";
 import Security from "./pages/Security";
 import Services from "./pages/Services";
+import IndividualProduct from "./pages/IndividualProduct"
 import "./App.css";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/cloud" component={Cloud} />
         <Route exact path="/security" component={Security} />
         <Route exact path="/services" component={Services} />
+        <Route exact path="/item" component={IndividualProduct} />
       </div>
     </Router>
   );
