@@ -34,29 +34,29 @@ adminUpdate: function (a, b, c) {
 
 
 
-const [admin, setadmin] = useState ({
-    username: '',
-    password: '',
-    email: '',
+// const [admin, setadmin] = useState ({
+//     username: '',
+//     password: '',
+//     email: '',
     
-  })
+//   })
 
 
-   const handleInputChange = event => {
+//    const handleInputChange = event => {
 
-    const name = event.target.name;
-    const value = event.target.value;
+//     const name = event.target.name;
+//     const value = event.target.value;
 
-    setproduct({
-      ...product, [name]: value
-    })
+//     setproduct({
+//       ...product, [name]: value
+//     })
      
-   }
+//    }
    
-const submitHandler = event => {
-  event.preventDefault()
-  API.createProduct(product.title, product.image, product.description, product.category, product.price, product.quantity, product.tier, product.fetured).then(res => console.log(res))
-  // API.createProduct()
+// const submitHandler = event => {
+//   event.preventDefault()
+//   API.createProduct(product.title, product.image, product.description, product.category, product.price, product.quantity, product.tier, product.fetured).then(res => console.log(res))
+//   // API.createProduct()
   
 
-}
+// }
