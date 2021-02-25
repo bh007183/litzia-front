@@ -1,0 +1,13 @@
+#recommendedItems{
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.card{
+    width: 100%;
+}
+
+#card1{
+    margin-top: 0;
+}
