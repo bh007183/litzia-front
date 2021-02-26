@@ -2,6 +2,7 @@ import React from "react";
 import Product from "../components/product";
 import Sortby from "../components/sortby";
 import Sidebar from "../components/sidebar";
+import "../App.css"
 
 function Computers() {
   return (

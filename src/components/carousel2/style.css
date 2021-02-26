@@ -11,6 +11,7 @@
 h4 {
     text-align: center;
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 hr{
@@ -20,4 +21,8 @@ hr{
 #carouselBottom{
     max-height: 25vw;
     
+}
+
+#secondCarousel{
+    background-image: url("https://www.10adventures.com/wp-content/uploads/2018/12/USA-Washington-Mt.Baker-Pano.jpg");
 }
