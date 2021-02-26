@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import axios from "axios";
 
 export default {
@@ -16,12 +15,6 @@ export default {
       shipping: j,
     });
   },
-=======
-import axios from "axios"
-//  b, c, d, e, f, g, h, i, j, k
-export default {
-
->>>>>>> ce960000fc097aea6903cadda3c541cc634a7897
 
   getAllProduct: function () {
     return axios.get("http://localhost:3005/api/product");
@@ -34,8 +27,8 @@ export default {
     return axios.get("http://localhost:3005/api/product/" + category);
   },
 
-  getAllProductFeatured: function (fetured) {
-    return axios.get("http://localhost:3005/api/product/" + fetured);
+  getAllProductFeatured: function (featured) {
+    return axios.get("http://localhost:3005/api/product/" + featured);
   },
 
   deleteOneProduct: function (title) {

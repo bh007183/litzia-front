@@ -11,18 +11,12 @@
   width: 90vw;
 }
 
-<<<<<<< HEAD
 #singleProduct {
-  padding-top: vw;
-}
-=======
-#singleProduct{
-  width: 100%!important;
+  width: 100% !important;
 }
 
-#rowID{
+#rowID {
   margin: 0 auto;
   /* margin-left: 5vw; */
   width: 100%;
 }
->>>>>>> ce960000fc097aea6903cadda3c541cc634a7897
