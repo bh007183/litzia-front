@@ -13,7 +13,7 @@ function Security() {
     API.getAllProduct().then((res) => setItems({ item: res.data }));
   }, []);
   return (
-    <div className="container">
+    <div className="container page-container">
       <div className="row" id="app-row">
         <div className="col s3">
           <Sidebar />

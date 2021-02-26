@@ -1,3 +1,6 @@
+#home {
+  padding-left: 2vw;
+}
 #litzia {
   font-size: 3vw;
 }
@@ -33,4 +36,24 @@
 }
 .nav-content {
   width: 100%;
+}
+
+#loginMod{
+  text-align: left;
+  display: flex;
+  justify-content: left;
+}
+
+#modal, #rowModal{
+  width: 18%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+#shoppingCart {
+  padding-left: 0vw;
+}
+#litzia {
+  font-size: 40px;
 }
