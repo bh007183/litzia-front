@@ -6,30 +6,31 @@ import API from "../api/product-routes";
 function Services() {
   const [items, setItems] = useState({
     item: [],
-    other: []
+    other: [],
   });
 
-  const [subCat, setSubCat] = useState ({
-    subcat: []
-  })
+  const [subCat, setSubCat] = useState({
+    subcat: [],
+  });
 
   const subCatClick = (event) => {
-    const subCatResult = items.item.filter((obj) => obj.subcategory.id === parseInt(event.target.attributes[0].value))
-    setItems({...items, other: subCatResult})
-    console.log(items.other)
-    }
-  
+    const subCatResult = items.item.filter(
+      (obj) => obj.subcategory.id === parseInt(event.target.attributes[0].value)
+    );
+    setItems({ ...items, other: subCatResult });
+    console.log(items.other);
+  };
 
   useEffect(() => {
-    let mounted = true ///////this needs stuff
+    let mounted = true; ///////this needs stuff
     API.getAllProduct().then((res) => setItems({ item: res.data }));
-    API.getAllSubCategories().then(res => setSubCat({ subcat: res.data}))
-   
-    let test = subCat.subcat.filter(thing => items.item.some(obj2 => thing.value == obj2.value))
-    console.log(test)
+    API.getAllSubCategories().then((res) => setSubCat({ subcat: res.data }));
+
+    let test = subCat.subcat.filter((thing) =>
+      items.item.some((obj2) => thing.value == obj2.value)
+    );
+    console.log(test);
   }, []);
-
-
 
   return (
     <div className="container">
@@ -38,7 +39,9 @@ function Services() {
           <div className="sidebar">
             <aside>
               {subCat.subcat.map((item) => (
-                <button onClick={subCatClick} key={item.id} data-id={item.id}>{item.name}</button>
+                <button onClick={subCatClick} key={item.id} data-id={item.id}>
+                  {item.name}
+                </button>
               ))}
             </aside>
           </div>
@@ -48,30 +51,30 @@ function Services() {
             <h2 className="product-header">Services</h2>
           </div>
           <Sortby />
-          
-          {!items.other ? items.item.map((item) => {
-            if (item.category.id === 18) {
-              return (
-                <Product
-                  key={item.id}
-                  id={item.id}
-                  identifier={item.description}
-                  description={item.customerDescription}
-                />
-              );
-            }
-          }) : 
-          items.other.map((item) => {
-            return(
-            <Product
-              key={item.id}
-              id={item.id}
-              identifier={item.description}
-              description={item.customerDescription}
-            />
-            )
-          })
-          }
+
+          {!items.other
+            ? items.item.map((item) => {
+                if (item.category.id === 18) {
+                  return (
+                    <Product
+                      key={item.id}
+                      id={item.id}
+                      identifier={item.description}
+                      description={item.customerDescription}
+                    />
+                  );
+                }
+              })
+            : items.other.map((item) => {
+                return (
+                  <Product
+                    key={item.id}
+                    id={item.id}
+                    identifier={item.description}
+                    description={item.customerDescription}
+                  />
+                );
+              })}
         </div>
       </div>
     </div>
