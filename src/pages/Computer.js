@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Product from "../components/product";
 import Sortby from "../components/sortby";
 import Sidebar from "../components/sidebar";
 import "../App.css"
+import API from "../api/product-routes";
 
 function Computers() {
+  const [items, setItems] = useState({
+    item: [],
+  });
+
+  useEffect(() => {
+    API.getAllProduct().then((res) => setItems({ item: res.data }));
+  }, []);
+
   return (
     <div className="container page-container">
       <div className="row" id="app-row">
@@ -16,7 +25,17 @@ function Computers() {
             <h2 className="product-header">Computers</h2>
           </div>
           <Sortby />
-          <Product />
+          {items.item.map((item) => {
+            if (item.category === "computer") {
+              return (
+                <Product
+                  category={item.category}
+                  identifier={item.title}
+                  description={item.description}
+                />
+              );
+            }
+          })}
         </div>
       </div>
     </div>

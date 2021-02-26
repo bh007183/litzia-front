@@ -11,6 +11,9 @@
   width: 90vw;
 }
 
+
+
+
 #singleProduct{
   width: 100%!important;
 }
@@ -20,6 +23,7 @@
   /* margin-left: 5vw; */
   width: 100%;
 }
+
 
 #header-container{
   background-image: url("https://media.gcflearnfree.org/content/55e0730c7dd48174331f5164_01_17_2014/whatisacomputer_mac.jpg");
@@ -32,3 +36,4 @@
 body{
   background-color: rgb(236, 234, 230);
 }
+

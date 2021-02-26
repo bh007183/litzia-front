@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 import LoginModal from "../LoginModal"
+import CreateItem from "../createProductModal"
 
 function Navbar1() {
   // document.querySelector("#litzia").onClick = function
@@ -75,6 +76,9 @@ function Navbar1() {
                     <li id="loginMod">
                       <LoginModal />
                     </li>
+                    {/* <li >
+                      {localStorage.getItem("Admin") === "true" ? <CreateItem/> : <></>}
+                    </li> */}
                   </div>
                 </div>
               </ul>
