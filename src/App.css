@@ -2,8 +2,8 @@
   text-align: center;
 }
 
-.container {
-  width: 100vw;
+.page-container {
+  width: 100%;
   margin: 0 0;
 }
 
@@ -11,6 +11,18 @@
   width: 90vw;
 }
 
+<<<<<<< HEAD
 #singleProduct {
   padding-top: vw;
 }
+=======
+#singleProduct{
+  width: 100%!important;
+}
+
+#rowID{
+  margin: 0 auto;
+  /* margin-left: 5vw; */
+  width: 100%;
+}
+>>>>>>> ce960000fc097aea6903cadda3c541cc634a7897

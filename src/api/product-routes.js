@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from "axios";
 
 export default {
@@ -13,6 +14,12 @@ export default {
       featured: h,
     });
   },
+=======
+import axios from "axios"
+//  b, c, d, e, f, g, h, i, j, k
+export default {
+
+>>>>>>> ce960000fc097aea6903cadda3c541cc634a7897
 
   getAllProduct: function () {
     return axios.get("http://localhost:8080/api/product");

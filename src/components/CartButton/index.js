@@ -4,7 +4,7 @@ import "./style.css";
 function CartButton() {
     return (
         <div>
-            <a class="waves-effect waves-light btn">Add to Cart</a>
+            <a className="waves-effect waves-light btn">Add to Cart</a>
         </div>
     );
 }
