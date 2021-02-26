@@ -1,18 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Product from "../components/product";
 import Sortby from "../components/sortby";
 import Sidebar from "../components/sidebar";
-import API from "../api/product-routes"
+import API from "../api/product-routes";
 
 function Security() {
-  const [items, setItems] = useState ({
-    item: []
-  })
-  
+  const [items, setItems] = useState({
+    item: [],
+  });
 
   useEffect(() => {
-    API.getAllProduct().then(res => setItems({item: res.data}))
-  }, [])
+    API.getAllProduct().then((res) => setItems({ item: res.data }));
+  }, []);
   return (
     <div className="container page-container">
       <div className="row" id="app-row">
@@ -24,7 +23,17 @@ function Security() {
             <h2 className="product-header">Security</h2>
           </div>
           <Sortby />
-          {items.item.map(item => {if(item.category.id === 18){return <Product id={item.id} identifier={item.description} description={item.customerDescription}/>}})}
+          {items.item.map((item) => {
+            if (item.category.id === 18) {
+              return (
+                <Product
+                  id={item.id}
+                  identifier={item.description}
+                  description={item.customerDescription}
+                />
+              );
+            }
+          })}
         </div>
       </div>
     </div>
