@@ -9,8 +9,8 @@ function Carousel2() {
     }, [])
     return (
         <div id="secondCarousel">
-            <h4>Customer Testimonials</h4>
-            <hr></hr>
+            {/* <h4>Customer Testimonials</h4>
+            <hr></hr> */}
             <div className="carousel" id="carouselBottom">
                 <a className="carousel-item carousel2" href="#one!">
                     <p>"The Litzia staff is always great at communicating, they respond quickly, and

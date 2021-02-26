@@ -17,6 +17,8 @@
 #searchButton {
   background-color: transparent;
   border: none;
+  margin-top: 1vh;
+
 }
 #searchInput {
   width: 44vw;
@@ -24,11 +26,11 @@
   background-color: white;
   padding: 0.3vw;
   margin-bottom: 0%;
-  margin-top: 1%;
+  margin-top: 2vh;
 }
 
 #topNav {
-  background-color: rgb(39, 38, 38);
+  background-color: rgb(4, 40, 107);
 }
 
 .row {
@@ -38,6 +40,37 @@
   width: 100%;
 }
 
+#loginMod{
+  text-align: left;
+  display: flex;
+  justify-content: left;
+}
+
+#modal, #rowModal{
+  width: 18%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+#shoppingCart {
+  padding-left: 0vw;
+}
 #litzia {
   font-size: 40px;
+}
+
+#litziaImage{
+  height: 6vh;
+  margin-top: 2vh;
+}
+
+#logoColumn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal {
+  margin-top: 1vh;
 }
