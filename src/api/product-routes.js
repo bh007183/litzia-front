@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   createProduct: function (a, b, c, d, e, f, g, h, i, j) {
-    return axios.post("http://localhost:8080/api/product", {
+    return axios.post("http://localhost:3005/api/product", {
       title: a,
       image: b,
       description: c,

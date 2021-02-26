@@ -25,7 +25,7 @@ function Computers() {
           </div>
           <Sortby />
           {items.item.map((item) => {
-            if (item.category === "hardware") {
+            if (item.category === "computer") {
               return (
                 <Product
                   category={item.category}
