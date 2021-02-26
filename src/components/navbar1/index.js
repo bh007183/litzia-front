@@ -11,8 +11,8 @@ function Navbar1() {
     <div>
       <nav className="nav-extended" id="topNav">
         <div className="nav-wrapper">
-          <div className="row">
-            <div className="col s2">
+          <div className="row" id="navRow">
+            <div className="col s2" id="logoColumn">
               <Link
                 to="/"
                 className={
@@ -22,7 +22,7 @@ function Navbar1() {
                 }
                 id="litzia"
               >
-                Litzia
+                <img src="https://www.litzia.com/wp-content/uploads/2015/12/Litzia-Logo-Mark-SM.png" id="litziaImage"></img>
               </Link>
             </div>
             <a href="#" data-target="mobile-demo" className="sidenav-trigger">
