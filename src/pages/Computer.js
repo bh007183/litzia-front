@@ -28,6 +28,7 @@ function Computers() {
             if (item.category === "computer") {
               return (
                 <Product
+                  image={item.image}
                   category={item.category}
                   identifier={item.title}
                   description={item.description}
