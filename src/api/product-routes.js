@@ -1,17 +1,7 @@
 import axios from "axios"
-
+//  b, c, d, e, f, g, h, i, j, k
 export default {
-createProduct: function (a, b, c, d, e, f, g, h){
-   return axios.post("http://localhost:8080/api/product", {
-    title: a,
-    image: b,
-    description: c,
-    category: d,
-    price: e,
-    quantity: f,
-    tier: g,
-    fetured: h,
-})},
+
 
 getAllProduct: function (){
     return axios.get("http://localhost:8080/api/product")

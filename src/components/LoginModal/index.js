@@ -1,8 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
-import M from "materialize-css";
+import M, { Modal } from "materialize-css";
+import API from "../../api/admin-routes"
 
 function LoginModal() {
+
+
+    const [login, setLogin] = useState ({
+        username: '',
+        password: ''
+    })
+      
+    const handleInputChange = event => {
+        const name = event.target.name
+        const value = event.target.value
+
+       setLogin({...login, [name]: value})
+
+    }
+
+    const hanldeFormSubmit = event => {
+        event.preventDefault()
+        API.adminLogin(login.username, login.password)
+        .then(res => localStorage.setItem("Authorization", res.data.auth))
+        .catch(err => console.log(err))
+        setLogin({username: "", password: ""})
+    }
+    
+
+
+
+
+
     useEffect(() => {
         var elems = document.querySelectorAll('.modal');
         var instances = M.Modal.init(elems);
@@ -23,19 +52,19 @@ function LoginModal() {
 
                         <div className="input-field">
                             <i className="material-icons prefix">person</i>
-                            <input type="text" id="name"></input>
-                            <label for="name">Username</label>
+                            <input placeholder="username" name="username" value={login.username} onChange={handleInputChange} type="text" id="name"></input>
+                            
                         </div>
                         <br></br>
 
                         <div className="input-field">
                             <i className="material-icons prefix">lock</i>
-                            <input type="password" id="pass"></input>
-                            <label for="pass">Password</label>
+                            <input placeholder="password"type="password"  name="password" value={login.password} onChange={handleInputChange}id="pass"></input>
+                            
                         </div>
                         <br></br>
 
-                        <input type="submit" value="Login" className="btn btn-large"></input>
+                        <input onClick={hanldeFormSubmit} value="Login" className="btn btn-large"></input>
 
                     </form>
                 </div>
