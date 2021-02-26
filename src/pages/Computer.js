@@ -11,15 +11,17 @@ function Computers() {
   });
 
   useEffect(() => {
-    API.getAllProduct().then((res) => setItems({ item: res.data }));
+    // setItems([1, 2, 3]);
+    API.getAllProduct().then((res) => {
+      console.log(res);
+      setItems({ item: res.data });
+    });
   }, []);
 
   return (
     <div className="container page-container">
       <div className="row" id="app-row">
-        <div className="col s3">
-          <Sidebar />
-        </div>
+        <div className="col s3">{/* <Sidebar /> */}</div>
         <div className="col s9">
           <div className="container" id="header-container">
             <h2 className="product-header">Computers</h2>
@@ -29,6 +31,7 @@ function Computers() {
             if (item.category === "computer") {
               return (
                 <Product
+                  src={item.image}
                   category={item.category}
                   identifier={item.title}
                   description={item.description}

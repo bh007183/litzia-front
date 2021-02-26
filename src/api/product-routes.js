@@ -27,8 +27,8 @@ export default {
     return axios.get("http://localhost:3005/api/product/" + category);
   },
 
-  getAllProductFeatured: function (fetured) {
-    return axios.get("http://localhost:3005/api/product/" + fetured);
+  getAllProductFeatured: function (featured) {
+    return axios.get("http://localhost:3005/api/product/" + featured);
   },
 
   deleteOneProduct: function (title) {
