@@ -4,27 +4,27 @@ export default {
 
 
 getAllProduct: function (){
-    return axios.get("http://localhost:8080/api/product")
+    return axios.get("http://localhost:3005/api/product")
 
 },
 getAllSubCategories: function (){
-    return axios.get("http://localhost:8080/api/subcategory")
+    return axios.get("http://localhost:3005/api/subcategory")
 
 },
 
 getAllProductCategory: function (category){
-    return axios.get("http://localhost:8080/api/product/" + category)
+    return axios.get("http://localhost:3005/api/product/" + category)
 },
 
 getAllProductFetured: function (fetured){
-    return axios.get("http://localhost:8080/api/product/" + fetured)
+    return axios.get("http://localhost:3005/api/product/" + fetured)
 },
 
 deleteOneProduct: function (title){
-    return axios.delete("http://localhost:8080/api/product/" + title)
+    return axios.delete("http://localhost:3005/api/product/" + title)
 },
 updateOneProduct: function (title){
-    return axios.put("http://localhost:8080/api/product/" + title)
+    return axios.put("http://localhost:3005/api/product/" + title)
 }
 
 

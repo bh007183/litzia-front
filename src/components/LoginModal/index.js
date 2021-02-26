@@ -14,15 +14,15 @@ function LoginModal() {
     const handleInputChange = event => {
         const name = event.target.name
         const value = event.target.value
-
-       setLogin({...login, [name]: value})
+        setLogin({...login, [name]: value})
 
     }
 
     const hanldeFormSubmit = event => {
         event.preventDefault()
+        console.log("inside submit")
         API.adminLogin(login.username, login.password)
-        .then(res => localStorage.setItem("Authorization", res.data.auth))
+        .then(res => localStorage.setItem("Auth", res.data))
         .catch(err => console.log(err))
         setLogin({username: "", password: ""})
     }
@@ -59,7 +59,7 @@ function LoginModal() {
 
                         <div className="input-field">
                             <i className="material-icons prefix">lock</i>
-                            <input placeholder="password"type="password"  name="password" value={login.password} onChange={handleInputChange}id="pass"></input>
+                            <input placeholder="password" type="password"  name="password" value={login.password} onChange={handleInputChange} id="pass"></input>
                             
                         </div>
                         <br></br>
