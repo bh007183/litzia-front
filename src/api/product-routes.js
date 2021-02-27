@@ -21,6 +21,9 @@ export default {
   deleteOneProduct: function (title) {
     return axios.delete("http://localhost:3005/api/product/" + title);
   },
+  getOneProduct: function (title) {
+    return axios.get("http://localhost:3005/api/product/" + title);
+  },
   updateOneProduct: function (title) {
     return axios.put("http://localhost:3005/api/product/" + title);
   },

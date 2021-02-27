@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import "./style.css";
+import API from "../../api/product-routes"
 
 function Product(props) {
+
+  
   return (
     <div className="product">
       {/* <div className="row"> */}
@@ -14,7 +17,7 @@ function Product(props) {
             <span className="card-title">{props.identifier}</span>
             <p>{props.description}</p>
           </div>
-          <button>{props.id}</button>
+          <button onClick={props.findProduct} data-id={props.id}>{props.id}</button>
         </div>
       </div>
       {/* </div> */}

@@ -1,9 +1,18 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Checkoutbar from "../components/Checkoutbar";
 import Checkoutitems from "../components/checkoutitems";
 import Checkoutrelated from "../components/checkoutrelated";
 
 function Checkout() {
+
+  const [checkout, setCheckout] = useState({
+    isNotCustomer: ""
+  })
+  
+  useEffect(() => {
+    setCheckout({isNotCustomer: localStorage.getItem("Auth2")})
+  }, [])
+
   return (
     <div>
       <form>
@@ -18,8 +27,8 @@ function Checkout() {
             <Checkoutrelated />
           </div>
           <div className="col s12 m3">
-            <Checkoutbar />
-          </div>
+          {checkout.isNotCustomer === null ? <Checkoutbar /> : <p>Please Login To Checkout</p>}
+        </div>
         </div>
       </form>
     </div>
