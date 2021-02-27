@@ -11,3 +11,19 @@
 hr {
   width: 100%;
 }
+
+#clear-icon {
+  margin: 0 auto;
+  margin-top: 15px;
+  color: black;
+}
+
+#quantity {
+  text-align: center;
+  width: 30px;
+  height: 22px;
+}
+
+.underline {
+  text-decoration: underline;
+}

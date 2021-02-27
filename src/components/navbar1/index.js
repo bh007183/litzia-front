@@ -1,8 +1,8 @@
 import React from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
-import LoginModal from "../LoginModal"
-import CreateItem from "../createProductModal"
+import LoginModal from "../LoginModal";
+import CreateItem from "../createProductModal";
 
 function Navbar1() {
   
@@ -22,7 +22,10 @@ function Navbar1() {
                 }
                 id="litzia"
               >
-                <img src="https://www.litzia.com/wp-content/uploads/2015/12/Litzia-Logo-Mark-SM.png" id="litziaImage"></img>
+                <img
+                  src="https://www.litzia.com/wp-content/uploads/2015/12/Litzia-Logo-Mark-SM.png"
+                  id="litziaImage"
+                ></img>
               </Link>
             </div>
             <a href="#" data-target="mobile-demo" className="sidenav-trigger">
@@ -56,10 +59,9 @@ function Navbar1() {
             <div className="col s3" id="modal">
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <div className="row" id="modalRow">
-
                   <div className="col s4">
                     <li>
-                      <a href="badges.html" id="shoppingCart">
+                      <a href="/checkout" id="shoppingCart">
                         <i className="material-icons">shopping_cart</i>
                       </a>
                       <Link
@@ -84,7 +86,7 @@ function Navbar1() {
           </div>
         </div>
       </nav>
-    </div >
+    </div>
   );
 }
 

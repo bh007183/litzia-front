@@ -15,20 +15,22 @@ function Checkout() {
 
   return (
     <div>
-      <div className="row" id="checkout-row">
-        <div className="col s12 m9">
-          <Checkoutitems />
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <Checkoutrelated />
-        </div>
-        <div className="col s12 m3">
+      <form>
+        <div className="row" id="checkout-row">
+          <div className="col s12 m9">
+            <Checkoutitems />
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <Checkoutrelated />
+          </div>
+          <div className="col s12 m3">
           {checkout.isNotCustomer === null ? <Checkoutbar /> : <p>Please Login To Checkout</p>}
         </div>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }
