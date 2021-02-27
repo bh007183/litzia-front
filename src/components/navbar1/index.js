@@ -5,7 +5,7 @@ import LoginModal from "../LoginModal"
 import CreateItem from "../createProductModal"
 
 function Navbar1() {
-  // document.querySelector("#litzia").onClick = function
+  
 
   return (
     <div>
@@ -75,10 +75,8 @@ function Navbar1() {
                   <div className="col s8">
                     <li id="loginMod">
                       <LoginModal />
+                      {localStorage.getItem("Auth2") === "true" ? <CreateItem/> : <></>}
                     </li>
-                    {/* <li >
-                      {localStorage.getItem("Admin") === "true" ? <CreateItem/> : <></>}
-                    </li> */}
                   </div>
                 </div>
               </ul>

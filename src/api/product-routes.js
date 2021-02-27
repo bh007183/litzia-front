@@ -1,20 +1,7 @@
 import axios from "axios";
 
 export default {
-  createProduct: function (a, b, c, d, e, f, g, h, i, j) {
-    return axios.post("http://localhost:3005/api/product", {
-      title: a,
-      image: b,
-      description: c,
-      category: d,
-      price: e,
-      quantity: f,
-      tier: g,
-      featured: h,
-      tax: i,
-      shipping: j,
-    });
-  },
+  
 
   getAllProduct: function () {
     return axios.get("http://localhost:3005/api/product");
@@ -27,9 +14,9 @@ export default {
     return axios.get("http://localhost:3005/api/product/" + category);
   },
 
-  getAllProductFeatured: function (featured) {
-    return axios.get("http://localhost:3005/api/product/" + featured);
-  },
+//   getAllProductFeatured: function (featured) {
+//     return axios.get("http://localhost:3005/api/product/" + featured);
+//   },
 
   deleteOneProduct: function (title) {
     return axios.delete("http://localhost:3005/api/product/" + title);
