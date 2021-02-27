@@ -22,7 +22,7 @@ function LoginModal() {
         event.preventDefault()
         console.log("inside submit")
         API.adminLogin(login.username, login.password)
-        .then(res => localStorage.setItem("Auth", res.data))
+        .then(res => {localStorage.setItem("Auth", res.data.token); localStorage.setItem("Auth2", res.data.guest)})
         .catch(err => console.log(err))
         setLogin({username: "", password: ""})
     }
