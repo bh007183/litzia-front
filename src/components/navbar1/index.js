@@ -83,11 +83,8 @@ function Navbar1() {
                 </div>
               </ul>
             </div>
-
-
           </div>
         </div>
-
       </nav>
     </div >
   );

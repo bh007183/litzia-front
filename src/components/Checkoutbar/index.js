@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./style.css";
 
+
+
 function Checkoutbar() {
+  
   return (
     <div>
       <h4 id="summary">Order Summary</h4>
