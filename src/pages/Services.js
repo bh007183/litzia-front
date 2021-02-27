@@ -24,7 +24,7 @@ function Services() {
   useEffect(() => {
     let mounted = true; ///////this needs stuff
     API.getAllProduct().then((res) => setItems({ item: res.data }));
-    API.getAllSubCategories().then((res) => setSubCat({ subcat: res.data }));
+    // API.getAllSubCategories().then((res) => setSubCat({ subcat: res.data }));
 
     let test = subCat.subcat.filter((thing) =>
       items.item.some((obj2) => thing.value == obj2.value)
