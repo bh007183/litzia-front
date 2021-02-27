@@ -1,11 +1,24 @@
 #carousel1{
     background: rgb(241, 241, 241);
-    text-align: center;
+    margin-top: 5vh;
+    display: flex;
+    align-items: center;
+   
     
 }
 
+
 .image{
-    min-height: 30vw;
-    min-width: 40vw;
-    margin-top: 4vw;
+    
+    min-width: 30vw;
+    display: flex;
+    align-items: center;
+    /* margin-top: 3vh; */
+    
+ 
 }
+
+/* .cardStyle{
+    
+    
+} */

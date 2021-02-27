@@ -1,18 +1,16 @@
 .carousel2{
     color: black;
     padding: 2vw;
-    min-height: 20vw;
+    min-height: 15vw;
     min-width: 30vw;
     font-style: italic;
     background: white;
+    display: flex;
+    align-items: center;
     
 }
 
-h4 {
-    text-align: center;
-    margin-bottom: 0;
-    margin-top: 0;
-}
+
 
 hr{
     width: 50%;
@@ -20,9 +18,14 @@ hr{
 
 #carouselBottom{
     max-height: 25vw;
+    /* display: flex;
+    align-items: center; */
     
 }
 
 #secondCarousel{
-    background-image: url("https://www.10adventures.com/wp-content/uploads/2018/12/USA-Washington-Mt.Baker-Pano.jpg");
+    background-image: url("https://cob.org/wp-content/uploads/p001189-large-retina-scaled-2.jpg");
+    /* display: flex;
+    align-items: center; */
+    margin-bottom: 2.5vh;
 }
