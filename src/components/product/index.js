@@ -8,7 +8,7 @@ function Product(props) {
       <div className="col s12 m4">
         <div className="card">
           <div className="card-image">
-            <img src={props.src} height="200" width="200" />
+            <img src={props.src} height="200" width="400" />
           </div>
           <div className="card-content">
             <span className="card-title">{props.identifier}</span>
