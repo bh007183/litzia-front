@@ -22,6 +22,37 @@
 
 #rowCategories{
     width: 100% !important;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+}
+
+#topRow, #bottomRow {
+    display: flex;
+}
+
+#topRow{
+    padding-bottom: 2vh;
+   
+}
+
+#secondColumn{
+    height: 100%;
+    /* position: relative; */
+}
+
+.categoryTag {
+    margin-top: 0.5vh;
+    margin-bottom: 3vh;
+}
+
+
+#one{
+margin: auto;
+margin-left: 1vw;
+margin-right: 0.6vw;
+}
+
+#computerTag{
+    margin-top: 2vh;
 }
