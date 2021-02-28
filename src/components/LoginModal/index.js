@@ -64,7 +64,7 @@ function LoginModal() {
                         </div>
                         <br></br>
 
-                        <input onClick={hanldeFormSubmit} value="Login" className="btn btn-large"></input>
+                        <button onClick={hanldeFormSubmit}  className="btn btn-large">Login</button>
 
                     </form>
                 </div>

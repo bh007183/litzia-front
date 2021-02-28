@@ -51,6 +51,7 @@ function Computers() {
             if (item.category === "computer" && items.item.length > 1) {
               return (
                 <Product
+                key={item.id}
                   src={item.image}
                   category={item.category}
                   identifier={item.title}

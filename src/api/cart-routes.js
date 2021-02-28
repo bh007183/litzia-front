@@ -7,4 +7,9 @@ export default {
         )
       },
 
+    myCart: function () {
+        return axios.post("http://localhost:3005/api/cart/items" , {headers: { authorization: "Bearer: " + localStorage.getItem("Auth") }}
+        )
+      },
+
 }

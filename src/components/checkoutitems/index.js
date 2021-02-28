@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function Checkoutitems() {
+function Checkoutitems(props) {
   return (
     <div>
       <div className="container" id="checkout-container">
@@ -14,34 +14,13 @@ function Checkoutitems() {
         </div>
         <div className="row">
           <div className="col s3">
-            <p>Product</p>
+            <p>{props.title}</p>
           </div>
           <div className="col s3 input-field">
-            <input id="quantity" type="text" className="validate" />
-            <label for="quantity"></label>
+            <input defaultValue="0"id="quantity" type="text" className="validate" />
           </div>
           <div className="col s3">
-            <p>$15.99</p>
-          </div>
-          <div className="col s3">
-            <a href="#" id="delete-button">
-              <i className="material-icons left" id="clear-icon">
-                clear
-              </i>
-            </a>
-          </div>
-        </div>
-        <hr></hr>
-        <div className="row">
-          <div className="col s3">
-            <p>Product</p>
-          </div>
-          <div className="col s3 input-field">
-            <input id="quantity" type="text" className="validate" />
-            <label for="quantity"></label>
-          </div>
-          <div className="col s3">
-            <p>$15.99</p>
+            <p>${props.price}</p>
           </div>
           <div className="col s3">
             <a href="#" id="delete-button">

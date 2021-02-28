@@ -10,6 +10,7 @@ export default function Admin() {
     description: "",
     InventoryItem: "",
     category: "",
+    subCategory: "",
     price: "",
     quantity: "",
     tier: "",
@@ -64,7 +65,7 @@ export default function Admin() {
     <div className="">
       <div className="container">
         <div className="row">
-          <div className="col m5 s6">
+          <div className="col m4 s6">
             <input
               onChange={handleInputChange}
               placeholder=" title"
@@ -72,7 +73,7 @@ export default function Admin() {
               value={product.title}
             ></input>
           </div>
-          <div className="col m5 s6">
+          <div className="col m4 s6">
             <input
               onChange={handleInputChange}
               placeholder="category"
@@ -80,15 +81,15 @@ export default function Admin() {
               value={product.category}
             ></input>
           </div>
-          <div className="col m2 s12">
-            <button
-              id="upload_widget"
-              className="cloudinary-button"
-              onClick={() => widget.open()}
-            >
-              Product Image
-            </button>
+          <div className="col m4 s6">
+            <input
+              onChange={handleInputChange}
+              placeholder="subCategory"
+              name="subCategory"
+              value={product.subCategory}
+            ></input>
           </div>
+          
           <br />
           <div className="row">
             <div className="col s12 m12">
@@ -142,6 +143,15 @@ export default function Admin() {
                   value={product.shipping}
                 ></input>
               </div>
+              <div className="col m3 s12">
+            <button
+              id="upload_widget"
+              className="cloudinary-button"
+              onClick={() => widget.open()}
+            >
+              Product Image
+            </button>
+          </div>
             </div>
             <div className="row">
               <div className="col s6 m4">
