@@ -1,7 +1,22 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./style.css";
 
+
 function Checkoutitems(props) {
+
+  const [checkout, setCheckout] = useState({
+    itemCost: "1"
+
+  })
+
+  const handleInputChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setCheckout({ ...checkout, [name]: value });
+  };
+
+
+
   return (
     <div>
       <div className="container" id="checkout-container">
@@ -17,14 +32,14 @@ function Checkoutitems(props) {
             <p>{props.title}</p>
           </div>
           <div className="col s3 input-field">
-            <input defaultValue="0"id="quantity" type="text" className="validate" />
+            <input onChange={handleInputChange} value={checkout.itemCost} name="itemCost" id="quantity" type="text" className="validate" />
           </div>
           <div className="col s3">
-            <p>${props.price}</p>
+           <p>${props.price * checkout.itemCost}</p>
           </div>
           <div className="col s3">
-            <a href="#" id="delete-button">
-              <i className="material-icons left" id="clear-icon">
+            <a href="#"  id="delete-button" onClick={props.removeCartItem}>
+              <i  data-id={props.id} className="material-icons left" id="clear-icon">
                 clear
               </i>
             </a>
