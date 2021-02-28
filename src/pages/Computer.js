@@ -4,6 +4,8 @@ import Sortby from "../components/sortby";
 import Sidebar from "../components/sidebar";
 import "../App.css"
 import API from "../api/product-routes";
+import CartAPI from "../api/cart-routes"
+import IndividualProduct from "../pages/IndividualProduct"
 
 function Computers() {
   const [items, setItems] = useState({
@@ -13,6 +15,18 @@ function Computers() {
   const findProduct = (event) => {
     API.getOneProduct(event.target.dataset.id)
     .then(res => setItems({ item: res.data }))
+}
+
+
+  const addToCardProduct = (event) => {
+    console.log(items.item)
+    CartAPI.addCart(
+      {title: items.item.title,
+        image: items.item.image,
+        description: items.item.description.substring(0, 40),
+        price: items.item.price,
+    })
+    .then(res => window.location.reload())
 }
 
   useEffect(() => {
@@ -46,13 +60,14 @@ function Computers() {
                 />
               );
             }
-          }):<Product
+          }):<IndividualProduct
                   src={items.item.image}
+                  title={items.item.title}
                   category={items.item.category}
                   identifier={items.item.title}
                   description={items.item.description}
                   id={items.id}
-                  findProduct={findProduct}
+                  addToCardProduct={addToCardProduct}
                 />}
         </div>
       </div>

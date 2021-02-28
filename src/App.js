@@ -11,6 +11,7 @@ import Security from "./pages/Security";
 import Services from "./pages/Services";
 import Checkout from "./pages/Checkout";
 import IndividualProduct from "./pages/IndividualProduct"
+import Admin from "./pages/Admin"
 import "./App.css";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route exact path="/services" component={Services} />
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/item" component={IndividualProduct} />
+        <Route exact path="/admin" component={Admin} />
       </div>
     </Router>
   );
