@@ -25,10 +25,6 @@ function LoginModal() {
        await API.adminLogin(login.username, login.password)
         .then(res => {localStorage.setItem("Auth", res.data.token); localStorage.setItem("Auth2", res.data.guest)}).then(res => window.location.reload())
         .catch(err => console.log(err))
-        
-
-       
-         
     }
     
 
@@ -68,7 +64,7 @@ function LoginModal() {
                         </div>
                         <br></br>
 
-                        <input onClick={hanldeFormSubmit} value="Login" className="btn btn-large"></input>
+                        <button onClick={hanldeFormSubmit}  className="btn btn-large">Login</button>
 
                     </form>
                 </div>

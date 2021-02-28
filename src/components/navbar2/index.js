@@ -43,7 +43,7 @@ function Navbar2() {
                     : "nav-link"
                 }
               >
-                Cloud
+                Software
               </Link>
             </li>
             <li className="tab">
