@@ -27,7 +27,7 @@ function Checkout() {
             <Checkoutrelated />
           </div>
           <div className="col s12 m3">
-          {checkout.isNotCustomer === null ? <Checkoutbar /> : <p>Please Login To Checkout</p>}
+          {checkout.isNotCustomer === "false" ? <Checkoutbar /> : <p>Please Login To Checkout</p>}
         </div>
         </div>
       </form>

@@ -6,7 +6,9 @@
   .modal{
    max-height:100%;
    overflow:hidden;
+   color: white;
    background-color:  rgb(80, 79, 79);
+   border-radius: 1vw;
   }
   
   input[type="submit"]{
@@ -31,12 +33,7 @@
     background-color:  rgb(80, 79, 79);
 }
 
-.modal{
-    background:  rgba(117, 81, 81, 1);
-    border-radius: 1vw;
-    color: white;
-    text-align: center;
-}
+
 .modal-overlay{
     backdrop-filter: blur(6px);
     opacity: 1 !important;

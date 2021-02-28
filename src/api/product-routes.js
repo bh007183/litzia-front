@@ -24,6 +24,9 @@ export default {
   getOneProduct: function (title) {
     return axios.get("http://localhost:3005/api/product/" + title);
   },
+  getOneProductSearch: function (title) {
+    return axios.get("http://localhost:3005/api/product/search/" + title);
+  },
   updateOneProduct: function (title) {
     return axios.put("http://localhost:3005/api/product/" + title);
   },

@@ -14,6 +14,8 @@ import IndividualProduct from "./pages/IndividualProduct"
 import "./App.css";
 
 function App() {
+
+  
   return (
     <Router>
       <div className="App">
