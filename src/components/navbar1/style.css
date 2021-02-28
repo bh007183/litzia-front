@@ -12,13 +12,12 @@
 #search {
   display: flex;
   justify-content: center;
-  width: 65vw;
+  width: 60vw;
 }
 #searchButton {
   background-color: transparent;
   border: none;
   margin-top: 1vh;
-
 }
 #searchInput {
   width: 44vw;
@@ -40,32 +39,33 @@
   width: 100%;
 }
 
-#loginMod{
+#loginMod {
   text-align: left;
   display: flex;
   justify-content: left;
 }
 
-#modal, #rowModal{
+#modal,
+#rowModal {
   width: 18%;
   margin-left: auto;
   left: auto;
   right: auto;
 }
 
-#shoppingCart {
+/* #shoppingCart {
   padding-left: 0vw;
-}
+} */
 #litzia {
   font-size: 40px;
 }
 
-#litziaImage{
+#litziaImage {
   height: 6vh;
   margin-top: 2vh;
 }
 
-#logoColumn{
+#logoColumn {
   display: flex;
   justify-content: center;
   align-items: center;
