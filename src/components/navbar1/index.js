@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 import LoginModal from "../LoginModal";
 import CreateItem from "../createProductModal";
-
+import API from "../../api/product-routes"
+import Sortby from "../../components/sortby"
+import Product from "../../components/product";
 function Navbar1() {
-  
+
+ const[searchItem, setSearchItem] = useState({
+   search: [],
+   searchResults: ""
+ })
+ const handleInputChange = (event) => {
+  const name = event.target.name;
+  const value = event.target.value;
+  setSearchItem({ ...searchItem, [name]: value });
+};
+
+const handleSubmit = (event) => {
+  event.preventDefault()
+  API.getOneProductSearch(searchItem.searchResults)
+  .then(res => setSearchItem({search: res.data}))
+}
+
+
 
   return (
     <div>
@@ -41,12 +60,14 @@ function Navbar1() {
                           <input
                             type="text"
                             placeholder="Search..."
-                            name="search"
+                            name="searchResults"
+                            value={searchItem.searchResults}
                             id="searchInput"
+                            onChange={handleInputChange}
                           />
                         </div>
                         <div className="col s3">
-                          <button type="submit" id="searchButton">
+                          <button onClick={handleSubmit}type="submit" id="searchButton">
                             <i className="material-icons">search</i>
                           </button>
                         </div>
