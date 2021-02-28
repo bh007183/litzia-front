@@ -63,7 +63,7 @@ export default function Admin() {
 
   return (
     <div className="">
-      <div className="container">
+      <div className="container" id="admin-container">
         <div className="row">
           <div className="col m4 s6">
             <input
@@ -71,6 +71,7 @@ export default function Admin() {
               placeholder=" title"
               name="title"
               value={product.title}
+              className="admin-input admin-top-row"
             ></input>
           </div>
           <div className="col m4 s6">
@@ -79,6 +80,7 @@ export default function Admin() {
               placeholder="category"
               name="category"
               value={product.category}
+              className="admin-input admin-top-row"
             ></input>
           </div>
           <div className="col m4 s6">
@@ -87,9 +89,10 @@ export default function Admin() {
               placeholder="subCategory"
               name="subCategory"
               value={product.subCategory}
+              className="admin-input admin-top-row"
             ></input>
           </div>
-          
+
           <br />
           <div className="row">
             <div className="col s12 m12">
@@ -98,6 +101,7 @@ export default function Admin() {
                 placeholder="description"
                 name="description"
                 value={product.description}
+                id="admin-description"
               ></textarea>
             </div>
           </div>
@@ -108,6 +112,7 @@ export default function Admin() {
                 placeholder="price"
                 name="price"
                 value={product.price}
+                className="admin-input"
               ></input>
             </div>
             <div className="col s6 m4">
@@ -116,6 +121,7 @@ export default function Admin() {
                 placeholder="tier"
                 name="tier"
                 value={product.tier}
+                className="admin-input"
               ></input>
             </div>
             <div className="col s12 m4">
@@ -124,42 +130,46 @@ export default function Admin() {
                 placeholder="featured"
                 name="featured"
                 value={product.featured}
+                className="admin-input"
               ></input>
             </div>
             <div className="row">
-              <div className="col s6 m4">
+              <div className="col s12 m4">
                 <input
                   onChange={handleInputChange}
                   placeholder="tax"
                   name="tax"
                   value={product.tax}
+                  className="admin-input"
                 ></input>
               </div>
-              <div className="col s6 m4">
+              <div className="col s12 m4">
                 <input
                   onChange={handleInputChange}
                   placeholder="shipping"
                   name="shipping"
                   value={product.shipping}
+                  className="admin-input"
                 ></input>
               </div>
               <div className="col m3 s12">
-            <button
-              id="upload_widget"
-              className="cloudinary-button"
-              onClick={() => widget.open()}
-            >
-              Product Image
-            </button>
-          </div>
+                <button
+                  id="upload_widget"
+                  className="cloudinary-button"
+                  onClick={() => widget.open()}
+                >
+                  Product Image
+                </button>
+              </div>
             </div>
             <div className="row">
-              <div className="col s6 m4">
+              <div className="col s12 m4">
                 <input
                   onChange={handleInputChange}
                   placeholder="InventoryItem"
                   name="InventoryItem"
                   value={product.InventoryItem}
+                  className="admin-input"
                 ></input>
               </div>
               <div className="col s12 m4">
@@ -181,17 +191,26 @@ export default function Admin() {
             </div>
           </div>
         </div>
+        <a
+          className="waves-effect waves-light btn"
+          onClick={handleFormSubmit}
+          id="admin-additem"
+        >
+          <i className="material-icons right">add</i>Add Item
+        </a>
+        {/* <button onClick={handleFormSubmit} id="admin-additem">
+          {" "}
+          Add Item
+        </button> */}
       </div>
-      <button onClick={handleFormSubmit}> Add Item</button>
       <hr></hr>
       <hr></hr>
       /////////
       <div className="">
         <h5>Edit Item</h5>
         <div className="row">
-          
-        <button> Submit Edit</button>
-      </div>
+          <button> Submit Edit</button>
+        </div>
       </div>
     </div>
   );

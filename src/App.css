@@ -31,3 +31,34 @@
 body {
   background-color: rgb(236, 234, 230);
 }
+
+#admin-container {
+  margin-top: 3%;
+  background-color: white;
+  height: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.admin-input {
+  margin-bottom: 15% !important;
+}
+
+#admin-description {
+  margin-bottom: 2%;
+  height: 100px;
+}
+#admin-additem {
+  margin-bottom: 2%;
+  background-color: rgb(4, 40, 107);
+}
+
+.admin-top-row {
+  margin-top: 5% !important;
+}
+
+#upload_widget {
+  background-color: rgb(4, 40, 107);
+}
