@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import M, { Modal } from "materialize-css";
 import API from "../../api/admin-routes"
+import CreateItem from "../createProductModal"
 
 function LoginModal() {
 
 
     const [login, setLogin] = useState ({
         username: '',
-        password: ''
+        password: '',
+        logedIn: ""
     })
       
     const handleInputChange = event => {
@@ -18,13 +20,15 @@ function LoginModal() {
 
     }
 
-    const hanldeFormSubmit = event => {
+    const hanldeFormSubmit = async(event) => {
         event.preventDefault()
-        console.log("inside submit")
-        API.adminLogin(login.username, login.password)
-        .then(res => {localStorage.setItem("Auth", res.data.token); localStorage.setItem("Auth2", res.data.guest)})
+       await API.adminLogin(login.username, login.password)
+        .then(res => {localStorage.setItem("Auth", res.data.token); localStorage.setItem("Auth2", res.data.guest)}).then(res => window.location.reload())
         .catch(err => console.log(err))
-        setLogin({username: "", password: ""})
+        
+
+       
+         
     }
     
 

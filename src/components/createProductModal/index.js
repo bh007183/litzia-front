@@ -3,6 +3,7 @@ import axios from "axios";
 import M, { Modal } from "materialize-css";
 import API from "../../api/admin-routes";
 import dotenv from "dotenv";
+import "./style.css"
 dotenv.config();
 
 function CreateItem() {
@@ -62,21 +63,21 @@ function CreateItem() {
   }, []);
   return (
 
-<>
+<div className=" center">
 
-    <a className='dropdown-trigger btn' href='#' data-target='dropdown1'><i class="material-icons">menu</i></a>
+    <a className='dropdown-trigger btn-large adminHamberger' href='#' data-target='dropdown2'><i className="material-icons">menu</i></a>
 
    
-    <ul id='dropdown1' className='dropdown-content'>
+    <ul id='dropdown2' className='dropdown-content'>
       <li><a href="#!"onClick={()=> {localStorage.clear(); window.location.reload()}}>LOGOUT</a></li>
-      <li><a href="#modal1"
-          className="btn btn-large transparent modal-trigger"
+      <li><a style={{marginRight: "0px"}}href="#modal1"
+          className="btn btn-large white modal-trigger"
           id="loginBtn">AddItem</a></li>
     </ul>
     <div className="">
      
 
-      <div id="modal1" className="modal ">
+      <div id="modal1" className="modal " style={{width: "100vw"}}>
         <input
           onChange={handleInputChange}
           placeholder=" title"
@@ -141,7 +142,7 @@ function CreateItem() {
         <button onClick={handleFormSubmit}> Your Face </button>
       </div>
     </div>
-    </>
+    </div>
   );
 }
 
