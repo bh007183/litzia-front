@@ -13,7 +13,7 @@ function Cloud() {
   
 
   const findProduct = (event) => {
-    API.getOneProduct(event.target.dataset.id)
+    API.getOneProductPage(event.target.dataset.id)
     .then(res => setItems({ item: res.data }))
 }
 
@@ -56,7 +56,7 @@ function Cloud() {
                   src={item.image}
                   category={item.category}
                   identifier={item.title}
-                  description={item.description}
+                  description={item.description.substring(0, 75) + "..."}
                   id={item.id}
                   findProduct={findProduct}
                 />

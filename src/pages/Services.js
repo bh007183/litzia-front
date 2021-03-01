@@ -16,7 +16,7 @@ function Services() {
   });
 
   const findProduct = (event) => {
-    API.getOneProduct(event.target.dataset.id)
+    API.getOneProductPage(event.target.dataset.id)
     .then(res => setItems({ item: res.data }))
 }
 
@@ -72,14 +72,14 @@ function Services() {
           <Sortby />
 
           {items.item.length ? items.item.map((item) => {
-            if (item.category === "computer" && items.item.length > 1) {
+            if (item.category === "Service" && items.item.length > 1) {
               return (
                 <Product
                 key={item.id}
                   src={item.image}
                   category={item.category}
                   identifier={item.title}
-                  description={item.description}
+                  description={item.description.substring(0, 75) + "..."}
                   id={item.id}
                   findProduct={findProduct}
                 />

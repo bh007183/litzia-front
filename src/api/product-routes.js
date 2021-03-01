@@ -6,6 +6,9 @@ export default {
   getAllProduct: function () {
     return axios.get("http://localhost:3005/api/product");
   },
+  getAllProductByFeatured: function () {
+    return axios.get("http://localhost:3005/api/product/featured");
+  },
   getAllSubCategories: function () {
     return axios.get("http://localhost:3005/api/subcategory");
   },
@@ -23,6 +26,10 @@ export default {
   },
   getOneProduct: function (title) {
     return axios.get("http://localhost:3005/api/product/" + title);
+  },
+
+  getOneProductPage: function (id) {
+    return axios.get("http://localhost:3005/api/product/singleItemPage/" + id);
   },
   getOneProductSearch: function (title) {
     return axios.get("http://localhost:3005/api/product/search/" + title);

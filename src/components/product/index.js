@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import "./style.css";
-import API from "../../api/product-routes"
 
 function Product(props) {
 
@@ -8,16 +7,18 @@ function Product(props) {
   return (
     <div className="product">
       {/* <div className="row"> */}
-      <div className="col s12 m4">
-        <div className="card">
+      <div className="col s12 m6 l4">
+        <div className="card product-card hoverable">
           <div className="card-image">
-            <img src={props.src} height="200" width="200" />
+            <img className="product-image" src={props.src} />
           </div>
           <div className="card-content">
             <span className="card-title">{props.identifier}</span>
             <p>{props.description}</p>
           </div>
-          <button onClick={props.findProduct} data-id={props.id}>{props.id}</button>
+          <div className="card-action">
+          <button className="btn btn-large" style={{marginTop: "auto"}}  onClick={props.findProduct} data-id={props.id}>View</button>
+          </div>
         </div>
       </div>
       {/* </div> */}

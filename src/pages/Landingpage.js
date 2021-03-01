@@ -8,8 +8,8 @@ function Landingpage() {
     return (
         <div>
             <Carousel1 />
-            <Categories />
-            <Carousel2 />
+            <Categories/>
+            {/* <Carousel2 /> */}
         </div>
     );
 }

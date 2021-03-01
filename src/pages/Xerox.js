@@ -12,10 +12,9 @@ function Xerox() {
   
 
   const findProduct = (event) => {
-    API.getOneProduct(event.target.dataset.id)
+    API.getOneProductPage(event.target.dataset.id)
     .then(res => setItems({ item: res.data }))
 }
-
 
   const addToCardProduct = (event) => {
     console.log(items.item)
@@ -56,7 +55,7 @@ function Xerox() {
                   src={item.image}
                   category={item.category}
                   identifier={item.title}
-                  description={item.description}
+                  description={item.description.substring(0, 75) + "..."}
                   id={item.id}
                   findProduct={findProduct}
                 />
