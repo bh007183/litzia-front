@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import M, { Modal } from "materialize-css";
+import API from "../api/product-routes"
 
 import axios from "axios";
 
-export default function Admin() {
+export default function AdminEditProduct() {
   const [product, setProduct] = useState({
+    id: "",
     title: "",
     image: "",
     description: "",
@@ -19,35 +21,62 @@ export default function Admin() {
     tax: "",
     shipping: "",
   });
-
+/////////////////////Edit Item Search//////////////////////////////////
   const [editItem, setEditItem] = useState({
     searchToEdit: "",
   });
-
-  function createProduct(product) {
-    return axios.post("http://localhost:3005/api/product", product, {
+//////////////////////////Admin Edit Protected Route////////////////////////
+  function editProduct(product) {
+    return axios.put("http://localhost:3005/api/product/update", product, {
       headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
     });
   }
-
+/////////////////////////////////////////////////////////////////////////////
+ ///////////////////////Handle Edit Submit/////////////////////////////////
+ const handleFormSubmit = (event) => {
+    event.preventDefault();
+    editProduct(product).then((res) => console.log(res));
+  };
+/////////////////////////Input Handle for Edit Form//////////////////////////
   const handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-
     setProduct({ ...product, [name]: value });
   };
-  const handleInputChangeEdit = (event) => {
+
+/////////////////////////////////////////////////////////////////////////////
+////////////////////////Input Hnadle for Edit Search/////////////////////////
+  const handleInputChangeEditSearch = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setEditItem({ ...editItem, [name]: value });
   };
+  //////////////////////////////////////////////////////////////////////////
+  ///////////////////////Handle Edit Search/////////////////////////////////
 
-  const handleFormSubmit = (event) => {
+  const handleFormSearch = (event) => {
     event.preventDefault();
-
-    createProduct(product).then((res) => console.log(res));
+    API.getOneProduct(editItem.searchToEdit).then((res) =>  
+     setProduct({ ...product, 
+     id: res.data.id,
+     title: res.data.title,
+     image: res.data.image,
+     description: res.data.description,
+     InventoryItem: res.data.InventoryItem,
+     category: res.data.category,
+     subCategory: res.data.subCategory,
+     price: res.data.price,
+     quantity: res.data.quantity,
+     tier: res.data.tier,
+     featured: res.data.featured,
+     updatedBy: res.data.updatedBy,
+     tax: res.data.tax,
+     shipping: res.data.shipping, }));
   };
 
+
+  //////////////////////////////////////////////////////////////////////////
+  ////////////////////Cloudinary//////////////////////////
   let widget = window.cloudinary.createUploadWidget(
     {
       cloudName: "dc29vpvut",
@@ -60,10 +89,24 @@ export default function Admin() {
       }
     }
   );
-
+///////////////////////////////////////////////////////////////
   return (
     <div className="">
+
       <div className="container" id="admin-container">
+      <div className="row">
+          <div className="col m4 s6">
+          <input
+          onChange={handleInputChangeEditSearch}
+          placeholder="Search Item To Edit"
+          name="searchToEdit"
+          value={editItem.searchToEdit}
+          className="admin-input admin-top-row">
+          </input>
+          <button className="waves-effect waves-light btn" id="admin-additem" onClick={handleFormSearch}>Search Item By Name</button>
+
+        </div>
+        </div>
         <div className="row">
           <div className="col m4 s6">
             <input
@@ -196,11 +239,10 @@ export default function Admin() {
           onClick={handleFormSubmit}
           id="admin-additem"
         >
-          <i className="material-icons right">add</i>Add Item
+          <i className="material-icons right">add</i>Edit Item
         </a>
-        
       </div>
-      
+     
     </div>
   );
 }
