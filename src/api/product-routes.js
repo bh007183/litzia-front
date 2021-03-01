@@ -6,6 +6,9 @@ export default {
   getAllProduct: function () {
     return axios.get("http://localhost:3005/api/product");
   },
+  getAllProductByFeatured: function () {
+    return axios.get("http://localhost:3005/api/product/featured");
+  },
   getAllSubCategories: function () {
     return axios.get("http://localhost:3005/api/subcategory");
   },

@@ -1,41 +1,83 @@
-import React, {useState, useEffect} from "react";
-import Checkoutbar from "../components/Checkoutbar";
-import Checkoutitems from "../components/checkoutitems";
+import React, { useState, useEffect } from "react";
+
 import Checkoutrelated from "../components/checkoutrelated";
-import API from "../api/cart-routes"
+import API from "../api/cart-routes";
+import CartAPI from "../api/cart-routes";
 
 function Checkout() {
-
   const [checkout, setCheckout] = useState({
-    isNotCustomer: ""
-  })
+    isNotCustomer: "",
+  });
   const [checkoutitems, setCheckoutItems] = useState({
-    cartDisplay: []
+    cartDisplay: [],
+    itemTotal: "",
+  });
+
+  const [checkoutCost, setCheckoutCost] = useState({
+    itemCost: "1"
+
   })
-  
+
+
+  const removeCartItem = (event) => {
+    document.getElementById(event.target.attributes[0].value).classList.add("hide")
+    console.log(event.target.attributes[0].value);
+    CartAPI.removeFromCart(event.target.attributes[0].value).then((res) =>
+      console.log(res)
+    );
+  };
+
   useEffect(() => {
-    setCheckout({isNotCustomer: localStorage.getItem("Auth2")})
+    setCheckout({ isNotCustomer: localStorage.getItem("Auth2") });
     API.myCart()
-    .then(res => setCheckoutItems({...checkoutitems , cartDisplay: res.data}))
-    .catch(err => console.error(err))
+      .then((res) =>
+        setCheckoutItems({ ...checkoutitems, cartDisplay: res.data })
+      )
+      .catch((err) => console.error(err));
+  }, []);
 
-    
-  }, [])
 
-
+  const handleInputChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setCheckoutCost({ ...checkoutCost, [name]: value });
+  };
 
   return (
     <div>
       <form>
         <div className="row" id="checkout-row">
           <div className="col s12 m9">
-            {checkoutitems.cartDisplay.map(items => <Checkoutitems 
-            key={items.id}
-            id={items.id}
-            title={items.title}
-            description={items.description}
-            price={items.price}
-            /> )}
+          <div className="container" id="checkout-container">
+        <h3 id="your-cart">Your Cart</h3>
+        <div className="row">
+          <div className="col s3 underline">Product</div>
+          <div className="col s3 underline">Quantity</div>
+          <div className="col s3 underline">Price</div>
+          <div className="col s3"></div>
+        </div>
+            {checkoutitems.cartDisplay.length ? checkoutitems.cartDisplay.map((items) => (
+              <div className="row" id={items.id} key={items.id}>
+              <div className="col s3">
+                <p>{items.title}</p>
+              </div>
+              <div className="col s3 input-field">
+                <input onChange={handleInputChange}  defaultValue="1" name={items.id} id="quantity" type="text" className="validate" />
+              </div>
+              <div className="col s3">
+               <p>${items.price * checkoutCost[items.id] || items.price * 1}</p>
+              </div>
+              <div className="col s3">
+                <a href="#"  id="delete-button" onClick={removeCartItem}>
+                  <i  data-id={items.id} className="material-icons left" id="clear-icon">
+                    clear
+                  </i>
+                </a>
+              </div>
+            </div>
+
+            )) : <h1>No Items In Cart</h1>}
+            </div>
             <br></br>
             <br></br>
             <br></br>
@@ -44,8 +86,15 @@ function Checkout() {
             <Checkoutrelated />
           </div>
           <div className="col s12 m3">
-          {checkout.isNotCustomer === "false" ? <Checkoutbar /> : <p>Please Login To Checkout</p>}
-        </div>
+            {checkout.isNotCustomer === "false" ? (
+              <div>
+                <h4 id="summary">Order Summary</h4>
+                <a className="waves-effect waves-light btn">Checkout</a>
+              </div>
+            ) : (
+              <p>Please Login To Checkout</p>
+            )}
+          </div>
         </div>
       </form>
     </div>

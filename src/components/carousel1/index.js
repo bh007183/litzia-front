@@ -1,125 +1,136 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import M from "materialize-css";
+import API from "../../api/product-routes";
 
 function Carousel1() {
+  const [items, setItems] = useState({
+    item: [],
+  });
+
   useEffect(() => {
     var elems = document.querySelectorAll(".carousel");
     var instances = M.Carousel.init(elems);
+
+    API.getAllProductByFeatured().then((res) => {
+      console.log(res.data);
+      setItems({ item: res.data });
+    });
   }, []);
 
   return (
     <div className="carousel" id="carousel1">
-      <a className="carousel-item image" href="#one!">
-        <div className="row">
-          <div className="col s12">
-            <div className="card cardStyle">
-              <div className="card-image">
-                <img src="images/sample-1.jpg"></img>
-                <span className="card-title">Card Title</span>
-              </div>
-              <div className="card-content">
-                <p>
-                  I am a very simple card. I am good at containing small bits of
-                  information. I am convenient because I require little markup
-                  to use effectively.
-                </p>
-              </div>
-              <div className="card-action">
-                {/* <a href="#">This is a link</a> */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-      <a className="carousel-item image" href="#one!">
-        <div className="row">
-          <div className="col s12">
-            <div className="card cardStyle">
-              <div className="card-image">
-                <img src="images/sample-1.jpg"></img>
-                <span className="card-title">Card Title</span>
-              </div>
-              <div className="card-content">
-                <p>
-                  I am a very simple card. I am good at containing small bits of
-                  information. I am convenient because I require little markup
-                  to use effectively.
-                </p>
-              </div>
-              <div className="card-action">
-                {/* <a href="#">This is a link</a> */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-      <a className="carousel-item image" href="#one!">
-        <div className="row">
-          <div className="col s12">
-            <div className="card cardStyle">
-              <div className="card-image">
-                <img src="images/sample-1.jpg"></img>
-                <span className="card-title">Card Title</span>
-              </div>
-              <div className="card-content">
-                <p>
-                  I am a very simple card. I am good at containing small bits of
-                  information. I am convenient because I require little markup
-                  to use effectively.
-                </p>
-              </div>
-              <div className="card-action">
-                {/* <a href="#">This is a link</a> */}
+      {
+        // items.item.map((obj) => (
+        //   <a key={obj.id} className="carousel-item image" href="#one!">
+        //     <div className="row">
+        //       <div className="col s12">
+        //         <div className="card cardStyle">
+        //           <div className="card-image">
+        //             <img src={obj.image}></img>
+        //             <span className="card-title">{obj.title}</span>
+        //           </div>
+        //           <div className="card-content">
+        //             <p>{obj.description.substring(0, 100)}</p>
+        //           </div>
+        //           {/* <div className="card-action">
+        //    </div> */}
+        //         </div>
+        //       </div>
+        //     </div>
+        //   </a>
+        // ))
+      }
+     
+        <a className="carousel-item image" href="#one!">
+          <div className="row">
+            <div className="col s12">
+              <div className="card cardStyle">
+                <div className="card-image">
+                  <img src="images/sample-1.jpg"></img>
+                  <span className="card-title">Card Title</span>
+                </div>
+                <div className="card-content">
+                  <p>
+                    I am a very simple card. I am good at containing small bits
+                    of information. I am convenient because I require little
+                    markup to use effectively.
+                  </p>
+                </div>
+                <div className="card-action">
+                  {/* <a href="#">This is a link</a> */}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </a>
-      <a className="carousel-item image" href="#one!">
-        <div className="row">
-          <div className="col s12">
-            <div className="card cardStyle">
-              <div className="card-image">
-                <img src="images/sample-1.jpg"></img>
-                <span className="card-title">Card Title</span>
-              </div>
-              <div className="card-content">
-                <p>
-                  I am a very simple card. I am good at containing small bits of
-                  information. I am convenient because I require little markup
-                  to use effectively.
-                </p>
-              </div>
-              <div className="card-action">
-                {/* <a href="#">This is a link</a> */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-      <a className="carousel-item image" href="#one!">
-        <div className="row">
-          <div className="col s12">
-            <div className="card cardStyle">
-              <div className="card-image">
-                <img src="images/sample-1.jpg"></img>
-                <span className="card-title">Card Title</span>
-              </div>
-              <div className="card-content">
-                <p>
-                  I am a very simple card. I am good at containing small bits of
-                  information. I am convenient because I require little markup
-                  to use effectively.
-                </p>
-              </div>
-              <div className="card-action">
-                {/* <a href="#">This is a link</a> */}
+        </a>
+        <a className="carousel-item image" href="#one!">
+          <div className="row">
+            <div className="col s12">
+              <div className="card cardStyle">
+                <div className="card-image">
+                  <img src="images/sample-1.jpg"></img>
+                  <span className="card-title">Card Title</span>
+                </div>
+                <div className="card-content">
+                  <p>
+                    I am a very simple card. I am good at containing small bits
+                    of information. I am convenient because I require little
+                    markup to use effectively.
+                  </p>
+                </div>
+                <div className="card-action">
+                  {/* <a href="#">This is a link</a> */}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </a>
+        </a>
+        <a className="carousel-item image" href="#one!">
+          <div className="row">
+            <div className="col s12">
+              <div className="card cardStyle">
+                <div className="card-image">
+                  <img src="images/sample-1.jpg"></img>
+                  <span className="card-title">Card Title</span>
+                </div>
+                <div className="card-content">
+                  <p>
+                    I am a very simple card. I am good at containing small bits
+                    of information. I am convenient because I require little
+                    markup to use effectively.
+                  </p>
+                </div>
+                <div className="card-action">
+                  {/* <a href="#">This is a link</a> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a className="carousel-item image" href="#one!">
+          <div className="row">
+            <div className="col s12">
+              <div className="card cardStyle">
+                <div className="card-image">
+                  <img src="images/sample-1.jpg"></img>
+                  <span className="card-title">Card Title</span>
+                </div>
+                <div className="card-content">
+                  <p>
+                    I am a very simple card. I am good at containing small bits
+                    of information. I am convenient because I require little
+                    markup to use effectively.
+                  </p>
+                </div>
+                <div className="card-action">
+                  {/* <a href="#">This is a link</a> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      
 
       {/* <a className=" carousel-item image" href="#two!"><img
                 src="https://www.xerox.com/api/utils/optimise?url=https%3A%2F%2Fimg.youtube.com%2Fvi%2FKNjgrQbD0Ng%2Fmaxresdefault.jpg&webp=true"></img></a>
