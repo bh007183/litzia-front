@@ -3,6 +3,15 @@
   margin-top: 0%;
   margin-bottom: 0%;
 }
+.product-card {
+  height: 500px
+}
+.product-image{
+  /* ... */
+  object-fit: cover;
+  height: unset; 
+  aspect-ratio: 8 / 6; /* Amounts close to a 184px height */
+}
 
 #header-container {
   background-color: rgb(105, 105, 105);
