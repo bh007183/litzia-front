@@ -10,13 +10,14 @@ import Cloud from "./pages/Cloud";
 import Security from "./pages/Security";
 import Services from "./pages/Services";
 import Checkout from "./pages/Checkout";
-import IndividualProduct from "./pages/IndividualProduct"
-import Admin from "./pages/Admin"
+import IndividualProduct from "./pages/IndividualProduct";
+import Admin from "./pages/Admin";
+import Shipping from "./pages/Shipping";
+import IndividualProduct from "./pages/IndividualProduct";
+import AdminEditProduct from "./pages/AdminEditProduct";
 import "./App.css";
 
 function App() {
-
-  
   return (
     <Router>
       <div className="App">
@@ -32,6 +33,8 @@ function App() {
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/item" component={IndividualProduct} />
         <Route exact path="/admin" component={Admin} />
+        <Route exact path="/shipping" component={Shipping} />
+        <Route exact path="/edit" component={AdminEditProduct} />
       </div>
     </Router>
   );

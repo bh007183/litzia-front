@@ -13,7 +13,7 @@ function Cloud() {
   
 
   const findProduct = (event) => {
-    API.getOneProduct(event.target.dataset.id)
+    API.getOneProductPage(event.target.dataset.id)
     .then(res => setItems({ item: res.data }))
 }
 

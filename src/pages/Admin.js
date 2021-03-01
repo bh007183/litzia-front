@@ -198,20 +198,9 @@ export default function Admin() {
         >
           <i className="material-icons right">add</i>Add Item
         </a>
-        {/* <button onClick={handleFormSubmit} id="admin-additem">
-          {" "}
-          Add Item
-        </button> */}
+        
       </div>
-      <hr></hr>
-      <hr></hr>
-      /////////
-      <div className="">
-        <h5>Edit Item</h5>
-        <div className="row">
-          <button> Submit Edit</button>
-        </div>
-      </div>
+      
     </div>
   );
 }

@@ -32,6 +32,10 @@ function CreateItem() {
           className="btn btn-large white"
           style={{marginRight: "0px"}}
           id="loginBtn">AddItem</Link></li>
+      <li><Link to="./edit" 
+          className="btn btn-large white"
+          style={{marginRight: "0px"}}
+          id="loginBtn">EditItem</Link></li>
     </ul>
 
     </div>
