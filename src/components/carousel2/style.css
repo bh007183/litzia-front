@@ -1,0 +1,31 @@
+.carousel2{
+    color: black;
+    padding: 2vw;
+    min-height: 15vw;
+    min-width: 30vw;
+    font-style: italic;
+    background: white;
+    display: flex;
+    align-items: center;
+    
+}
+
+
+
+hr{
+    width: 50%;
+}
+
+#carouselBottom{
+    max-height: 25vw;
+    /* display: flex;
+    align-items: center; */
+    
+}
+
+#secondCarousel{
+    background-image: url("https://cob.org/wp-content/uploads/p001189-large-retina-scaled-2.jpg");
+    /* display: flex;
+    align-items: center; */
+    margin-bottom: 2.5vh;
+}

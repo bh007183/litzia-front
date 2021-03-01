@@ -1,38 +1,68 @@
+.hide{
+  display: none !important;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.page-container {
+  width: 100%;
+  margin: 0 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#app-row {
+  width: 90vw;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#singleProduct {
+  width: 100% !important;
 }
 
-.App-link {
-  color: #61dafb;
+#rowID {
+  margin: 0 auto;
+  /* margin-left: 5vw; */
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#header-container {
+  background-image: url("https://media.gcflearnfree.org/content/55e0730c7dd48174331f5164_01_17_2014/whatisacomputer_mac.jpg");
+  object-fit: contain;
+  background-position: center;
+  background-size: contain;
+}
+
+body {
+  background-color: rgb(236, 234, 230);
+}
+
+#admin-container {
+  margin-top: 3%;
+  background-color: white;
+  height: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.admin-input {
+  margin-bottom: 15% !important;
+}
+
+#admin-description {
+  margin-bottom: 2%;
+  height: 100px;
+}
+#admin-additem {
+  margin-bottom: 2%;
+  background-color: rgb(4, 40, 107);
+}
+
+.admin-top-row {
+  margin-top: 5% !important;
+}
+
+#upload_widget {
+  background-color: rgb(4, 40, 107);
 }

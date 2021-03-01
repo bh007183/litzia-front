@@ -1,0 +1,76 @@
+#home {
+  padding-left: 2vw;
+}
+#litzia {
+  font-size: 3vw;
+}
+
+.navRightIcons {
+  padding-right: 2vw;
+}
+
+#search {
+  display: flex;
+  justify-content: center;
+  width: 60vw;
+}
+#searchButton {
+  background-color: transparent;
+  border: none;
+  margin-top: 1vh;
+}
+#searchInput {
+  width: 44vw;
+  color: rgb(22, 22, 22);
+  background-color: white;
+  padding: 0.3vw;
+  margin-bottom: 0%;
+  margin-top: 2vh;
+}
+
+#topNav {
+  background-color: rgb(4, 40, 107);
+}
+
+.row {
+  margin-bottom: 0;
+}
+.nav-content {
+  width: 100%;
+}
+
+#loginMod {
+  text-align: left;
+  display: flex;
+  justify-content: left;
+}
+
+#modal,
+#rowModal {
+  width: 18%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+
+/* #shoppingCart {
+  padding-left: 0vw;
+} */
+#litzia {
+  font-size: 40px;
+}
+
+#litziaImage {
+  height: 6vh;
+  margin-top: 2vh;
+}
+
+#logoColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal {
+  margin-top: 1vh;
+}

@@ -1,0 +1,58 @@
+#halfImage{
+    height: 100%;
+    width: 100%;
+}
+
+.quarterImage{
+    height: 100%;
+    width: 100%;
+}
+
+/* #categoriesContainer{
+    width: 100%;
+    margin: 0 0;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    margin-left: 0% !important;
+    margin-right: 0% !important;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+} */
+
+#rowCategories{
+    width: 100% !important;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+}
+
+#topRow, #bottomRow {
+    display: flex;
+}
+
+#topRow{
+    padding-bottom: 2vh;
+   
+}
+
+#secondColumn{
+    height: 100%;
+    /* position: relative; */
+}
+
+.categoryTag {
+    margin-top: 0.5vh;
+    margin-bottom: 3vh;
+}
+
+
+#one{
+margin: auto;
+margin-left: 1vw;
+margin-right: 0.6vw;
+}
+
+#computerTag{
+    margin-top: 2vh;
+}
