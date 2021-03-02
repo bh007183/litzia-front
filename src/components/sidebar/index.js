@@ -10,6 +10,7 @@ function Sidebar() {
   })
   
 
+
   useEffect(() => {
     API.getAllSubCategories().then(res => setSubCat({ subcat: res.data}))
   }, [])

@@ -8,12 +8,10 @@ import IndividualProduct from "../pages/IndividualProduct"
 function Services() {
   const [items, setItems] = useState({
     item: [],
-    other: [],
+   
   });
 
-  const [subCat, setSubCat] = useState({
-    subcat: [],
-  });
+
 
   const findProduct = (event) => {
     API.getOneProductPage(event.target.dataset.id)
@@ -32,23 +30,20 @@ function Services() {
     .then(res => window.location.reload())
 }
 
-  const subCatClick = (event) => {
-    const subCatResult = items.item.filter(
-      (obj) => obj.subcategory.id === parseInt(event.target.attributes[0].value)
-    );
-    setItems({ ...items, other: subCatResult });
-    console.log(items.other);
-  };
+const subCatClick = (event) => {
+  console.log(event.target.outerText)
+  const subCatResult = items.item.filter(
+    (obj) => obj.subCategory === event.target.outerText
+  );
+  setItems({ ...items, other: subCatResult });
+  console.log(items.other);
+};
 
   useEffect(() => {
     let mounted = true; ///////this needs stuff
     API.getAllProduct().then((res) => setItems({ item: res.data }));
     // API.getAllSubCategories().then((res) => setSubCat({ subcat: res.data }));
 
-    let test = subCat.subcat.filter((thing) =>
-      items.item.some((obj2) => thing.value == obj2.value)
-    );
-    console.log(test);
   }, []);
 
   return (
@@ -57,11 +52,14 @@ function Services() {
         <div className="col s3">
           <div className="sidebar">
             <aside>
-              {subCat.subcat.map((item) => (
+            {items.item.length ? items.item.map((item) => {
+                 if (item.category === "Service" ){
+                   return(
                 <button onClick={subCatClick} key={item.id} data-id={item.id}>
-                  {item.name}
-                </button>
-              ))}
+                  {item.subCategory}
+                </button>)
+                 }
+                }):<></>}
             </aside>
           </div>
         </div>
@@ -71,7 +69,7 @@ function Services() {
           </div>
           <Sortby />
 
-          {items.item.length ? items.item.map((item) => {
+          {items.item.length && !items.other ? items.item.map((item) => {
             if (item.category === "Service" && items.item.length > 1) {
               return (
                 <Product
@@ -85,7 +83,21 @@ function Services() {
                 />
               );
             }
-          }):<IndividualProduct
+          }): items.other ? items.other.map((item) => {
+            if ( items.other.length > 1) {
+              return (
+                <Product
+                key={item.id}
+                  src={item.image}
+                  category={item.category}
+                  identifier={item.title}
+                  description={item.description.substring(0, 75) + "..."}
+                  id={item.id}
+                  findProduct={findProduct}
+                />
+              );
+            }
+          }) :<IndividualProduct
                   src={items.item.image}
                   title={items.item.title}
                   category={items.item.category}

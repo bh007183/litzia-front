@@ -35,19 +35,37 @@ function Xerox() {
     });
   }, []);
 
+  const subCatClick = (event) => {
+    console.log(event.target.outerText)
+    const subCatResult = items.item.filter(
+      (obj) => obj.subCategory === event.target.outerText
+    );
+    setItems({ ...items, other: subCatResult });
+    console.log(items.other);
+  };
+
 
   return (
     <div className="container page-container">
       <div className="row" id="app-row">
         <div className="col s3">
-          {/* <Sidebar /> */}
+        <aside>
+        {items.item.length ? items.item.map((item) => {
+                 if (item.category === "xerox" ){
+                   return(
+                <button onClick={subCatClick} key={item.id} data-id={item.id}>
+                  {item.subCategory}
+                </button>)
+                 }
+                }):<></>}
+            </aside>
         </div>
         <div className="col s9">
           <div className="container" id="header-container">
             <h2 className="product-header">Xerox</h2>
           </div>
           <Sortby />
-          {items.item.length ? items.item.map((item) => {
+           {items.item.length && !items.other ? items.item.map((item) => {
             if (item.category === "xerox" && items.item.length > 1) {
               return (
                 <Product
@@ -61,7 +79,21 @@ function Xerox() {
                 />
               );
             }
-          }):<IndividualProduct
+          }): items.other ? items.other.map((item) => {
+            if ( items.other.length > 1) {
+              return (
+                <Product
+                key={item.id}
+                  src={item.image}
+                  category={item.category}
+                  identifier={item.title}
+                  description={item.description.substring(0, 75) + "..."}
+                  id={item.id}
+                  findProduct={findProduct}
+                />
+              );
+            }
+          }) :<IndividualProduct
                   src={items.item.image}
                   title={items.item.title}
                   category={items.item.category}
