@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Product from "../components/product";
 import Sortby from "../components/sortby";
 import Sidebar from "../components/sidebar";
-import "../App.css"
+import "../App.css";
 import API from "../api/product-routes";
-import CartAPI from "../api/cart-routes"
-import IndividualProduct from "../pages/IndividualProduct"
+import CartAPI from "../api/cart-routes";
+import IndividualProduct from "../pages/IndividualProduct";
 
 function Computers() {
   const [items, setItems] = useState({

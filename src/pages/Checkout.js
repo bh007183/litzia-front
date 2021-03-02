@@ -43,7 +43,10 @@ function Checkout() {
           pricesarray.reduce((a, b) => a + b, 0);
           setCheckoutItems({ ...checkoutitems, cartTotal: pricesarray });
         }
-        checkoutitems.cartTotal.reduce((a, b) => a + b, 0);
+        setCheckoutItems({
+          ...checkoutitems,
+          cartTotal: checkoutitems.cartTotal.reduce((a, b) => a + b, 0),
+        });
       })
       .catch((err) => console.error(err));
   }, []);
