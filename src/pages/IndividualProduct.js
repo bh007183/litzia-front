@@ -10,24 +10,24 @@ function IndividualProduct(props) {
         <div id="singleProduct">
             <div className="row" id="rowID">
                 <div className="col s12 m3">
-                <div>
-            <img src={props.src} className="itemImage"></img>
-        </div >
+                    <div>
+                        <img src={props.src} className="itemImage"></img>
+                    </div >
                 </div>
                 <div className="col s12 m6">
-                <div>
-            <h3>{props.title}</h3>
-            <div id="itemDescription">
-                <p>{props.description}</p>
-            </div>
-        </div>
-        <div>
-            <a onClick={props.addToCardProduct} >Add to Cart</a>
-        </div>
+                    <div>
+                        <h3>{props.title}</h3>
+                        <div id="itemDescription">
+                            <p>{props.description}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <a onClick={props.addToCardProduct} >Add to Cart</a>
+                    </div>
                 </div>
                 <div className="col s12 m3">
-                    <h5>You may also like...</h5>
-                    <Recommended />
+                    {/* <h5>You may also like...</h5>
+                    <Recommended /> */}
                 </div>
             </div>
         </div>
