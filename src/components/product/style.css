@@ -4,12 +4,12 @@
   margin-bottom: 0%;
 }
 .product-card {
-  height: 500px
+  height: 500px;
 }
-.product-image{
+.product-image {
   /* ... */
   object-fit: cover;
-  height: unset; 
+  height: unset;
   aspect-ratio: 8 / 6; /* Amounts close to a 184px height */
 }
 
@@ -20,6 +20,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2%;
 }
 
-
+.product-margin {
+  margin-bottom: 3%;
+}
