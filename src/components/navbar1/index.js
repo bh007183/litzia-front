@@ -8,21 +8,21 @@ import Sortby from "../../components/sortby"
 import Product from "../../components/product";
 function Navbar1() {
 
- const[searchItem, setSearchItem] = useState({
-   search: [],
-   searchResults: ""
- })
- const handleInputChange = (event) => {
-  const name = event.target.name;
-  const value = event.target.value;
-  setSearchItem({ ...searchItem, [name]: value });
-};
+  const [searchItem, setSearchItem] = useState({
+    search: [],
+    searchResults: ""
+  })
+  const handleInputChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setSearchItem({ ...searchItem, [name]: value });
+  };
 
-const handleSubmit = (event) => {
-  event.preventDefault()
-  API.getOneProductSearch(searchItem.searchResults)
-  .then(res => setSearchItem({search: res.data}))
-}
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    API.getOneProductSearch(searchItem.searchResults)
+      .then(res => setSearchItem({ search: res.data }))
+  }
 
 
 
@@ -31,7 +31,7 @@ const handleSubmit = (event) => {
       <nav className="nav-extended" id="topNav">
         <div className="nav-wrapper">
           <div className="row" id="navRow">
-            <div className="col s2" id="logoColumn">
+            <div className="col s4" id="logoColumn">
               <Link
                 to="/"
                 className={
@@ -47,10 +47,8 @@ const handleSubmit = (event) => {
                 ></img>
               </Link>
             </div>
-            <a href="#" data-target="mobile-demo" className="sidenav-trigger">
-              <i className="material-icons">menu</i>
-            </a>
-            <div className="col s7">
+
+            {/* <div className="col s7">
               <ul id="nav-mobile" className="left hide-on-med-and-down">
                 <li>
                   <div className="nav-wrapper" id="search">
@@ -67,7 +65,7 @@ const handleSubmit = (event) => {
                           />
                         </div>
                         <div className="col s3">
-                          <button onClick={handleSubmit}type="submit" id="searchButton">
+                          <button onClick={handleSubmit} type="submit" id="searchButton">
                             <i className="material-icons">search</i>
                           </button>
                         </div>
@@ -76,34 +74,34 @@ const handleSubmit = (event) => {
                   </div>
                 </li>
               </ul>
+            </div> */}
+            {/* <div className="col s8" id="modal">
+              <ul id="nav-mobile" className="right ">
+                <div className="row" id="modalRow"> */}
+            <div className="col s4">
+
+              <a href="/checkout" id="shoppingCart">
+                <i className="material-icons">shopping_cart</i>
+              </a>
+              <Link
+                to="/checkout"
+                className={
+                  window.location.pathname === "/checkout"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              ></Link>
+
             </div>
-            <div className="col s3" id="modal">
-              <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <div className="row" id="modalRow">
-                  <div className="col s4">
-                    <li>
-                      <a href="/checkout" id="shoppingCart">
-                        <i className="material-icons">shopping_cart</i>
-                      </a>
-                      <Link
-                        to="/checkout"
-                        className={
-                          window.location.pathname === "/checkout"
-                            ? "nav-link active"
-                            : "nav-link"
-                        }
-                      ></Link>
-                    </li>
-                  </div>
-                  <div className="col s8">
-                    <li id="loginMod">
-                      <LoginModal />
-                      {localStorage.getItem("Auth2") === "true" ? <CreateItem/> : <></>}
-                    </li>
-                  </div>
-                </div>
-              </ul>
+            <div className="col s4">
+              {/* <li id="loginMod"> */}
+              <LoginModal />
+              {localStorage.getItem("Auth2") === "true" ? <CreateItem /> : <></>}
+              {/* </li> */}
             </div>
+            {/* </div> */}
+            {/* </ul>
+            </div> */}
           </div>
         </div>
       </nav>
