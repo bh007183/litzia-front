@@ -47,8 +47,8 @@ margin: auto !important;
 }
 
 .product-image{
-    max-width: 16vw;
-    max-height: 15vw;
+    max-width: 20vw;
+    /* max-height: 15vh; */
     display: flex;
     justify-content: center;
     text-align: center;
@@ -79,6 +79,7 @@ margin: auto !important;
     height: 100%;
     width: 100%;
     margin: 0;
+    background-color: rgb(29, 29, 29)
     
 }
 
@@ -97,3 +98,11 @@ margin: auto !important;
     
 }
 
+
+.control-arrow{
+    background-color: grey !important;
+}
+
+.carousel-status{
+    margin-right: 2vw;
+}
