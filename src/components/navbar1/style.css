@@ -1,3 +1,8 @@
+#navRow{
+  display: flex;
+  justify-content: space-evenly;
+}
+
 #home {
   padding-left: 2vw;
 }
@@ -17,15 +22,17 @@
 #searchButton {
   background-color: transparent;
   border: none;
-  margin-top: 1vh;
+  margin-top: 4%;
+  margin-left: 55%;
 }
 #searchInput {
-  width: 44vw;
+  width: 40vw;
   color: rgb(22, 22, 22);
   background-color: white;
   padding: 0.3vw;
   margin-bottom: 0%;
   margin-top: 2vh;
+  margin-left: 10%;
 }
 
 #topNav {
@@ -53,16 +60,20 @@
   right: auto;
 }
 
-/* #shoppingCart {
-  padding-left: 0vw;
-} */
+.shoppingIcon {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-top: 1vh;
+}
+
 #litzia {
   font-size: 40px;
 }
 
 #litziaImage {
   height: 6vh;
-  margin-top: 2vh;
+  margin-top: 2vh!important;
 }
 
 #logoColumn {
@@ -86,4 +97,46 @@
 
 #pass{
   padding-left: 0.5vw;
+}
+
+#searchCol{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#nav-mobile{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#rightCol{
+  padding: 0!important;
+}
+
+#cartCol{
+  display: flex;
+  justify-content: left;
+  padding: 0;
+}
+
+#loginCol{
+  /* display: flex;
+  justify-content: left; */
+  padding: 0;
+ 
+  position: relative;
+  overflow: hidden;
+}
+
+/* .loginModal{
+  
+} */
+
+#modalLog{
+  margin-left: 0;
+  margin-top: 1vh;
+  /* margin-right: 2vw; */
+  /* margin-right: 2vw; */
 }

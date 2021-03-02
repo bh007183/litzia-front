@@ -98,7 +98,7 @@ function Navbar1() {
         <nav className="nav-extended" id="topNav">
           <div className="nav-wrapper">
             <div className="row" id="navRow">
-              <div className="col s4" id="logoColumn">
+              <div className="col s2" id="logoColumn">
                 <Link
                   to="/"
                   className={
@@ -115,40 +115,48 @@ function Navbar1() {
                 </Link>
               </div>
 
-              {/* <div className="col s7">
-              <ul id="nav-mobile" className="left hide-on-med-and-down">
-                <li>
-                  <div className="nav-wrapper" id="search">
-                    <form action="/action_page.php">
-                      <div className="row">
-                        <div className="col s9">
-                          <input
-                            type="text"
-                            placeholder="Search..."
-                            name="searchResults"
-                            value={searchItem.searchResults}
-                            id="searchInput"
-                            onChange={handleInputChange}
-                          />
+              <div className="col s8 searchCol">
+                <ul id="nav-mobile" className="left hide-on-med-and-down">
+                  <li>
+                    <div className="nav-wrapper" id="search">
+                      <form action="/action_page.php">
+                        <div className="row">
+                          <div className="col s9">
+                            <input
+                              type="text"
+                              placeholder="Search..."
+                              name="searchResults"
+                              value={searchItem.searchResults}
+                              id="searchInput"
+                              onChange={handleInputChange}
+                            />
+                          </div>
+                          <div className="col s3">
+                            <button
+                              className="modal-trigger"
+                              href="#search"
+                              onClick={handleSubmit}
+                              type="submit"
+                              id="searchButton"
+                            >
+                              <i className="material-icons">search</i>
+                            </button>
+                          </div>
                         </div>
-                        <div className="col s3">
-                          <button onClick={handleSubmit} type="submit" id="searchButton">
-                          <button className="modal-trigger" href="#search" onClick={handleSubmit}type="submit" id="searchButton">
-                            <i className="material-icons">search</i>
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </li>
-              </ul>
-            </div> */}
+                      </form>
+                    </div>
+                  </li>
+                </ul>
+              </div>
               {/* <div className="col s8" id="modal">
               <ul id="nav-mobile" className="right ">
                 <div className="row" id="modalRow"> */}
-              <div className="col s4">
+
+              {/* <div className="col s2" id="rightCol"> */}
+              {/* <div className="row" id="leftRow"> */}
+              <div className="col s1" id="cartCol">
                 <a href="/checkout" id="shoppingCart">
-                  <i className="material-icons">shopping_cart</i>
+                  <i className="material-icons shoppingIcon">shopping_cart</i>
                 </a>
                 <Link
                   to="/checkout"
@@ -159,7 +167,7 @@ function Navbar1() {
                   }
                 ></Link>
               </div>
-              <div className="col s4">
+              <div className="col s1" id="loginCol">
                 {/* <li id="loginMod"> */}
                 <LoginModal />
                 {localStorage.getItem("Auth2") === "true" ? (
@@ -170,8 +178,10 @@ function Navbar1() {
                 {/* </li> */}
               </div>
               {/* </div> */}
+              {/* </div> */}
               {/* </ul>
             </div> */}
+              {/* </div> */}
             </div>
           </div>
         </nav>

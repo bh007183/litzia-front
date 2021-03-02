@@ -5,17 +5,16 @@ import API from "../../api/product-routes";
 import ReactDOM from "react-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import Modal from "react-modal";
+import CartAPI from "../../api/cart-routes";
+import IndividualProduct from "../../pages/IndividualProduct";
 
 function Carousel1() {
   const [items, setItems] = useState({
     item: [],
   });
 
-  const findProduct = (event) => {
-    API.getOneProductPage(event.target.dataset.id).then((res) =>
-      setItems({ item: res.data })
-    );
-  };
+  const [modalState, setModalState] = useState({});
 
   useEffect(() => {
     // setItems([1, 2, 3]);
@@ -25,8 +24,60 @@ function Carousel1() {
     });
   }, []);
 
+  const findProduct = (event) => {
+    API.getOneProductPage(event.target.dataset.id)
+      .then((res) => setModalState(res.data))
+      .then(() => {
+        openModal();
+        console.log(modalState);
+      });
+  };
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  const addToCardProduct = (event) => {
+    console.log(items.item);
+    CartAPI.addCart({
+      title: modalState.title,
+      image: modalState.image,
+      description: modalState.description.substring(0, 40),
+      price: modalState.price,
+    }).then((res) => window.location.reload());
+  };
+
+  function trial() {
+    return (
+      <div>
+        {/* want to return the modal for the specific item*/}
+        {console.log("you did it")}
+      </div>
+    );
+  }
+
   return (
     <div className="parentDiv">
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal"
+      >
+        <IndividualProduct
+          src={modalState.image}
+          title={modalState.title}
+          category={modalState.category}
+          identifier={modalState.title}
+          description={modalState.description}
+          id={modalState.id}
+          addToCardProduct={addToCardProduct}
+        />
+      </Modal>
       {/* <h4 id="carouselHeading">Featured Items</h4> */}
       <Carousel>
         {/* <div className="product">
@@ -35,7 +86,7 @@ function Carousel1() {
 
         {items.item.map((item) => {
           if (item.featured === true) {
-            console.log(item.title);
+            // console.log(item.title)
             return (
               <div className="mainDiv">
                 <div className="row rowCarousel">
@@ -48,7 +99,9 @@ function Carousel1() {
                       <h5 className="itemTitle">{item.title}</h5>
                     </div>
                     <div className="row">
-                      <p className="itemDescription">{item.description}</p>
+                      <p className="itemDescription">
+                        {item.description.substring(0, 150) + "..."}
+                      </p>
                     </div>
                   </div>
 
@@ -67,16 +120,16 @@ function Carousel1() {
 
               /* <div className="row">
         <div className="mainDiv">
-
+    
           <div className="col s4">
             <h5 className="itemTitle">{item.title}</h5>
             <p className="itemDescription">{item.description.substring(0, 75) + "..."}</p>
           </div>
-
+    
           <div className="col s4">
             <img src={item.image} className="product-image" />
           </div>
-
+    
           <div className="col s4">
             <button className="btn btn-large" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
           </div>

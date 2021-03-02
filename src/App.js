@@ -13,7 +13,8 @@ import Checkout from "./pages/Checkout";
 import Admin from "./pages/Admin";
 import Shipping from "./pages/Shipping";
 import AdminEditProduct from "./pages/AdminEditProduct";
-import IndividualProduct from "./pages/IndividualProduct"
+import IndividualProduct from "./pages/IndividualProduct";
+import Confirmation from "./pages/Confirmation";
 import "./App.css";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/admin" component={Admin} />
         <Route exact path="/shipping" component={Shipping} />
         <Route exact path="/edit" component={AdminEditProduct} />
+        <Route exact path="/confirmation" component={Confirmation} />
       </div>
     </Router>
   );

@@ -13,7 +13,7 @@ function Productpage() {
         </div>
         <div className="col s9">
           <Header />
-          <Sortby />
+
           <Product />
         </div>
       </div>
