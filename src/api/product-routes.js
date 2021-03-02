@@ -27,7 +27,7 @@ export default {
   },
 
   getOneProductPage: function (id) {
-    return axios.get("http://localhost:3005/api/product/" + id);
+    return axios.get("http://localhost:3005/api/product/singleItemPage/" + id);
   },
   getOneProductSearch: function (title) {
     return axios.get("http://localhost:3005/api/product/search/" + title);

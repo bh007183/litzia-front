@@ -32,21 +32,22 @@ function Checkout() {
     setCheckout({ isNotCustomer: localStorage.getItem("Auth2") });
     API.myCart()
       .then((res) => {
+        console.log(res)
         setCheckoutItems({
           ...checkoutitems,
           cartDisplay: res.data,
         });
 
-        for (let i = 0; i < checkoutitems.cartDisplay.length; i++) {
-          const pricesarray = res.data[i].price;
-          console.log(pricesarray);
-          pricesarray.reduce((a, b) => a + b, 0);
-          setCheckoutItems({ ...checkoutitems, cartTotal: pricesarray });
-        }
-        setCheckoutItems({
-          ...checkoutitems,
-          cartTotal: checkoutitems.cartTotal.reduce((a, b) => a + b, 0),
-        });
+        // for (let i = 0; i < checkoutitems.cartDisplay.length; i++) {
+        //   const pricesarray = res.data[i].price;
+        //   console.log(pricesarray);
+        //   pricesarray.reduce((a, b) => a + b, 0);
+        //   setCheckoutItems({ ...checkoutitems, cartTotal: pricesarray });
+        // }
+        // setCheckoutItems({
+        //   ...checkoutitems,
+        //   cartTotal: checkoutitems.cartTotal.reduce((a, b) => a + b, 0),
+        // });
       })
       .catch((err) => console.error(err));
   }, []);
