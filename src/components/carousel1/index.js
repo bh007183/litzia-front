@@ -8,9 +8,9 @@ import { Carousel } from 'react-responsive-carousel';
 
 
 function Carousel1() {
-  const [items, setItems] = useState({
-    item: [],
-  });
+  // const [items, setItems] = useState({
+  //   item: [],
+  // });
 
   const findProduct = (event) => {
     API.getOneProductPage(event.target.dataset.id)
