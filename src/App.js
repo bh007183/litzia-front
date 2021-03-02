@@ -10,7 +10,6 @@ import Cloud from "./pages/Cloud";
 import Security from "./pages/Security";
 import Services from "./pages/Services";
 import Checkout from "./pages/Checkout";
-import IndividualProduct from "./pages/IndividualProduct";
 import Admin from "./pages/Admin";
 import Shipping from "./pages/Shipping";
 import IndividualProduct from "./pages/IndividualProduct";
