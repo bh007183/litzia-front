@@ -73,7 +73,17 @@
 
 #modal {
   margin-top: 1vh;
+  width: 66%;
 }
 
+.modal-content{
+  background-color: rgb(121, 120, 120)!important;
+}
 
+#name{
+  padding-left: 0.5vw;
+}
 
+#pass{
+  padding-left: 0.5vw;
+}
