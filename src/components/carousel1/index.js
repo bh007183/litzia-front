@@ -2,22 +2,19 @@ import React, { useEffect, useState, Component } from "react";
 import "./style.css";
 import M from "materialize-css";
 import API from "../../api/product-routes";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-import Modal from 'react-modal';
-import CartAPI from "../../api/cart-routes"
-import IndividualProduct from "../../pages/IndividualProduct"
-
+import { Carousel } from "react-responsive-carousel";
+import Modal from "react-modal";
+import CartAPI from "../../api/cart-routes";
+import IndividualProduct from "../../pages/IndividualProduct";
 
 function Carousel1() {
   const [items, setItems] = useState({
     item: [],
   });
 
-  const [modalState, setModalState] = useState({})
-
-
+  const [modalState, setModalState] = useState({});
 
   useEffect(() => {
     // setItems([1, 2, 3]);
@@ -29,11 +26,12 @@ function Carousel1() {
 
   const findProduct = (event) => {
     API.getOneProductPage(event.target.dataset.id)
-      .then(res => setModalState(res.data)).then(() => {
-        openModal()
-        console.log(modalState)
-      })
-  }
+      .then((res) => setModalState(res.data))
+      .then(() => {
+        openModal();
+        console.log(modalState);
+      });
+  };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
@@ -45,36 +43,31 @@ function Carousel1() {
   }
 
   const addToCardProduct = (event) => {
-    console.log(items.item)
-    CartAPI.addCart(
-      {
-        title: modalState.title,
-        image: modalState.image,
-        description: modalState.description.substring(0, 40),
-        price: modalState.price,
-      })
-      .then(res => window.location.reload())
-  }
+    console.log(items.item);
+    CartAPI.addCart({
+      title: modalState.title,
+      image: modalState.image,
+      description: modalState.description.substring(0, 40),
+      price: modalState.price,
+    }).then((res) => window.location.reload());
+  };
 
   function trial() {
     return (
-      < div >
+      <div>
         {/* want to return the modal for the specific item*/}
         {console.log("you did it")}
-      </div >
-    )
+      </div>
+    );
   }
 
-
   return (
-
     <div className="parentDiv">
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       >
-
         <IndividualProduct
           src={modalState.image}
           title={modalState.title}
@@ -84,11 +77,9 @@ function Carousel1() {
           id={modalState.id}
           addToCardProduct={addToCardProduct}
         />
-
       </Modal>
       {/* <h4 id="carouselHeading">Featured Items</h4> */}
-      <Carousel >
-
+      <Carousel>
         {/* <div className="product">
         <div className="col s12 m6 l4"> */}
         {/* <div className="row"> */}
@@ -99,7 +90,6 @@ function Carousel1() {
             return (
               <div className="mainDiv">
                 <div className="row rowCarousel">
-
                   <div className="col s4">
                     <img src={item.image} className="product-image" />
                   </div>
@@ -109,15 +99,22 @@ function Carousel1() {
                       <h5 className="itemTitle">{item.title}</h5>
                     </div>
                     <div className="row">
-                      <p className="itemDescription">{item.description.substring(0, 150) + "..."}</p>
+                      <p className="itemDescription">
+                        {item.description.substring(0, 150) + "..."}
+                      </p>
                     </div>
                   </div>
 
                   <div className="col s4 buttonView">
-                    <button className="btn btn-large viewBtn" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
+                    <button
+                      className="btn btn-large viewBtn"
+                      style={{ marginTop: "auto" }}
+                      onClick={findProduct}
+                      data-id={item.id}
+                    >
+                      View
+                    </button>
                   </div>
-
-
                 </div>
               </div>
 
@@ -139,7 +136,6 @@ function Carousel1() {
         </div>
       </div> */
 
-
               // <div className="card product-card hoverable">
               //   <div className="card-image">
               //     <img className="product-image" src={item.image} />
@@ -152,10 +148,9 @@ function Carousel1() {
               //     <button className="btn btn-large" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
               //   </div>
               // </div>
-
-            )
+            );
           } else {
-            console.log(item.title)
+            console.log(item.title);
           }
         })}
         {/* <div className="col s12 m6 l4">
@@ -176,12 +171,9 @@ function Carousel1() {
         {/* </div>
       </div> */}
       </Carousel>
-    </div >
+    </div>
   );
 }
-;
-
-
 // Don't forget to include the css in your page
 
 // Using webpack or parcel with a style loader
@@ -220,7 +212,5 @@ function Carousel1() {
 // }
 
 // export default Carousel1;
-
-
 
 export default Carousel1;
