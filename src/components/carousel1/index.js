@@ -2,21 +2,20 @@ import React, { useEffect, useState, Component } from "react";
 import "./style.css";
 import M from "materialize-css";
 import API from "../../api/product-routes";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-
+import { Carousel } from "react-responsive-carousel";
 
 function Carousel1() {
-  // const [items, setItems] = useState({
-  //   item: [],
-  // });
+  const [items, setItems] = useState({
+    item: [],
+  });
 
   const findProduct = (event) => {
-    API.getOneProductPage(event.target.dataset.id)
-      .then(res => setItems({ item: res.data }))
-  }
-
+    API.getOneProductPage(event.target.dataset.id).then((res) =>
+      setItems({ item: res.data })
+    );
+  };
 
   useEffect(() => {
     // setItems([1, 2, 3]);
@@ -26,23 +25,20 @@ function Carousel1() {
     });
   }, []);
 
-
   return (
     <div className="parentDiv">
       {/* <h4 id="carouselHeading">Featured Items</h4> */}
-      <Carousel >
-
+      <Carousel>
         {/* <div className="product">
         <div className="col s12 m6 l4"> */}
         {/* <div className="row"> */}
 
         {items.item.map((item) => {
           if (item.featured === true) {
-            console.log(item.title)
+            console.log(item.title);
             return (
               <div className="mainDiv">
                 <div className="row rowCarousel">
-
                   <div className="col s4">
                     <img src={item.image} className="product-image" />
                   </div>
@@ -57,10 +53,15 @@ function Carousel1() {
                   </div>
 
                   <div className="col s4 buttonView">
-                    <button className="btn btn-large viewBtn" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
+                    <button
+                      className="btn btn-large viewBtn"
+                      style={{ marginTop: "auto" }}
+                      onClick={findProduct}
+                      data-id={item.id}
+                    >
+                      View
+                    </button>
                   </div>
-
-
                 </div>
               </div>
 
@@ -82,7 +83,6 @@ function Carousel1() {
         </div>
       </div> */
 
-
               // <div className="card product-card hoverable">
               //   <div className="card-image">
               //     <img className="product-image" src={item.image} />
@@ -95,10 +95,9 @@ function Carousel1() {
               //     <button className="btn btn-large" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
               //   </div>
               // </div>
-
-            )
+            );
           } else {
-            console.log(item.title)
+            console.log(item.title);
           }
         })}
         {/* <div className="col s12 m6 l4">
@@ -119,12 +118,9 @@ function Carousel1() {
         {/* </div>
       </div> */}
       </Carousel>
-    </div >
+    </div>
   );
 }
-;
-
-
 // Don't forget to include the css in your page
 
 // Using webpack or parcel with a style loader
@@ -163,7 +159,5 @@ function Carousel1() {
 // }
 
 // export default Carousel1;
-
-
 
 export default Carousel1;
