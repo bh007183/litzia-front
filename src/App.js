@@ -13,7 +13,7 @@ import Checkout from "./pages/Checkout";
 import IndividualProduct from "./pages/IndividualProduct";
 import Admin from "./pages/Admin";
 import Shipping from "./pages/Shipping";
-import IndividualProduct from "./pages/IndividualProduct";
+
 import AdminEditProduct from "./pages/AdminEditProduct";
 import "./App.css";
 

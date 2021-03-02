@@ -1,8 +1,6 @@
 import axios from "axios";
 
 export default {
-  
-
   getAllProduct: function () {
     return axios.get("http://localhost:3005/api/product");
   },
@@ -17,9 +15,9 @@ export default {
     return axios.get("http://localhost:3005/api/product/" + category);
   },
 
-//   getAllProductFeatured: function (featured) {
-//     return axios.get("http://localhost:3005/api/product/" + featured);
-//   },
+  //   getAllProductFeatured: function (featured) {
+  //     return axios.get("http://localhost:3005/api/product/" + featured);
+  //   },
 
   deleteOneProduct: function (title) {
     return axios.delete("http://localhost:3005/api/product/" + title);
@@ -29,7 +27,7 @@ export default {
   },
 
   getOneProductPage: function (id) {
-    return axios.get("http://localhost:3005/api/product/singleItemPage/" + id);
+    return axios.get("http://localhost:3005/api/product/" + id);
   },
   getOneProductSearch: function (title) {
     return axios.get("http://localhost:3005/api/product/search/" + title);
