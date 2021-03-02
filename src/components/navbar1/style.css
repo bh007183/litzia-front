@@ -22,15 +22,17 @@
 #searchButton {
   background-color: transparent;
   border: none;
-  margin-top: 1vh;
+  margin-top: 4%;
+  margin-left: 55%;
 }
 #searchInput {
-  width: 44vw;
+  width: 40vw;
   color: rgb(22, 22, 22);
   background-color: white;
   padding: 0.3vw;
   margin-bottom: 0%;
   margin-top: 2vh;
+  margin-left: 10%;
 }
 
 #topNav {

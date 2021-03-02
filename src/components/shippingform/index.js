@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
@@ -11,15 +11,47 @@ function ShippingForm() {
     var instances = M.FormSelect.init(elems);
   }, []);
 
+  const [userData, setUserData] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    apartment: "",
+    city: "",
+    zipcode: "",
+    state: "",
+    email: "",
+    phoneNumber: "",
+  });
+
+  const handleInputChange = (event) => {
+    console.log(event.target);
+    const name = event.target.name;
+    const value = event.target.value;
+    setUserData({ ...userData, [name]: value });
+  };
+
   const sendEmail = (event) => {
-    console.log(event);
-    axios
-      .post("http://localhost:3005/nodemailer", {
-        emailAddress: "bjhops17@gmail.com",
-      })
-      .then((res) => {
-        console.log(res);
-      });
+    if (!userData.email) {
+      console.log("hi");
+    } else {
+      console.log(event);
+      window.location.href = "/confirmation";
+      axios
+        .post("http://localhost:3005/nodemailer", {
+          firstName: userData.firstName,
+          lastName: userData.lastName,
+          address: userData.address,
+          apartment: userData.apartment,
+          city: userData.city,
+          zipcode: userData.zipcode,
+          state: userData.state,
+          email: userData.email,
+          phoneNumber: userData.phoneNumber,
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }
   };
 
   return (
@@ -35,6 +67,8 @@ function ShippingForm() {
             <div className="row">
               <div className="input-field col s6">
                 <input
+                  name="firstName"
+                  onChange={handleInputChange}
                   placeholder="Ex. Kevin"
                   id="first_name"
                   type="text"
@@ -44,6 +78,8 @@ function ShippingForm() {
               </div>
               <div className="input-field col s6">
                 <input
+                  name="lastName"
+                  onChange={handleInputChange}
                   id="last_name"
                   type="text"
                   className="validate"
@@ -56,6 +92,8 @@ function ShippingForm() {
             <div className="row">
               <div className="input-field col s12 m6">
                 <input
+                  name="address"
+                  onChange={handleInputChange}
                   placeholder="Ex. 1234 Main St."
                   id="address"
                   type="text"
@@ -65,6 +103,8 @@ function ShippingForm() {
               </div>
               <div className="input-field col s12 m6">
                 <input
+                  name="apartment"
+                  onChange={handleInputChange}
                   id="apartment"
                   type="text"
                   className="validate"
@@ -76,15 +116,18 @@ function ShippingForm() {
             <div className="row">
               <div className="input-field col s12 m6">
                 <input
+                  name="city"
+                  onChange={handleInputChange}
                   placeholder="Ex. Seattle"
                   id="city"
                   type="text"
                   className="validate"
                 />
+
                 <label for="city">City</label>
               </div>
               <div className="input-field col s12 m3">
-                <select>
+                <select name="state" onChange={handleInputChange}>
                   <option value="" disabled selected>
                     Choose your option
                   </option>
@@ -143,6 +186,8 @@ function ShippingForm() {
               </div>
               <div className="input-field col s12 m3">
                 <input
+                  name="zipcode"
+                  onChange={handleInputChange}
                   id="zipcode"
                   type="number"
                   className="validate"
@@ -158,11 +203,23 @@ function ShippingForm() {
             </div>
             <div className="row">
               <div className="input-field col s12 m6">
-                <input id="email" type="text" className="validate" />
+                <input
+                  name="email"
+                  onChange={handleInputChange}
+                  id="email"
+                  type="text"
+                  className="validate"
+                />
                 <label for="email">Email</label>
               </div>
               <div className="input-field col s12 m6">
-                <input id="phone-number" type="text" className="validate" />
+                <input
+                  name="phoneNumber"
+                  onChange={handleInputChange}
+                  id="phone-number"
+                  type="text"
+                  className="validate"
+                />
                 <label for="phone-number">Phone Number</label>
               </div>
             </div>
@@ -312,7 +369,11 @@ function ShippingForm() {
       <div className="container" id="button-container">
         <div className="row">
           <div className="col s12 m6" id="payment-button">
-            <a onClick={sendEmail} className="waves-effect waves-light btn">
+            <a
+              onClick={sendEmail}
+              // href="/confirmation"
+              className="waves-effect waves-light btn"
+            >
               Submit Order
             </a>
           </div>
