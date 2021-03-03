@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
-import M from 'materialize-css'
+import M from "materialize-css";
 import LoginModal from "../LoginModal";
 import CreateItem from "../createProductModal";
-import API from "../../api/product-routes"
-import Sortby from "../../components/sortby"
+import API from "../../api/product-routes";
+import Sortby from "../../components/sortby";
 import Product from "../../components/product";
-import IndividualProduct from "../../pages/IndividualProduct"
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
-import CartAPI from "../../api/cart-routes"
-Modal.setAppElement('#root')
+import IndividualProduct from "../../pages/IndividualProduct";
+import ReactDOM from "react-dom";
+import Modal from "react-modal";
+import CartAPI from "../../api/cart-routes";
+Modal.setAppElement("#root");
 function Navbar1() {
-
   const [searchItem, setSearchItem] = useState({
     search: [],
-    searchResults: ""
-  })
+    searchResults: "",
+  });
   const handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -25,10 +24,11 @@ function Navbar1() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     API.getOneProductSearch(searchItem.searchResults)
-      .then(res => setSearchItem({ search: res.data, searchResults: "" })).then(openModal)
-  }
+      .then((res) => setSearchItem({ search: res.data, searchResults: "" }))
+      .then(openModal);
+  };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
@@ -39,25 +39,20 @@ function Navbar1() {
     setIsOpen(false);
   }
 
-
-
   const findProduct = (event) => {
-    API.getOneProductPage(event.target.dataset.id)
-      .then(res => setSearchItem({ search: res.data }))
-  }
-
+    API.getOneProductPage(event.target.dataset.id).then((res) =>
+      setSearchItem({ search: res.data })
+    );
+  };
 
   const addToCardProduct = (event) => {
-
-    CartAPI.addCart(
-      {
-        title: searchItem.search.title,
-        image: searchItem.search.image,
-        description: searchItem.search.description.substring(0, 40),
-        price: searchItem.search.price,
-      })
-      .then(res => window.location.reload())
-  }
+    CartAPI.addCart({
+      title: searchItem.search.title,
+      image: searchItem.search.image,
+      description: searchItem.search.description.substring(0, 40),
+      price: searchItem.search.price,
+    }).then((res) => window.location.reload());
+  };
 
   return (
     <>
@@ -66,25 +61,25 @@ function Navbar1() {
         onRequestClose={closeModal}
         // onAfterOpen={afterOpenModal}
         contentLabel="Example Modal"
-
       >
         <div className="container">
           <div className="row">
-            {searchItem.search.length ? searchItem.search.map((item) => {
-
-              return (
-                <Product
-                  key={item.id}
-                  src={item.image}
-                  category={item.category}
-                  identifier={item.title}
-                  description={item.description.substring(0, 75) + "..."}
-                  id={item.id}
-                  findProduct={findProduct}
-                />
-              );
-
-            }) : <IndividualProduct
+            {searchItem.search.length ? (
+              searchItem.search.map((item) => {
+                return (
+                  <Product
+                    key={item.id}
+                    src={item.image}
+                    category={item.category}
+                    identifier={item.title}
+                    description={item.description.substring(0, 75) + "..."}
+                    id={item.id}
+                    findProduct={findProduct}
+                  />
+                );
+              })
+            ) : (
+              <IndividualProduct
                 src={searchItem.search.image}
                 title={searchItem.search.title}
                 category={searchItem.search.category}
@@ -92,7 +87,8 @@ function Navbar1() {
                 description={searchItem.search.description}
                 id={searchItem.search.id}
                 addToCardProduct={addToCardProduct}
-              />}
+              />
+            )}
           </div>
         </div>
         <button onClick={closeModal}>Close</button>
@@ -135,8 +131,19 @@ function Navbar1() {
                               onChange={handleInputChange}
                             />
                           </div>
+<<<<<<< HEAD
                           <div className="col s3 m3">
                             <button className="modal-trigger" href="#search" onClick={handleSubmit} type="submit" id="searchButton">
+=======
+                          <div className="col s3">
+                            <button
+                              className="modal-trigger"
+                              href="#search"
+                              onClick={handleSubmit}
+                              type="submit"
+                              id="searchButton"
+                            >
+>>>>>>> dev
                               <i className="material-icons">search</i>
                             </button>
                           </div>
@@ -152,8 +159,12 @@ function Navbar1() {
 
               {/* <div className="col s2" id="rightCol"> */}
               {/* <div className="row" id="leftRow"> */}
+<<<<<<< HEAD
               <div className="col s1 m1" id="cartCol">
 
+=======
+              <div className="col s1" id="cartCol">
+>>>>>>> dev
                 <a href="/checkout" id="shoppingCart">
                   <i className="material-icons shoppingIcon">shopping_cart</i>
                 </a>
@@ -165,12 +176,15 @@ function Navbar1() {
                       : "nav-link"
                   }
                 ></Link>
-
               </div>
               <div className="col s1" id="loginCol">
                 {/* <li id="loginMod"> */}
                 <LoginModal />
-                {localStorage.getItem("Auth2") === "true" ? <CreateItem /> : <></>}
+                {localStorage.getItem("Auth2") === "true" ? (
+                  <CreateItem />
+                ) : (
+                  <></>
+                )}
                 {/* </li> */}
               </div>
               {/* </div> */}
