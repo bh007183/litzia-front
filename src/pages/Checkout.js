@@ -12,6 +12,7 @@ function Checkout() {
     cartDisplay: [],
     itemTotal: "",
     cartTotal: [],
+    qty: "",
   });
 
   const [checkoutCost, setCheckoutCost] = useState({
@@ -30,52 +31,31 @@ function Checkout() {
 
   useEffect(() => {
     setCheckout({ isNotCustomer: localStorage.getItem("Auth2") });
-    API.myCart().then((res) => {
-      const arr = [];
-      console.log(res);
-      for (let i = 0; i < res.data.length; i++) {
-        const pricesarray = res.data[i].price;
-        arr.push(pricesarray);
-      }
-      setCheckoutItems({
-        ...checkoutitems,
-        cartTotal: arr.reduce((a, b) => a + b, 0),
-        cartDisplay: res.data,
-      });
-    }).catch(err => alert("Please Login To View Your Cart" +  err));
+    API.myCart()
+      .then((res) => {
+        const arr = [];
+        console.log(res);
+        for (let i = 0; i < res.data.length; i++) {
+          const pricesarray = res.data[i].price;
+          arr.push(pricesarray);
+        }
+        setCheckoutItems({
+          ...checkoutitems,
+          cartTotal: arr.reduce((a, b) => a + b, 0),
+          cartDisplay: res.data,
+        });
+      })
+      .catch((err) => alert("Please Login To View Your Cart" + err));
   }, []);
-
-  // useEffect(() => {
-  //   setCheckout({ isNotCustomer: localStorage.getItem("Auth2") });
-  //   API.myCart()
-  //     .then((res) => {
-  //       console.log(res);
-  //       setCheckoutItems({
-  //         ...checkoutitems,
-  //         cartDisplay: res.data,
-  //       });
-
-  // for (let i = 0; i < checkoutitems.cartDisplay.length; i++) {
-  //   const pricesarray = res.data[i].price;
-  //   console.log(pricesarray);
-  //   pricesarray.reduce((a, b) => a + b, 0);
-  //   setCheckoutItems({ ...checkoutitems, cartTotal: pricesarray });
-  // }
-  // setCheckoutItems({
-  //   ...checkoutitems,
-  //   cartTotal: checkoutitems.cartTotal.reduce((a, b) => a + b, 0),
-  // });
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
 
   const updateQTY = (event) => {
     API.updateQTY().then((res) => {
+      setCheckoutItems({ ...checkoutitems, qty: res.body.quantity });
       console.log(res);
     });
   };
 
-  updateQTY();
+  // updateQTY();
 
   const handleInputChange = (event) => {
     const name = event.target.name;
@@ -109,7 +89,7 @@ function Checkout() {
                       <input
                         onChange={updateQTY}
                         defaultValue="1"
-                        name={items.id}
+                        name="qty"
                         id="quantity"
                         type="text"
                         className="validate"
@@ -151,7 +131,12 @@ function Checkout() {
             {checkout.isNotCustomer === "false" ? (
               <div>
                 <h4 id="summary">Order Summary</h4>
-                <a onClick={()=> window.location.href = "/shipping"}className="waves-effect waves-light btn">Checkout</a>
+                <a
+                  onClick={() => (window.location.href = "/shipping")}
+                  className="waves-effect waves-light btn"
+                >
+                  Checkout
+                </a>
               </div>
             ) : (
               <p>Please Login To Checkout</p>

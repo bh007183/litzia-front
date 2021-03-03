@@ -8,7 +8,7 @@ export default {
   },
 
   updateQTY: function (id) {
-    return axios.put("http://localhost:3005/api/cart/" + id, {
+    return axios.put("http://localhost:3005/api/cart/", {
       headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
     });
   },
