@@ -14,7 +14,7 @@ function Landingpage() {
         <div>
             <Carousel1 />
             <Categories />
-            {/* <Carousel2 /> */}
+            <Carousel2 />
         </div>
     );
 }

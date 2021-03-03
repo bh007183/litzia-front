@@ -79,16 +79,16 @@ function Navbar1() {
                 );
               })
             ) : (
-              <IndividualProduct
-                src={searchItem.search.image}
-                title={searchItem.search.title}
-                category={searchItem.search.category}
-                identifier={searchItem.search.title}
-                description={searchItem.search.description}
-                id={searchItem.search.id}
-                addToCardProduct={addToCardProduct}
-              />
-            )}
+                <IndividualProduct
+                  src={searchItem.search.image}
+                  title={searchItem.search.title}
+                  category={searchItem.search.category}
+                  identifier={searchItem.search.title}
+                  description={searchItem.search.description}
+                  id={searchItem.search.id}
+                  addToCardProduct={addToCardProduct}
+                />
+              )}
           </div>
         </div>
         <button onClick={closeModal}>Close</button>
@@ -98,7 +98,7 @@ function Navbar1() {
         <nav className="nav-extended" id="topNav">
           <div className="nav-wrapper">
             <div className="row" id="navRow">
-              <div className="col s2" id="logoColumn">
+              <div className="col s1 m2" id="logoColumn">
                 <Link
                   to="/"
                   className={
@@ -115,13 +115,13 @@ function Navbar1() {
                 </Link>
               </div>
 
-              <div className="col s8 searchCol">
-                <ul id="nav-mobile" className="left hide-on-med-and-down">
+              <div className="col s7 m8 searchCol">
+                <ul id="nav-mobile" >
                   <li>
                     <div className="nav-wrapper" id="search">
                       <form action="/action_page.php">
                         <div className="row">
-                          <div className="col s9">
+                          <div className="col s9 m9">
                             <input
                               type="text"
                               placeholder="Search..."
@@ -131,14 +131,8 @@ function Navbar1() {
                               onChange={handleInputChange}
                             />
                           </div>
-                          <div className="col s3">
-                            <button
-                              className="modal-trigger"
-                              href="#search"
-                              onClick={handleSubmit}
-                              type="submit"
-                              id="searchButton"
-                            >
+                          <div className="col s3 m3">
+                            <button className="modal-trigger" href="#search" onClick={handleSubmit} type="submit" id="searchButton">
                               <i className="material-icons">search</i>
                             </button>
                           </div>
@@ -154,7 +148,8 @@ function Navbar1() {
 
               {/* <div className="col s2" id="rightCol"> */}
               {/* <div className="row" id="leftRow"> */}
-              <div className="col s1" id="cartCol">
+              <div className="col s1 m1" id="cartCol">
+
                 <a href="/checkout" id="shoppingCart">
                   <i className="material-icons shoppingIcon">shopping_cart</i>
                 </a>
@@ -173,8 +168,8 @@ function Navbar1() {
                 {localStorage.getItem("Auth2") === "true" ? (
                   <CreateItem />
                 ) : (
-                  <></>
-                )}
+                    <></>
+                  )}
                 {/* </li> */}
               </div>
               {/* </div> */}

@@ -66,3 +66,8 @@ body {
 #upload_widget {
   background-color: rgb(4, 40, 107);
 }
+
+
+.addToCart:hover{
+  cursor: pointer;
+}

@@ -1,31 +1,44 @@
-.carousel2{
-    color: black;
-    padding: 2vw;
-    min-height: 15vw;
-    min-width: 30vw;
-    font-style: italic;
-    background: white;
+
+
+
+.slide{
+    background-image: url("https://cob.org/wp-content/uploads/p001189-large-retina-scaled-2.jpg")!important;
+}
+
+.slider{
+    background-color: transparent!important;
+}
+
+.slides{
+    background-color: transparent!important;
     display: flex;
     align-items: center;
+    text-align: center;
+    justify-content: center;
+    
     
 }
 
-
-
-hr{
-    width: 50%;
+.carousel{
+    /* height: 50vh; */
+    margin-bottom: 3vh!important;
+    display: flex;
+    justify-content: center;
 }
 
-#carouselBottom{
-    max-height: 25vw;
-    /* display: flex;
-    align-items: center; */
+.slideReviews{
+    width: 94%;
+    padding: 1.5vw;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+}
+
+.slideStyle{
+    background-color: rgba(255, 255, 255, 0.966);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
     
-}
-
-#secondCarousel{
-    background-image: url("https://cob.org/wp-content/uploads/p001189-large-retina-scaled-2.jpg");
-    /* display: flex;
-    align-items: center; */
-    margin-bottom: 2.5vh;
 }
