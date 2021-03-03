@@ -10,7 +10,7 @@
   padding: 1%;
   margin-top: 3%;
   border-radius: 10px;
-  width: 50%;
+  width: 60%;
 }
 
 #checkbox {
@@ -25,4 +25,16 @@
 
 #payment-button {
   text-align: left !important;
+}
+
+.hide {
+  color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  #shipping-container,
+  #billing-container,
+  #payment-container {
+    width: 90%;
+  }
 }

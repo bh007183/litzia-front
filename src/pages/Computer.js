@@ -6,6 +6,9 @@ import "../App.css";
 import API from "../api/product-routes";
 import CartAPI from "../api/cart-routes";
 import IndividualProduct from "../pages/IndividualProduct";
+import M from "materialize-css";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 function Computers() {
   const [items, setItems] = useState({
@@ -64,26 +67,27 @@ function Computers() {
   };
 
   return (
-    <div className="container page-container">
+    <div className="container page-container" id="computer-container">
       <div className="row" id="app-row">
-        <div className="col s3">
-          <aside>
-            {sub.map((item, index) => (
-              <button
-                style={{ width: "100%", height: "40px" }}
-                onClick={subCatClick}
-                key={index}
-              >
-                {item}
-              </button>
-            ))}
-          </aside>
-        </div>
-        <div className="col s9">
+        {/* <div className="col s3 product-sidebar"></div> */}
+        <div className="col s12">
           <div className="container" id="header-container">
             <h2 className="product-header">Computers</h2>
           </div>
-
+          <div className="row">
+            <p className="filter-by">Filter by:</p>
+            {sub.map((item, index) => (
+              <div className="col s2">
+                <button
+                  style={{ width: "100%", height: "40px" }}
+                  onClick={subCatClick}
+                  key={index}
+                >
+                  {item}
+                </button>
+              </div>
+            ))}
+          </div>
           {items.item.length && !items.other ? (
             items.item.map((item) => {
               if (item.category === "computer" && items.item.length > 1) {
