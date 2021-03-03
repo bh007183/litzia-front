@@ -18,10 +18,10 @@ function Carousel1() {
 
   useEffect(() => {
     API.getAllProduct().then((res) => {
-      console.log(res)
+      console.log(res);
       setItems({ ...items, item: res.data });
     });
-    console.log(items)
+    console.log(items);
   }, []);
 
   const findProduct = (event) => {
@@ -90,46 +90,50 @@ function Carousel1() {
             return (
               <div className="mainDiv">
                 <div className="row rowCarousel">
-                  <div className="col s4">
-                    <img src={item.image} className="product-image" />
-                  </div>
 
-                  <div className="col s4">
+                  <div className="col s0 m4">
                     <div className="row">
-                      <h5 className="itemTitle">{item.title}</h5>
-                    </div>
-                    <div className="row">
-                      <p className="itemDescription">
-                        {item.description.substring(0, 150) + "..."}
-                      </p>
+                      <img src={item.image} className="product-image" id="topImage" />
                     </div>
                   </div>
 
-                  <div className="col s4 buttonView">
-                    <button
-                      className="btn btn-large viewBtn"
-                      style={{ marginTop: "auto" }}
-                      onClick={findProduct}
-                      data-id={item.id}
-                    >
-                      View
-                    </button>
+                  <div className="col s12 m4" id="mobileColumn">
+                    <div className="col s12" id="smallImgRow">
+                      <img src={item.image} className="product-image" id="smallImage" />
+                    </div>
+                    <div id="bottomThree">
+                      <div className="col s12">
+                        <h5 className="itemTitle">{item.title}</h5>
+                      </div>
+                      <div className="col s12">
+                        <p className="itemDescription">{item.description.substring(0, 150) + "..."}</p>
+                      </div>
+                      <div className="col s12">
+                        <div className="buttonView">
+                          <button className="btn btn-large viewBtn" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id} id="smallViewBtn">View</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col s0 m4 buttonView">
+                    <button className="btn btn-large viewBtn" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
                   </div>
                 </div>
               </div>
 
               /* <div className="row">
         <div className="mainDiv">
-    
+
           <div className="col s4">
             <h5 className="itemTitle">{item.title}</h5>
             <p className="itemDescription">{item.description.substring(0, 75) + "..."}</p>
           </div>
-    
+
           <div className="col s4">
             <img src={item.image} className="product-image" />
           </div>
-    
+
           <div className="col s4">
             <button className="btn btn-large" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
           </div>

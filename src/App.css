@@ -77,3 +77,7 @@ body {
 .product-card {
   box-shadow: 1px 1px 5px;
 }
+
+.addToCart:hover {
+  cursor: pointer;
+}

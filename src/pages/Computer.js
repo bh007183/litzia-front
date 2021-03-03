@@ -57,11 +57,6 @@ function Computers() {
     });
   }, []);
 
-  useEffect(() => {
-    var elems = document.querySelectorAll(".dropdown-trigger");
-    var instances = M.FormSelect.init(elems);
-  }, []);
-
   const subCatClick = (event) => {
     console.log(event.target.outerText);
     const subCatResult = items.item.filter(
