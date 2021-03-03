@@ -14,44 +14,44 @@ function Xerox() {
 
   const [sub, setSub] = useState([]);
 
-
   const findProduct = (event) => {
-    API.getOneProductPage(event.target.dataset.id)
-    .then(res => setItems({ item: res.data, other: ""}))
-}
+    API.getOneProductPage(event.target.dataset.id).then((res) =>
+      setItems({ item: res.data, other: "" })
+    );
+  };
 
-const getSub = (data)=> {
-  let arr = []
-  for(let i = 0; i < data.length; i++){
-    if(data[i].category === "xerox"){
-      arr.push(data[i].subCategory)
-      console.log("this is ", data[i].subCategory)
+  const getSub = (data) => {
+    let arr = [];
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].category === "xerox") {
+        arr.push(data[i].subCategory);
+        console.log("this is ", data[i].subCategory);
+      }
     }
-    
-  }
-  let unique = [...new Set(arr)]
-  setSub([...unique])
-  console.log(unique)
-}
+    let unique = [...new Set(arr)];
+    setSub([...unique]);
+    console.log(unique);
+  };
 
-
-const addToCardProduct = (event) => {
-  CartAPI.addCart({
-    title: items.item.title,
-    image: items.item.image,
-    description: items.item.description.substring(0, 40),
-    price: items.item.price,
-  }).then((res) =>  console.log(res)).catch(err => alert("Please Make Sure To LogIn to add to Cart."));
-  window.location.reload()
-};
+  const addToCardProduct = (event) => {
+    CartAPI.addCart({
+      title: items.item.title,
+      image: items.item.image,
+      description: items.item.description.substring(0, 40),
+      price: items.item.price,
+    })
+      .then((res) => console.log(res))
+      .catch((err) => alert("Please Make Sure To LogIn to add to Cart."));
+    window.location.reload();
+  };
 
   useEffect(() => {
     API.getAllProduct().then((res) => {
-      console.log(res.data)
-      setItems({ ...items, item: res.data});
-     
-      getSub(res.data)
-    })
+      console.log(res.data);
+      setItems({ ...items, item: res.data });
+
+      getSub(res.data);
+    });
   }, []);
 
   const subCatClick = (event) => {
@@ -64,20 +64,26 @@ const addToCardProduct = (event) => {
   };
 
   return (
-    <div  className ="container page-container">
+    <div className="container page-container">
       <div className="row" id="app-row">
-        <div className="col s3"><aside>
-        {sub.map((item,index) => 
-                <button style={{width:"100%", height:"40px"}} onClick={subCatClick} key={index}>
-                  {item}
-                </button>
-                )}
-            </aside></div>
-        <div className="col s9">
+        <div className="col s12">
           <div className="container" id="header-container">
             <h2 className="product-header">Xerox</h2>
           </div>
-
+          <div className="row">
+            <p className="filter-by">Filter by:</p>
+            {sub.map((item, index) => (
+              <div className="col s2">
+                <button
+                  style={{ width: "100%", height: "40px" }}
+                  onClick={subCatClick}
+                  key={index}
+                >
+                  {item}
+                </button>
+              </div>
+            ))}
+          </div>
           {items.item.length && !items.other ? (
             items.item.map((item) => {
               if (item.category === "xerox" && items.item.length > 1) {
@@ -96,19 +102,17 @@ const addToCardProduct = (event) => {
             })
           ) : items.other ? (
             items.other.map((item) => {
-              
-                return (
-                  <Product
-                    key={item.id}
-                    src={item.image}
-                    category={item.category}
-                    identifier={item.title}
-                    description={item.description.substring(0, 75) + "..."}
-                    id={item.id}
-                    findProduct={findProduct}
-                  />
-                );
-              
+              return (
+                <Product
+                  key={item.id}
+                  src={item.image}
+                  category={item.category}
+                  identifier={item.title}
+                  description={item.description.substring(0, 75) + "..."}
+                  id={item.id}
+                  findProduct={findProduct}
+                />
+              );
             })
           ) : (
             <IndividualProduct

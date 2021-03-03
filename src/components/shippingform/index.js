@@ -4,8 +4,14 @@ import { Link } from "react-router-dom";
 import M from "materialize-css";
 import axios from "axios";
 import API from "../../api/cart-routes";
+<<<<<<< HEAD
+import { getDefaultNormalizer, render } from "@testing-library/react";
+import Billingmodal from "../billingmodal";
+import ReactModal from "react-modal";
+=======
 import Modal from "react-modal";
 import { getDefaultNormalizer } from "@testing-library/react";
+>>>>>>> dev
 
 function ShippingForm() {
   const [userData, setUserData] = useState({
@@ -21,6 +27,8 @@ function ShippingForm() {
   });
 
   const [sendOrder, setSendOrder] = useState([]);
+<<<<<<< HEAD
+=======
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
@@ -30,6 +38,7 @@ function ShippingForm() {
   function closeModal() {
     setIsOpen(false);
   }
+>>>>>>> dev
 
   useEffect(() => {
     var elems = document.querySelectorAll("select");
@@ -53,7 +62,14 @@ function ShippingForm() {
 
   const sendEmail = (event) => {
     if (!userData.email) {
+<<<<<<< HEAD
+      <ReactModal event={true}>
+        <p>hello</p>
+      </ReactModal>;
+      console.log("FUCK YOU MODAL");
+=======
       openModal();
+>>>>>>> dev
     } else {
       console.log(event);
       window.location.href = "/confirmation";
@@ -96,7 +112,7 @@ function ShippingForm() {
                   type="text"
                   className="validate"
                 />
-                <label for="first_name">First Name</label>
+                <label for="first_name">First Name*</label>
               </div>
               <div className="input-field col s6">
                 <input
@@ -107,7 +123,7 @@ function ShippingForm() {
                   className="validate"
                   placeholder="Ex. Lyons"
                 />
-                <label for="last_name">Last Name</label>
+                <label for="last_name">Last Name*</label>
               </div>
             </div>
 
@@ -121,7 +137,7 @@ function ShippingForm() {
                   type="text"
                   className="validate"
                 />
-                <label for="address">Address</label>
+                <label for="address">Address*</label>
               </div>
               <div className="input-field col s12 m6">
                 <input
@@ -146,9 +162,13 @@ function ShippingForm() {
                   className="validate"
                 />
 
+<<<<<<< HEAD
+                <label for="city">City*</label>
+=======
                 <Modal></Modal>
 
                 <label for="city">City</label>
+>>>>>>> dev
               </div>
               <div className="input-field col s12 m3">
                 <select name="state" onChange={handleInputChange}>
@@ -206,7 +226,7 @@ function ShippingForm() {
                   <option value="49">WI</option>
                   <option value="50">WY</option>
                 </select>
-                <label>Select State</label>
+                <label>State*</label>
               </div>
               <div className="input-field col s12 m3">
                 <input
@@ -217,7 +237,7 @@ function ShippingForm() {
                   className="validate"
                   placeholder="Ex. 98007"
                 />
-                <label for="zipcode">Zipcode</label>
+                <label for="zipcode">Zipcode*</label>
               </div>
             </div>
             <div className="row">
@@ -234,7 +254,7 @@ function ShippingForm() {
                   type="text"
                   className="validate"
                 />
-                <label for="email">Email</label>
+                <label for="email">Email*</label>
               </div>
               <div className="input-field col s12 m6">
                 <input
@@ -244,7 +264,7 @@ function ShippingForm() {
                   type="text"
                   className="validate"
                 />
-                <label for="phone-number">Phone Number</label>
+                <label for="phone-number">Phone Number*</label>
               </div>
             </div>
             <div className="row">
@@ -276,7 +296,7 @@ function ShippingForm() {
                   type="text"
                   className="validate"
                 />
-                <label for="first_name">First Name</label>
+                <label for="first_name">First Name*</label>
               </div>
               <div className="input-field col s6">
                 <input
@@ -285,7 +305,7 @@ function ShippingForm() {
                   className="validate"
                   placeholder="Ex. Lyons"
                 />
-                <label for="last_name">Last Name</label>
+                <label for="last_name">Last Name*</label>
               </div>
             </div>
 
@@ -297,7 +317,7 @@ function ShippingForm() {
                   type="text"
                   className="validate"
                 />
-                <label for="address">Address</label>
+                <label for="address">Address*</label>
               </div>
               <div className="input-field col s12 m6">
                 <input
@@ -317,7 +337,7 @@ function ShippingForm() {
                   type="text"
                   className="validate"
                 />
-                <label for="city">City</label>
+                <label for="city">City*</label>
               </div>
               <div className="input-field col s12 m3">
                 <select>
@@ -375,7 +395,7 @@ function ShippingForm() {
                   <option value="49">WI</option>
                   <option value="50">WY</option>
                 </select>
-                <label>Select State</label>
+                <label>State*</label>
               </div>
               <div className="input-field col s12 m3">
                 <input
@@ -384,7 +404,7 @@ function ShippingForm() {
                   className="validate"
                   placeholder="Ex. 98007"
                 />
-                <label for="zipcode">Zipcode</label>
+                <label for="zipcode">Zipcode*</label>
               </div>
             </div>
           </form>
@@ -398,6 +418,7 @@ function ShippingForm() {
       <div className="container" id="button-container">
         <div className="row">
           <div className="col s12 m6" id="payment-button">
+            <p className="hide">Please fill out all fields with *</p>
             <a
               onClick={sendEmail}
               // href="/confirmation"

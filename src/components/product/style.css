@@ -14,13 +14,14 @@
 }
 
 #header-container {
-  background-color: rgb(105, 105, 105);
+  background-color: white;
   height: 200px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 2%;
+  box-shadow: 1px 1px 5px;
 }
 
 .product-margin {
