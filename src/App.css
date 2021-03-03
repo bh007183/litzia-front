@@ -1,4 +1,4 @@
-.hide{
+.hide {
   display: none !important;
 }
 
@@ -8,7 +8,10 @@
 
 .page-container {
   width: 100%;
-  margin: 0 0;
+  /* margin: 0 0; */
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 #app-row {
@@ -26,7 +29,6 @@
 }
 
 #header-container {
-  background-image: url("https://media.gcflearnfree.org/content/55e0730c7dd48174331f5164_01_17_2014/whatisacomputer_mac.jpg");
   object-fit: contain;
   background-position: center;
   background-size: contain;
@@ -65,4 +67,13 @@ body {
 
 #upload_widget {
   background-color: rgb(4, 40, 107);
+}
+
+.filter-by {
+  text-align: left;
+  padding: 0 0.75rem;
+}
+
+.product-card {
+  box-shadow: 1px 1px 5px;
 }
