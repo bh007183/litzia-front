@@ -13,6 +13,7 @@ function Checkout() {
     itemTotal: "",
     cartTotal: [],
     qty: "",
+    arrayOfPrice: [],
   });
 
   const [checkoutCost, setCheckoutCost] = useState({
@@ -34,15 +35,26 @@ function Checkout() {
     API.myCart()
       .then((res) => {
         const arr = [];
+        const qty = [];
+        let pricesarray = [];
         console.log(res);
         for (let i = 0; i < res.data.length; i++) {
-          const pricesarray = res.data[i].price;
+          if (res.data[i].totalCost !== null) {
+            pricesarray = res.data[i].totalCost;
+          } else {
+            pricesarray = res.data[i].price;
+          }
+
           arr.push(pricesarray);
+
+          console.log(arr);
         }
         setCheckoutItems({
           ...checkoutitems,
           cartTotal: arr.reduce((a, b) => a + b, 0),
           cartDisplay: res.data,
+          qty: qty,
+          arrayOfPrice: arr,
         });
       })
       .catch((err) => alert("Please Login To View Your Cart" + err));
@@ -50,17 +62,48 @@ function Checkout() {
 
   const updateQTY = (event) => {
     API.updateQTY().then((res) => {
-      setCheckoutItems({ ...checkoutitems, qty: res.body.quantity });
+      setCheckoutItems({ ...checkoutitems, qty: res.data.quantity });
       console.log(res);
     });
   };
 
-  // updateQTY();
+  const dummyFunction = (event) => {
+    API.updateQTY(checkoutitems.cartDisplay).then((res) => {
+      console.log(res);
+    });
+  };
 
   const handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setCheckoutCost({ ...checkoutCost, [name]: value });
+  };
+  const handleInputChangeItems = (event) => {
+    dummyFunction();
+    const checkoutCopy = [...checkoutitems.arrayOfPrice];
+    const finalTotal = [checkoutCopy.reduce((a, b) => a + b, 0)];
+    let counter = 0;
+    const name = event.target.name;
+    const value = event.target.value;
+    console.log(name, value);
+    const cartCopy = checkoutitems.cartDisplay.slice();
+    const updatedCart = cartCopy.map((item) => {
+      if (item.title === name) {
+        item.quantity = parseInt(value);
+        item.totalCost = item.quantity * item.price;
+        finalTotal.push(item.price);
+        console.log(finalTotal);
+      }
+      return item;
+    });
+
+    console.log(finalTotal);
+    setCheckoutItems({
+      ...checkoutitems,
+      cartDisplay: updatedCart,
+      cartTotal: finalTotal.reduce((a, b) => a + b, 0),
+    });
+    window.location.reload(true);
   };
 
   return (
@@ -80,42 +123,48 @@ function Checkout() {
                 </div>
               </div>
               {checkoutitems.cartDisplay.length ? (
-                checkoutitems.cartDisplay.map((items) => (
-                  <div className="row" id={items.id} key={items.id}>
-                    <div className="col s3">
-                      <p>{items.title}</p>
-                    </div>
-                    <div className="col s3 input-field">
-                      <input
-                        onChange={updateQTY}
-                        defaultValue="1"
-                        name="qty"
-                        id="quantity"
-                        type="text"
-                        className="validate"
-                      />
-                    </div>
+                checkoutitems.cartDisplay.map(
+                  (items, idx) =>
+                    console.log(checkoutitems[items.title]) || (
+                      <div className="row" id={items.id} key={items.id}>
+                        <div className="col s3">
+                          <p>{items.title}</p>
+                        </div>
+                        <div className="col s3 input-field">
+                          <input
+                            onChange={handleInputChangeItems}
+                            defaultValue="1"
+                            value={checkoutitems.cartDisplay[idx].quantity}
+                            name={items.title}
+                            id="quantity"
+                            type="text"
+                            className="validate"
+                          />
+                        </div>
 
-                    <div className="col s3">
-                      <p>
-                        $
-                        {items.price * checkoutCost[items.id] ||
-                          items.price * 1}
-                      </p>
-                    </div>
-                    <div className="col s3">
-                      <a href="#" id="delete-button" onClick={removeCartItem}>
-                        <i
-                          data-id={items.id}
-                          className="material-icons left"
-                          id="clear-icon"
-                        >
-                          clear
-                        </i>
-                      </a>
-                    </div>
-                  </div>
-                ))
+                        <div className="col s3">
+                          <p>
+                            ${items.price * items.quantity || items.price * 1}
+                          </p>
+                        </div>
+                        <div className="col s3">
+                          <a
+                            href="#"
+                            id="delete-button"
+                            onClick={removeCartItem}
+                          >
+                            <i
+                              data-id={items.id}
+                              className="material-icons left"
+                              id="clear-icon"
+                            >
+                              clear
+                            </i>
+                          </a>
+                        </div>
+                      </div>
+                    )
+                )
               ) : (
                 <h1>No Items In Cart</h1>
               )}
@@ -125,7 +174,7 @@ function Checkout() {
             <br></br>
             <br></br>
             <br></br>
-            <Checkoutrelated />
+            {/* <Checkoutrelated /> */}
           </div>
           <div className="col s12 m3">
             {checkout.isNotCustomer === "false" ? (
