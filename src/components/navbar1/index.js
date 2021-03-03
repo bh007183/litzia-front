@@ -1,195 +1,197 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import "./style.css";
-import { Link } from "react-router-dom";
 import M from "materialize-css";
-import LoginModal from "../LoginModal";
-import CreateItem from "../createProductModal";
 import API from "../../api/product-routes";
-import Sortby from "../../components/sortby";
-import Product from "../../components/product";
-import IndividualProduct from "../../pages/IndividualProduct";
 import ReactDOM from "react-dom";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 import Modal from "react-modal";
 import CartAPI from "../../api/cart-routes";
-Modal.setAppElement("#root");
-function Navbar1() {
-  const [searchItem, setSearchItem] = useState({
-    search: [],
-    searchResults: "",
+import IndividualProduct from "../../pages/IndividualProduct";
+function Carousel1() {
+  const [items, setItems] = useState({
+    item: [],
   });
-  const handleInputChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setSearchItem({ ...searchItem, [name]: value });
+  const [modalState, setModalState] = useState({});
+  useEffect(() => {
+    // setItems([1, 2, 3]);
+    API.getAllProduct().then((res) => {
+      console.log(res);
+      setItems({ item: res.data });
+    });
+  }, []);
+  const findProduct = (event) => {
+    API.getOneProductPage(event.target.dataset.id)
+      .then((res) => setModalState(res.data))
+      .then(() => {
+        openModal();
+        console.log(modalState);
+      });
   };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    API.getOneProductSearch(searchItem.searchResults || "dell")
-      .then((res) => {setSearchItem({ search: res.data, searchResults: "" }); console.log(res)})
-      .then(openModal);
-  };
-
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
   }
-
   function closeModal() {
     setIsOpen(false);
   }
-
-  const findProduct = (event) => {
-    API.getOneProductPage(event.target.dataset.id).then((res) =>
-      setSearchItem({ search: res.data })
-    );
-  };
-
   const addToCardProduct = (event) => {
+    console.log(items.item);
     CartAPI.addCart({
-      title: searchItem.search.title,
-      image: searchItem.search.image,
-      description: searchItem.search.description.substring(0, 40),
-      price: searchItem.search.price,
+      title: modalState.title,
+      image: modalState.image,
+      description: modalState.description.substring(0, 40),
+      price: modalState.price,
     }).then((res) => window.location.reload());
   };
-
+  function trial() {
+    return (
+      <div>
+        {/* want to return the modal for the specific item*/}
+        {console.log("you did it")}
+      </div>
+    );
+  }
   return (
-    <>
+    <div className="parentDiv">
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        // onAfterOpen={afterOpenModal}
         contentLabel="Example Modal"
       >
-        <div className="container">
-          <div className="row">
-            {searchItem.search.length ? (
-              searchItem.search.map((item) => {
-                return (
-                  <Product
-                    key={item.id}
-                    src={item.image}
-                    category={item.category}
-                    identifier={item.title}
-                    description={item.description.substring(0, 75) + "..."}
-                    id={item.id}
-                    findProduct={findProduct}
-                  />
-                );
-              })
-            ) : searchItem.search.length === 0 ? <h1>No Found Results</h1> : (
-              <IndividualProduct
-                src={searchItem.search.image}
-                title={searchItem.search.title}
-                category={searchItem.search.category}
-                identifier={searchItem.search.title}
-                description={searchItem.search.description}
-                id={searchItem.search.id}
-                addToCardProduct={addToCardProduct}
-              />
-            )}
-            <button style={{marginLeft: "48%"}}onClick={closeModal}>Close</button>
-          </div>
-          
-        </div>
-        
+        <IndividualProduct
+          src={modalState.image}
+          title={modalState.title}
+          category={modalState.category}
+          identifier={modalState.title}
+          description={modalState.description}
+          id={modalState.id}
+          addToCardProduct={addToCardProduct}
+        />
       </Modal>
-
-      <div>
-        <nav className="nav-extended" id="topNav">
-          <div className="nav-wrapper">
-            <div className="row" id="navRow">
-              <div className="col s2" id="logoColumn">
-                <Link
-                  to="/"
-                  className={
-                    window.location.pathname === "/"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  id="litzia"
-                >
-                  <img
-                    src="https://www.litzia.com/wp-content/uploads/2015/12/Litzia-Logo-Mark-SM.png"
-                    id="litziaImage"
-                  ></img>
-                </Link>
-              </div>
-
-              <div className="col s8 searchCol">
-                <ul id="nav-mobile" className="left hide-on-med-and-down">
-                  <li>
-                    <div className="nav-wrapper" id="search">
-                      <form action="/action_page.php">
-                        <div className="row">
-                          <div className="col s9">
-                            <input
-                              type="text"
-                              placeholder="Search..."
-                              name="searchResults"
-                              value={searchItem.searchResults}
-                              id="searchInput"
-                              onChange={handleInputChange}
-                            />
-                          </div>
-                          <div className="col s3">
-                            <button
-                              className="modal-trigger"
-                              href="#search"
-                              onClick={handleSubmit}
-                              type="submit"
-                              id="searchButton"
-                            >
-                              <i className="material-icons">search</i>
-                            </button>
-                          </div>
-                        </div>
-                      </form>
+      {/* <h4 id="carouselHeading">Featured Items</h4> */}
+      <Carousel>
+        {/* <div className="product">
+        <div className="col s12 m6 l4"> */}
+        {/* <div className="row"> */}
+        {items.item.map((item) => {
+          if (item.featured === true) {
+            // console.log(item.title)
+            return (
+              <div className="mainDiv">
+                <div className="row rowCarousel">
+                  <div className="col s4">
+                    <img src={item.image} className="product-image" />
+                  </div>
+                  <div className="col s4">
+                    <div className="row">
+                      <h5 className="itemTitle">{item.title}</h5>
                     </div>
-                  </li>
-                </ul>
+                    <div className="row">
+                      <p className="itemDescription">
+                        {item.description.substring(0, 150) + "..."}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="col s4 buttonView">
+                    <button
+                      className="btn btn-large viewBtn"
+                      style={{ marginTop: "auto" }}
+                      onClick={findProduct}
+                      data-id={item.id}
+                    >
+                      View
+                    </button>
+                  </div>
+                </div>
               </div>
-              {/* <div className="col s8" id="modal">
-              <ul id="nav-mobile" className="right ">
-                <div className="row" id="modalRow"> */}
-
-              {/* <div className="col s2" id="rightCol"> */}
-              {/* <div className="row" id="leftRow"> */}
-              <div className="col s1" id="cartCol">
-                <a href="/checkout" id="shoppingCart">
-                  <i className="material-icons shoppingIcon">shopping_cart</i>
-                </a>
-                <Link
-                  to="/checkout"
-                  className={
-                    window.location.pathname === "/checkout"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                ></Link>
-              </div>
-              <div className="col s1" id="loginCol">
-                {/* <li id="loginMod"> */}
-                <LoginModal />
-                {localStorage.getItem("Auth2") === "true" ? (
-                  <CreateItem />
-                ) : (
-                  <></>
-                )}
-                {/* </li> */}
-              </div>
-              {/* </div> */}
-              {/* </div> */}
-              {/* </ul>
-            </div> */}
-              {/* </div> */}
+              /* <div className="row">
+        <div className="mainDiv">
+    
+          <div className="col s4">
+            <h5 className="itemTitle">{item.title}</h5>
+            <p className="itemDescription">{item.description.substring(0, 75) + "..."}</p>
+          </div>
+    
+          <div className="col s4">
+            <img src={item.image} className="product-image" />
+          </div>
+    
+          <div className="col s4">
+            <button className="btn btn-large" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
+          </div>
+        </div>
+      </div> */
+              // <div className="card product-card hoverable">
+              //   <div className="card-image">
+              //     <img className="product-image" src={item.image} />
+              //   </div>
+              //   <div className="card-content">
+              //     <span className="card-title">{item.title}</span>
+              //     <p>{item.description.substring(0, 75) + "..."}</p>
+              //   </div>
+              //   <div className="card-action">
+              //     <button className="btn btn-large" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
+              //   </div>
+              // </div>
+            );
+          } else {
+            console.log(item.title);
+          }
+        })}
+        {/* <div className="col s12 m6 l4">
+          <div className="card product-card hoverable">
+            <div className="card-image">
+              <img className="product-image" src={props.src} />
+            </div>
+            <div className="card-content">
+              <span className="card-title">{props.identifier}</span>
+              <p>{props.description}</p>
+            </div>
+            <div className="card-action">
+              <button className="btn btn-large" style={{ marginTop: "auto" }} onClick={props.findProduct} data-id={props.id}>View</button>
             </div>
           </div>
-        </nav>
-      </div>
-    </>
+        </div> */}
+        {/* </div> */}
+        {/* </div>
+      </div> */}
+      </Carousel>
+    </div>
   );
 }
+// Don't forget to include the css in your page
+// Using webpack or parcel with a style loader
+// import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+// Using html tag:
+// <link rel="stylesheet" href="<NODE_MODULES_FOLDER>/react-responsive-carousel/lib/styles/carousel.min.css"/>
+//   return (
+//     <div className="slideshow-container">
+//       {items.item.map((obj) => (
+//         <div key={obj.id} className="mySlides fade">
+//           <div className="numbertext">{slideIndex}</div>
+//           <div className="parent">
+//             <img src={obj.image} className="carouselImg" />
+//             <a className="prev" onClick="plusSlides(-1)">
+//               &#10094;
+//             </a>
+//             <a className="next" onClick="plusSlides(1)">
+//               &#10095;
+//              </a>
+//           </div>
+//           <div className="text">{obj.title}</div>
+//         </div>
+//       ))
+//       }
+//       {/* <a className="prev" onClick="plusSlides(-1)">
+//         &#10094;
+//       </a>
+//       <a className="next" onClick="plusSlides(1)">
+//         &#10095;
+//       </a> */}
+//     </div >
+//   );
+// }
+// export default Carousel1;
+export default Carousel1;
 
-export default Navbar1;
