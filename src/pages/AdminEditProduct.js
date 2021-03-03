@@ -74,7 +74,15 @@ export default function AdminEditProduct() {
      shipping: res.data.shipping, }));
   };
 
+///////////Relocates if not logged in//////////////////
+  useEffect(() => {
 
+    if(window.location.pathname === "/edit" && localStorage.getItem("Auth2")  !== "true"){
+      window.location.replace("/");
+      alert("Must Be logged in!")
+    }
+   
+  },[])
   //////////////////////////////////////////////////////////////////////////
   ////////////////////Cloudinary//////////////////////////
   let widget = window.cloudinary.createUploadWidget(

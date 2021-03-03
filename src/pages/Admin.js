@@ -20,14 +20,23 @@ export default function Admin() {
     shipping: "",
   });
 
-  const [editItem, setEditItem] = useState({
-    searchToEdit: "",
-  });
+
+  useEffect(() => {
+
+    if(window.location.pathname === "/admin" && localStorage.getItem("Auth2")  !== "true"){
+      window.location.replace("/");
+      alert("Must Be logged in!")
+    }
+   
+  },[])
+
+  
+
 
   function createProduct(product) {
     return axios.post("http://localhost:3005/api/product", product, {
       headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
-    });
+    }).catch(err => alert("You either entered an item title that already exists or you are not authorized to creat products"));
   }
 
   const handleInputChange = (event) => {
@@ -36,11 +45,7 @@ export default function Admin() {
 
     setProduct({ ...product, [name]: value });
   };
-  const handleInputChangeEdit = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setEditItem({ ...editItem, [name]: value });
-  };
+ 
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -62,6 +67,7 @@ export default function Admin() {
   );
 
   return (
+  
     <div className="">
       <div className="container" id="admin-container">
         <div className="row">

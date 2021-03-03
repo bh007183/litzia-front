@@ -42,7 +42,7 @@ function Checkout() {
         cartTotal: arr.reduce((a, b) => a + b, 0),
         cartDisplay: res.data,
       });
-    });
+    }).catch(err => alert("Please Login To View Your Cart" +  err));
   }, []);
 
   // useEffect(() => {
@@ -151,7 +151,7 @@ function Checkout() {
             {checkout.isNotCustomer === "false" ? (
               <div>
                 <h4 id="summary">Order Summary</h4>
-                <a className="waves-effect waves-light btn">Checkout</a>
+                <a onClick={()=> window.location.href = "/shipping"}className="waves-effect waves-light btn">Checkout</a>
               </div>
             ) : (
               <p>Please Login To Checkout</p>

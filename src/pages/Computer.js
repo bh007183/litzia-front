@@ -12,41 +12,46 @@ function Computers() {
     item: [],
   });
 
-  const findProduct = (event) => {
-    API.getOneProductPage(event.target.dataset.id).then((res) =>
-      setItems({ item: res.data, other: "" })
-    );
-  };
+  const [sub, setSub] = useState([]);
 
-  const addToCardProduct = (event) => {
-    console.log(items.item);
-    CartAPI.addCart({
-      title: items.item.title,
-      image: items.item.image,
-      description: items.item.description.substring(0, 40),
-      price: items.item.price,
-    }).then((res) => window.location.reload());
-  };
-  const rando = () => {
-    const subcatarr = [];
-    for (let i = 0; i < items.item.length; i++) {
-      console.log();
-      let test = subcatarr.filter((item) => {
-        if (items.item[i].subCategory !== item) {
-          subcatarr.push(items.item[i].subCategory);
-          console.log(test);
-        }
-      });
+
+  const findProduct = (event) => {
+    API.getOneProductPage(event.target.dataset.id)
+    .then(res => setItems({ item: res.data, other: ""}))
+}
+
+const getSub = (data)=> {
+  let arr = []
+  for(let i = 0; i < data.length; i++){
+    if(data[i].category === "computer"){
+      arr.push(data[i].subCategory)
+      console.log("this is ", data[i].subCategory)
     }
-    console.log(subcatarr);
-  };
+    
+  }
+  let unique = [...new Set(arr)]
+  setSub([...unique])
+  console.log(unique)
+}
+
+
+const addToCardProduct = (event) => {
+  CartAPI.addCart({
+    title: items.item.title,
+    image: items.item.image,
+    description: items.item.description.substring(0, 40),
+    price: items.item.price,
+  }).then((res) =>  console.log(res)).catch(err => alert("Please Make Sure To LogIn to add to Cart."));
+  window.location.reload()
+};
+
   useEffect(() => {
-    // setItems([1, 2, 3]);
-    API.getAllProduct()
-      .then((res) => {
-        setItems({ item: res.data });
-      })
-      .then((res) => rando());
+    API.getAllProduct().then((res) => {
+      console.log(res.data)
+      setItems({ ...items, item: res.data});
+     
+      getSub(res.data)
+    })
   }, []);
 
   const subCatClick = (event) => {
@@ -59,33 +64,15 @@ function Computers() {
   };
 
   return (
-    <div className="container page-container">
+    <div  className ="container page-container">
       <div className="row" id="app-row">
-        <div className="col s3">
-          <aside>
-            {items.item.length ? (
-              items.item.map((item) => {
-                if (item.category === "computer") {
-                  return (
-                    <div>
-                      <a
-                        href
-                        onClick={subCatClick}
-                        key={item.id}
-                        data-id={item.id}
-                      >
-                        {item.subCategory}
-                      </a>
-                      <br></br>
-                    </div>
-                  );
-                }
-              })
-            ) : (
-              <></>
-            )}
-          </aside>
-        </div>
+        <div className="col s3"><aside>
+        {sub.map((item,index) => 
+                <button style={{width:"100%", height:"40px"}} onClick={subCatClick} key={index}>
+                  {item}
+                </button>
+                )}
+            </aside></div>
         <div className="col s9">
           <div className="container" id="header-container">
             <h2 className="product-header">Computers</h2>
@@ -109,7 +96,7 @@ function Computers() {
             })
           ) : items.other ? (
             items.other.map((item) => {
-              if (items.other.length > 1) {
+              
                 return (
                   <Product
                     key={item.id}
@@ -121,7 +108,7 @@ function Computers() {
                     findProduct={findProduct}
                   />
                 );
-              }
+              
             })
           ) : (
             <IndividualProduct

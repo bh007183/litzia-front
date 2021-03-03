@@ -23,8 +23,8 @@ function LoginModal() {
     const hanldeFormSubmit = async(event) => {
         event.preventDefault()
        await API.adminLogin(login.username, login.password)
-        .then(res => {localStorage.setItem("Auth", res.data.token); localStorage.setItem("Auth2", res.data.guest)}).then(res => window.location.reload())
-        .catch(err => console.log(err))
+        .then(res => {if(res.data.token === undefined){alert("Invalid Cradentials. Please try again")}localStorage.setItem("Auth", res.data.token); localStorage.setItem("Auth2", res.data.guest)}).then(res => window.location.reload())
+        .catch(err => alert("No Known User. Please Re-enter User Data" + err))
     }
     
 

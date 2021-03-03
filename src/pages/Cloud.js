@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Product from "../components/product";
 import Sortby from "../components/sortby";
 import Sidebar from "../components/sidebar";
+import "../App.css";
 import API from "../api/product-routes";
 import CartAPI from "../api/cart-routes";
 import IndividualProduct from "../pages/IndividualProduct";
@@ -11,28 +12,46 @@ function Cloud() {
     item: [],
   });
 
-  const findProduct = (event) => {
-    API.getOneProductPage(event.target.dataset.id).then((res) =>
-      setItems({ item: res.data })
-    );
-  };
+  const [sub, setSub] = useState([]);
 
-  const addToCardProduct = (event) => {
-    console.log(items.item);
-    CartAPI.addCart({
-      title: items.item.title,
-      image: items.item.image,
-      description: items.item.description.substring(0, 40),
-      price: items.item.price,
-    }).then((res) => window.location.reload());
-  };
+
+  const findProduct = (event) => {
+    API.getOneProductPage(event.target.dataset.id)
+    .then(res => setItems({ item: res.data, other: ""}))
+}
+
+const getSub = (data)=> {
+  let arr = []
+  for(let i = 0; i < data.length; i++){
+    if(data[i].category === "software"){
+      arr.push(data[i].subCategory)
+      console.log("this is ", data[i].subCategory)
+    }
+    
+  }
+  let unique = [...new Set(arr)]
+  setSub([...unique])
+  console.log(unique)
+}
+
+
+const addToCardProduct = (event) => {
+  CartAPI.addCart({
+    title: items.item.title,
+    image: items.item.image,
+    description: items.item.description.substring(0, 40),
+    price: items.item.price,
+  }).then((res) =>  console.log(res)).catch(err => alert("Please Make Sure To LogIn to add to Cart."));
+  window.location.reload()
+};
 
   useEffect(() => {
-    // setItems([1, 2, 3]);
     API.getAllProduct().then((res) => {
-      console.log(res);
-      setItems({ item: res.data });
-    });
+      console.log(res.data)
+      setItems({ ...items, item: res.data});
+     
+      getSub(res.data)
+    })
   }, []);
 
   const subCatClick = (event) => {
@@ -45,32 +64,15 @@ function Cloud() {
   };
 
   return (
-    <div className="container page-container">
+    <div  className ="container page-container">
       <div className="row" id="app-row">
-        <div className="col s3">
-          <aside>
-            {items.item.length ? (
-              items.item.map((item) => {
-                if (item.category === "software") {
-                  return (
-                    <div>
-                      <button
-                        onClick={subCatClick}
-                        key={item.id}
-                        data-id={item.id}
-                      >
-                        {item.subCategory}
-                      </button>
-                      <br></br>
-                    </div>
-                  );
-                }
-              })
-            ) : (
-              <></>
-            )}
-          </aside>
-        </div>
+        <div className="col s3"><aside>
+        {sub.map((item,index) => 
+                <button style={{width:"100%", height:"40px"}} onClick={subCatClick} key={index}>
+                  {item}
+                </button>
+                )}
+            </aside></div>
         <div className="col s9">
           <div className="container" id="header-container">
             <h2 className="product-header">Software</h2>
@@ -94,7 +96,7 @@ function Cloud() {
             })
           ) : items.other ? (
             items.other.map((item) => {
-              if (items.other.length > 1) {
+              
                 return (
                   <Product
                     key={item.id}
@@ -106,7 +108,7 @@ function Cloud() {
                     findProduct={findProduct}
                   />
                 );
-              }
+              
             })
           ) : (
             <IndividualProduct

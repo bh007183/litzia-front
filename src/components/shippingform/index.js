@@ -3,14 +3,11 @@ import "./style.css";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
 import axios from "axios";
+import API from "../../api/cart-routes"
 import { getDefaultNormalizer } from "@testing-library/react";
 
 function ShippingForm() {
-  useEffect(() => {
-    var elems = document.querySelectorAll("select");
-    var instances = M.FormSelect.init(elems);
-  }, []);
-
+  
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
@@ -22,6 +19,23 @@ function ShippingForm() {
     email: "",
     phoneNumber: "",
   });
+
+  const [sendOrder, setSendOrder] = useState([])
+
+  useEffect(() => {
+    var elems = document.querySelectorAll("select");
+    var instances = M.FormSelect.init(elems);
+
+    API.myCart().then((res) => {
+      const arr = [];
+      setSendOrder(res.data);
+    }).catch(err => alert("Please Login To View Your Cart" +  err));
+    console.log(sendOrder)
+  }, []);
+
+
+
+
 
   const handleInputChange = (event) => {
     console.log(event.target);
@@ -47,6 +61,7 @@ function ShippingForm() {
           state: userData.state,
           email: userData.email,
           phoneNumber: userData.phoneNumber,
+          order: sendOrder
         })
         .then((res) => {
           console.log(res);

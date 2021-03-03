@@ -25,8 +25,8 @@ function Navbar1() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    API.getOneProductSearch(searchItem.searchResults)
-      .then((res) => setSearchItem({ search: res.data, searchResults: "" }))
+    API.getOneProductSearch(searchItem.searchResults || "dell")
+      .then((res) => {setSearchItem({ search: res.data, searchResults: "" }); console.log(res)})
       .then(openModal);
   };
 
@@ -78,7 +78,7 @@ function Navbar1() {
                   />
                 );
               })
-            ) : (
+            ) : searchItem.search.length === 0 ? <h1>No Found Results</h1> : (
               <IndividualProduct
                 src={searchItem.search.image}
                 title={searchItem.search.title}
@@ -89,9 +89,11 @@ function Navbar1() {
                 addToCardProduct={addToCardProduct}
               />
             )}
+            <button style={{marginLeft: "48%"}}onClick={closeModal}>Close</button>
           </div>
+          
         </div>
-        <button onClick={closeModal}>Close</button>
+        
       </Modal>
 
       <div>
