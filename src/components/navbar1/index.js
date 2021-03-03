@@ -79,16 +79,16 @@ function Navbar1() {
                 );
               })
             ) : (
-              <IndividualProduct
-                src={searchItem.search.image}
-                title={searchItem.search.title}
-                category={searchItem.search.category}
-                identifier={searchItem.search.title}
-                description={searchItem.search.description}
-                id={searchItem.search.id}
-                addToCardProduct={addToCardProduct}
-              />
-            )}
+                <IndividualProduct
+                  src={searchItem.search.image}
+                  title={searchItem.search.title}
+                  category={searchItem.search.category}
+                  identifier={searchItem.search.title}
+                  description={searchItem.search.description}
+                  id={searchItem.search.id}
+                  addToCardProduct={addToCardProduct}
+                />
+              )}
           </div>
         </div>
         <button onClick={closeModal}>Close</button>
@@ -131,19 +131,8 @@ function Navbar1() {
                               onChange={handleInputChange}
                             />
                           </div>
-<<<<<<< HEAD
                           <div className="col s3 m3">
                             <button className="modal-trigger" href="#search" onClick={handleSubmit} type="submit" id="searchButton">
-=======
-                          <div className="col s3">
-                            <button
-                              className="modal-trigger"
-                              href="#search"
-                              onClick={handleSubmit}
-                              type="submit"
-                              id="searchButton"
-                            >
->>>>>>> dev
                               <i className="material-icons">search</i>
                             </button>
                           </div>
@@ -159,12 +148,8 @@ function Navbar1() {
 
               {/* <div className="col s2" id="rightCol"> */}
               {/* <div className="row" id="leftRow"> */}
-<<<<<<< HEAD
               <div className="col s1 m1" id="cartCol">
 
-=======
-              <div className="col s1" id="cartCol">
->>>>>>> dev
                 <a href="/checkout" id="shoppingCart">
                   <i className="material-icons shoppingIcon">shopping_cart</i>
                 </a>
@@ -183,8 +168,8 @@ function Navbar1() {
                 {localStorage.getItem("Auth2") === "true" ? (
                   <CreateItem />
                 ) : (
-                  <></>
-                )}
+                    <></>
+                  )}
                 {/* </li> */}
               </div>
               {/* </div> */}
