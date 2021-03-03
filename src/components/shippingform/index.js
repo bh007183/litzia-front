@@ -3,11 +3,11 @@ import "./style.css";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
 import axios from "axios";
-import API from "../../api/cart-routes"
+import API from "../../api/cart-routes";
+import Modal from "react-modal";
 import { getDefaultNormalizer } from "@testing-library/react";
 
 function ShippingForm() {
-  
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
@@ -20,22 +20,29 @@ function ShippingForm() {
     phoneNumber: "",
   });
 
-  const [sendOrder, setSendOrder] = useState([])
+  const [sendOrder, setSendOrder] = useState([]);
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   useEffect(() => {
     var elems = document.querySelectorAll("select");
     var instances = M.FormSelect.init(elems);
 
-    API.myCart().then((res) => {
-      const arr = [];
-      setSendOrder(res.data);
-    }).catch(err => alert("Please Login To View Your Cart" +  err));
-    console.log(sendOrder)
+    API.myCart()
+      .then((res) => {
+        const arr = [];
+        setSendOrder(res.data);
+      })
+      .catch((err) => alert("Please Login To View Your Cart" + err));
+    console.log(sendOrder);
   }, []);
-
-
-
-
 
   const handleInputChange = (event) => {
     console.log(event.target);
@@ -46,7 +53,7 @@ function ShippingForm() {
 
   const sendEmail = (event) => {
     if (!userData.email) {
-      console.log("hi");
+      openModal();
     } else {
       console.log(event);
       window.location.href = "/confirmation";
@@ -61,7 +68,7 @@ function ShippingForm() {
           state: userData.state,
           email: userData.email,
           phoneNumber: userData.phoneNumber,
-          order: sendOrder
+          order: sendOrder,
         })
         .then((res) => {
           console.log(res);
@@ -138,6 +145,8 @@ function ShippingForm() {
                   type="text"
                   className="validate"
                 />
+
+                <Modal></Modal>
 
                 <label for="city">City</label>
               </div>
@@ -381,6 +390,11 @@ function ShippingForm() {
           </form>
         </div>
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal"
+      ></Modal>
       <div className="container" id="button-container">
         <div className="row">
           <div className="col s12 m6" id="payment-button">

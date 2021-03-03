@@ -18,10 +18,10 @@ function Carousel1() {
 
   useEffect(() => {
     API.getAllProduct().then((res) => {
-      console.log(res)
+      console.log(res);
       setItems({ ...items, item: res.data });
     });
-    console.log(items)
+    console.log(items);
   }, []);
 
   const findProduct = (event) => {
