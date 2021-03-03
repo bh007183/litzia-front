@@ -17,11 +17,11 @@ function Carousel1() {
   const [modalState, setModalState] = useState({});
 
   useEffect(() => {
-    // setItems([1, 2, 3]);
     API.getAllProduct().then((res) => {
-      console.log(res);
-      setItems({ item: res.data });
+      console.log(res)
+      setItems({ ...items, item: res.data });
     });
+    console.log(items)
   }, []);
 
   const findProduct = (event) => {
