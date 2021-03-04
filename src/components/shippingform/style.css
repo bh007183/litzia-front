@@ -31,6 +31,13 @@
   color: red;
 }
 
+/* .ReactModal__Content--after-open{
+  z-index: 1;
+  background: blue!important;
+} */
+
+
+
 @media only screen and (max-width: 600px) {
   #shipping-container,
   #billing-container,
