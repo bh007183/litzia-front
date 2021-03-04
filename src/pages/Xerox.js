@@ -102,17 +102,19 @@ function Xerox() {
             })
           ) : items.other ? (
             items.other.map((item) => {
-              return (
-                <Product
-                  key={item.id}
-                  src={item.image}
-                  category={item.category}
-                  identifier={item.title}
-                  description={item.description.substring(0, 75) + "..."}
-                  id={item.id}
-                  findProduct={findProduct}
-                />
-              );
+              
+                return (
+                  <Product
+                    key={item.id}
+                    src={item.image}
+                    category={item.category}
+                    identifier={item.title}
+                    description={item.description.substring(0, 75) + "..."}
+                    id={item.id}
+                    findProduct={findProduct}
+                  />
+                );
+              
             })
           ) : (
             <IndividualProduct
