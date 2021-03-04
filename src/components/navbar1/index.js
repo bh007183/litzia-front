@@ -64,7 +64,7 @@ function Navbar1() {
       >
         <div className="container">
           <div className="row">
-            {searchItem.search.length ? (
+            {!searchItem.search ? <p>"No Items Found"</p> : searchItem.search.length ? (
               searchItem.search.map((item) => {
                 return (
                   <Product

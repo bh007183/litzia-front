@@ -5,6 +5,8 @@ import M from "materialize-css";
 import axios from "axios";
 import API from "../../api/cart-routes";
 import { getDefaultNormalizer, render } from "@testing-library/react";
+import Billingmodal from "../billingmodal";
+import ReactModal from "react-modal";
 import Modal from "react-modal";
 import Warning from "../emailWarning"
 
@@ -56,6 +58,7 @@ function ShippingForm() {
   var warning = document.getElementById("emailAlert")
   const sendEmail = (event) => {
     if (!userData.email) {
+      openModal();
       alert("*Must enter an email address to complete order")
     } else {
       console.log(event);
@@ -395,11 +398,11 @@ function ShippingForm() {
           </form>
         </div>
       </div>
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-      ></Modal>
+      ></Modal> */}
       <div className="container" id="button-container">
         <div className="row">
           <div className="col s12 m6" id="payment-button">

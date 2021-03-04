@@ -34,7 +34,7 @@ export default function Admin() {
 
 
   function createProduct(product) {
-    return axios.post("http://localhost:3005/api/product", product, {
+    return axios.post("https://localhost:3005/api/product", product, {
       headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
     }).catch(err => alert("You either entered an item title that already exists or you are not authorized to creat products"));
   }

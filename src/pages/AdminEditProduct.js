@@ -27,7 +27,7 @@ export default function AdminEditProduct() {
   });
 //////////////////////////Admin Edit Protected Route////////////////////////
   function editProduct(product) {
-    return axios.put("http://localhost:3005/api/product/update", product, {
+    return axios.put("https://localhost:3005/api/product/api/product/update", product, {
       headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
     });
   }
