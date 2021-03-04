@@ -85,44 +85,67 @@ function Carousel1() {
         {/* <div className="row"> */}
 
         {items.item.map((item) => {
-          if (item.featured === true) {
-            // console.log(item.title)
-            return (
-              <div className="mainDiv">
-                <div className="row rowCarousel">
-
-                  <div className="col s0 m4">
-                    <div className="row">
-                      <img src={item.image} className="product-image" id="topImage" />
-                    </div>
-                  </div>
-
-                  <div className="col s12 m4" id="mobileColumn">
-                    <div className="col s12" id="smallImgRow">
-                      <img src={item.image} className="product-image" id="smallImage" />
-                    </div>
-                    <div id="bottomThree">
-                      <div className="col s12">
-                        <h5 className="itemTitle">{item.title}</h5>
-                      </div>
-                      <div className="col s12">
-                        <p className="itemDescription">{item.description.substring(0, 150) + "..."}</p>
-                      </div>
-                      <div className="col s12">
-                        <div className="buttonView">
-                          <button className="btn btn-large viewBtn" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id} id="smallViewBtn">View</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col s0 m4 buttonView">
-                    <button className="btn btn-large viewBtn" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
+          // console.log(item.title)
+          return (
+            <div className="mainDiv">
+              <div className="row rowCarousel">
+                <div className="col s0 m4">
+                  <div className="row">
+                    <img
+                      src={item.image}
+                      className="product-image"
+                      id="topImage"
+                    />
                   </div>
                 </div>
-              </div>
 
-              /* <div className="row">
+                <div className="col s12 m4" id="mobileColumn">
+                  <div className="col s12" id="smallImgRow">
+                    <img
+                      src={item.image}
+                      className="product-image"
+                      id="smallImage"
+                    />
+                  </div>
+                  <div id="bottomThree">
+                    <div className="col s12">
+                      <h5 className="itemTitle">{item.title}</h5>
+                    </div>
+                    <div className="col s12">
+                      <p className="itemDescription">
+                        {item.description.substring(0, 150) + "..."}
+                      </p>
+                    </div>
+                    <div className="col s12">
+                      <div className="buttonView">
+                        <button
+                          className="btn btn-large viewBtn"
+                          style={{ marginTop: "auto" }}
+                          onClick={findProduct}
+                          data-id={item.id}
+                          id="smallViewBtn"
+                        >
+                          View
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col s0 m4 buttonView">
+                  <button
+                    className="btn btn-large viewBtn"
+                    style={{ marginTop: "auto" }}
+                    onClick={findProduct}
+                    data-id={item.id}
+                  >
+                    View
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            /* <div className="row">
         <div className="mainDiv">
 
           <div className="col s4">
@@ -140,22 +163,19 @@ function Carousel1() {
         </div>
       </div> */
 
-              // <div className="card product-card hoverable">
-              //   <div className="card-image">
-              //     <img className="product-image" src={item.image} />
-              //   </div>
-              //   <div className="card-content">
-              //     <span className="card-title">{item.title}</span>
-              //     <p>{item.description.substring(0, 75) + "..."}</p>
-              //   </div>
-              //   <div className="card-action">
-              //     <button className="btn btn-large" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
-              //   </div>
-              // </div>
-            );
-          } else {
-            console.log(item.title);
-          }
+            // <div className="card product-card hoverable">
+            //   <div className="card-image">
+            //     <img className="product-image" src={item.image} />
+            //   </div>
+            //   <div className="card-content">
+            //     <span className="card-title">{item.title}</span>
+            //     <p>{item.description.substring(0, 75) + "..."}</p>
+            //   </div>
+            //   <div className="card-action">
+            //     <button className="btn btn-large" style={{ marginTop: "auto" }} onClick={findProduct} data-id={item.id}>View</button>
+            //   </div>
+            // </div>
+          );
         })}
         {/* <div className="col s12 m6 l4">
           <div className="card product-card hoverable">
