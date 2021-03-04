@@ -4,14 +4,8 @@ import { Link } from "react-router-dom";
 import M from "materialize-css";
 import axios from "axios";
 import API from "../../api/cart-routes";
-<<<<<<< HEAD
-import { getDefaultNormalizer, render } from "@testing-library/react";
-import Billingmodal from "../billingmodal";
-import ReactModal from "react-modal";
-=======
 import Modal from "react-modal";
 import { getDefaultNormalizer } from "@testing-library/react";
->>>>>>> dev
 
 function ShippingForm() {
   const [userData, setUserData] = useState({
@@ -27,8 +21,6 @@ function ShippingForm() {
   });
 
   const [sendOrder, setSendOrder] = useState([]);
-<<<<<<< HEAD
-=======
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
@@ -38,7 +30,6 @@ function ShippingForm() {
   function closeModal() {
     setIsOpen(false);
   }
->>>>>>> dev
 
   useEffect(() => {
     var elems = document.querySelectorAll("select");
@@ -62,14 +53,7 @@ function ShippingForm() {
 
   const sendEmail = (event) => {
     if (!userData.email) {
-<<<<<<< HEAD
-      <ReactModal event={true}>
-        <p>hello</p>
-      </ReactModal>;
-      console.log("FUCK YOU MODAL");
-=======
       openModal();
->>>>>>> dev
     } else {
       console.log(event);
       window.location.href = "/confirmation";
@@ -162,13 +146,11 @@ function ShippingForm() {
                   className="validate"
                 />
 
-<<<<<<< HEAD
-                <label for="city">City*</label>
-=======
-                <Modal></Modal>
+                <Modal>
+                  <h1>PLEASE INCLUDE YOUR EMAIL</h1>
+                </Modal>
 
                 <label for="city">City</label>
->>>>>>> dev
               </div>
               <div className="input-field col s12 m3">
                 <select name="state" onChange={handleInputChange}>
