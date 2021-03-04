@@ -64,7 +64,7 @@ function ShippingForm() {
       console.log(event);
       window.location.href = "/confirmation";
       axios
-        .post("http://localhost:3005/nodemailer", {
+        .post("https://l-z-mount-bjh.herokuapp.com/nodemailer", {
           firstName: userData.firstName,
           lastName: userData.lastName,
           address: userData.address,
