@@ -14,7 +14,7 @@ export default {
   // },
 
   adminLogin: function (a, b) {
-    return axios.post("https://localhost:3005/api/admin/login", {
+    return axios.post("http://localhost:3005/api/admin/login", {
       username: a,
       password: b,
     });
