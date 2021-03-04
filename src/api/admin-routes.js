@@ -14,7 +14,7 @@ export default {
   // },
 
   adminLogin: function (a, b) {
-    return axios.post("https://litzia-b.herokuapp.com/api/admin/login", {
+    return axios.post("https://localhost:3005/api/admin/login", {
       username: a,
       password: b,
     });
@@ -22,7 +22,7 @@ export default {
 
   //////if session is active////////
   adminUpdate: function (a, b, c) {
-    return axios.update("https://litzia-b.herokuapp.com/api/admin/:id", {
+    return axios.update("http://localhost:3005/api/admin/:id", {
       username: a,
       password: b,
       email: c,

@@ -64,7 +64,7 @@ function ShippingForm() {
       console.log(event);
       window.location.href = "/confirmation";
       axios
-        .post("https://litzia-b.herokuapp.com/nodemailer", {
+        .post("http://localhost:3005/nodemailer", {
           firstName: userData.firstName,
           lastName: userData.lastName,
           address: userData.address,
