@@ -16,13 +16,13 @@ function Carousel1() {
 
   const [modalState, setModalState] = useState({});
 
-  useEffect(() => {
-    API.getAllProduct().then((res) => {
-      console.log(res);
-      setItems({ ...items, item: res.data });
-    });
-    console.log(items);
-  }, []);
+  // useEffect(() => {
+  //   API.getAllProduct().then((res) => {
+  //     console.log(res);
+  //     setItems({ ...items, item: res.data });
+  //   });
+  //   console.log(items);
+  // }, []);
 
   const findProduct = (event) => {
     API.getOneProductPage(event.target.dataset.id)
