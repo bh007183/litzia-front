@@ -34,7 +34,7 @@ export default function Admin() {
 
 
   function createProduct(product) {
-    return axios.post("https://l-z-mount-bjh.herokuapp.com/api/product", product, {
+    return axios.post("https://litzia-b.herokuapp.com/api/product", product, {
       headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
     }).catch(err => alert("You either entered an item title that already exists or you are not authorized to creat products"));
   }
