@@ -17,7 +17,7 @@ function Carousel1() {
   const [modalState, setModalState] = useState({});
 
   useEffect(() => {
-    API.getAllProduct().then((res) => {
+    API.getAllProductByFeatured().then((res) => {
       console.log(res);
       setItems({ ...items, item: res.data });
     });

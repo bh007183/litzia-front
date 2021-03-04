@@ -2,17 +2,17 @@ import axios from "axios";
 
 export default {
   getAllProduct: function () {
-    return axios.get("https://l-z-mount-bjh.herokuapp.com/api/product");
+    return axios.get("http://localhost:3005/api/product");
   },
   getAllProductByFeatured: function () {
-    return axios.get("https://l-z-mount-bjh.herokuapp.com/api/product/featured");
+    return axios.get("http://localhost:3005/api/product/featured");
   },
   getAllSubCategories: function () {
-    return axios.get("https://l-z-mount-bjh.herokuapp.com/api/subcategory");
+    return axios.get("http://localhost:3005/api/subcategory");
   },
 
   getAllProductCategory: function (category) {
-    return axios.get("https://l-z-mount-bjh.herokuapp.com/api/product/" + category);
+    return axios.get("http://localhost:3005/api/product/" + category);
   },
 
   //   getAllProductFeatured: function (featured) {
@@ -20,20 +20,20 @@ export default {
   //   },
 
   deleteOneProduct: function (title) {
-    return axios.delete("https://l-z-mount-bjh.herokuapp.com/api/product/" + title);
+    return axios.delete("http://localhost:3005/api/product/" + title);
   },
   getOneProduct: function (title) {
-    return axios.get("https://l-z-mount-bjh.herokuapp.com/api/product/" + title);
+    return axios.get("http://localhost:3005/api/product/" + title);
   },
 
   getOneProductPage: function (id) {
-    return axios.get("https://l-z-mount-bjh.herokuapp.com/api/product/singleItemPage/" + id);
+    return axios.get("http://localhost:3005/api/product/singleItemPage/" + id);
   },
   getOneProductSearch: function (title) {
-    return axios.get("https://l-z-mount-bjh.herokuapp.com/api/product/search/" + title);
+    return axios.get("http://localhost:3005/api/product/search/" + title);
   },
   updateOneProduct: function (title) {
-    return axios.put("https://l-z-mount-bjh.herokuapp.com/api/product/" + title);
+    return axios.put("http://localhost:3005/api/product/" + title);
   },
 };
 ///////////////////////////////////////
