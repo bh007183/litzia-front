@@ -72,40 +72,27 @@ function Computers() {
         {/* <div className="col s3 product-sidebar"></div> */}
         <div className="col s12">
           <div className="container" id="header-container">
-            <h2 className="product-header">Computers</h2>
+            <h2 className="product-header">{props.category}</h2>
           </div>
           <div className="row">
-            <p className="filter-by">Filter by:</p>
-            {sub.map((item, index) => (
-              <div className="col s2">
-                <button
-                  style={{ width: "100%", height: "40px" }}
-                  onClick={subCatClick}
-                  key={index}
-                >
-                  {item}
-                </button>
-              </div>
-            ))}
+            {props.items.item.length > 0 ? (
+              props.sub.map((item, index) => (
+                <div className="col s2">
+                  <button
+                    style={{ width: "100%", height: "40px" }}
+                    onClick={props.subCatClick}
+                    key={index}
+                  >
+                    {item}
+                  </button>
+                </div>
+              ))
+            ) : (
+              <></>
+            )}
           </div>
-          {items.item.length && !items.other ? (
-            items.item.map((item) => {
-              if (item.category === "computer" && items.item.length > 1) {
-                return (
-                  <Product
-                    key={item.id}
-                    src={item.image}
-                    category={item.category}
-                    identifier={item.title}
-                    description={item.description.substring(0, 75) + "..."}
-                    id={item.id}
-                    findProduct={findProduct}
-                  />
-                );
-              }
-            })
-          ) : items.other ? (
-            items.other.map((item) => {
+          {props.items.item.length > 0 ? (
+            props.items.item.map((item) => {
               return (
                 <Product
                   key={item.id}
@@ -114,19 +101,20 @@ function Computers() {
                   identifier={item.title}
                   description={item.description.substring(0, 75) + "..."}
                   id={item.id}
-                  findProduct={findProduct}
+                  findProduct={props.findProduct}
                 />
               );
             })
           ) : (
             <IndividualProduct
-              src={items.item.image}
-              title={items.item.title}
-              category={items.item.category}
-              identifier={items.item.title}
-              description={items.item.description}
-              id={items.id}
-              addToCardProduct={addToCardProduct}
+              src={props.items.item.image}
+              title={props.items.item.title}
+              category={props.items.item.category}
+              identifier={props.items.item.title}
+              description={props.items.item.description}
+              price={props.items.item.price}
+              id={props.items.item.id}
+              addToCardProduct={props.addToCardProduct}
             />
           )}
         </div>
