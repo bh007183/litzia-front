@@ -10,15 +10,10 @@ function Checkout() {
   });
   const [checkoutitems, setCheckoutItems] = useState({
     cartDisplay: [],
-    itemTotal: "",
     cartTotal: [],
-    qty: "",
     arrayOfPrice: [],
   });
 
-  const [checkoutCost, setCheckoutCost] = useState({
-    itemCost: "1",
-  });
 
   const removeCartItem = (event) => {
     document
@@ -35,7 +30,6 @@ function Checkout() {
     API.myCart()
       .then((res) => {
         const arr = [];
-        const qty = [];
         let pricesarray = [];
         console.log(res);
         for (let i = 0; i < res.data.length; i++) {
@@ -44,66 +38,51 @@ function Checkout() {
           } else {
             pricesarray = res.data[i].price;
           }
-
           arr.push(pricesarray);
-
           console.log(arr);
         }
+
+      let counter = 0;
+      for(let i = 0; i < arr.length; i++){
+        counter += parseInt(arr[i])
+      }
+      setCheckoutItems({...checkoutitems, cartTotal: counter})
         setCheckoutItems({
           ...checkoutitems,
-          cartTotal: arr.reduce((a, b) => a + b, 0),
+          cartTotal: counter,
           cartDisplay: res.data,
-          qty: qty,
           arrayOfPrice: arr,
         });
       })
       .catch((err) => alert("Please Login To View Your Cart" + err));
   }, []);
 
-  const updateQTY = (event) => {
-    API.updateQTY().then((res) => {
-      setCheckoutItems({ ...checkoutitems, qty: res.data.quantity });
-      console.log(res);
-    });
-  };
 
   const dummyFunction = (event) => {
     API.updateQTY(checkoutitems.cartDisplay).then((res) => {
       console.log(res);
+      let counter = 0;
+      for(let i = 0; i < res.data.length; i++){
+        counter += parseInt(res.data[i])
+      }
+      setCheckoutItems({...checkoutitems, cartTotal: counter})
     });
   };
 
-  const handleInputChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setCheckoutCost({ ...checkoutCost, [name]: value });
-  };
+
   const handleInputChangeItems = (event) => {
     dummyFunction();
-    const checkoutCopy = [...checkoutitems.arrayOfPrice];
-    const finalTotal = [checkoutCopy.reduce((a, b) => a + b, 0)];
-    let counter = 0;
     const name = event.target.name;
     const value = event.target.value;
-    console.log(name, value);
     const cartCopy = checkoutitems.cartDisplay.slice();
-    const updatedCart = cartCopy.map((item) => {
+    cartCopy.map((item) => {
       if (item.title === name) {
         item.quantity = parseInt(value);
         item.totalCost = item.quantity * item.price;
-        finalTotal.push(item.price);
-        console.log(finalTotal);
+
       }
       return item;
     });
-
-    console.log(finalTotal);
-    setCheckoutItems({
-      ...checkoutitems,
-      cartDisplay: updatedCart,
-      cartTotal: finalTotal.reduce((a, b) => a + b, 0),
-    });
-    window.location.reload(true);
   };
 
   return (
