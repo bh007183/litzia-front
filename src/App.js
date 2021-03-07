@@ -28,7 +28,7 @@ function App() {
         <Route exact path="/product" component={Productpage} />
         <Route exact path="/computer" component={Computers} />
         <Route exact path="/xerox" component={Xerox} />
-        <Route exact path="/cloud" component={Cloud} />
+        <Route exact path="/software" component={Cloud} />
         <Route exact path="/security" component={Security} />
         <Route exact path="/services" component={Services} />
         <Route exact path="/checkout" component={Checkout} />

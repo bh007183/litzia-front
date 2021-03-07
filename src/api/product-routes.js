@@ -12,7 +12,7 @@ export default {
   },
 
   getAllProductCategory: function (category) {
-    return axios.get("http://localhost:3005/api/product/" + category);
+    return axios.get("http://localhost:3005/api/product/category/" + category);
   },
 
   //   getAllProductFeatured: function (featured) {

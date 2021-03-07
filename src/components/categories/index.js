@@ -29,7 +29,7 @@ function Categories() {
                         </a>
                     </div>
                     <div className="col s6">
-                        <a href="/cloud">
+                        <a href="/software">
                             <img src="https://www.fastmetrics.com/blog/wp-content/uploads/2014/10/cloud-computing-service-types-including-IoT-1024x706.png" className="quarterImage"></img>
                         </a>
                     </div>
@@ -41,8 +41,8 @@ function Categories() {
                         </a>
                     </div>
                     <div className="col s6">
-                        <a href="/cloud">
-                            <h5 className="categoryTag">Cloud</h5>
+                        <a href="/software">
+                            <h5 className="categoryTag">Software</h5>
                         </a>
                     </div>
                 </div>

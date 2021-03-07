@@ -12,7 +12,9 @@ function Navbar2() {
           <ul className="tabs tabs-transparent" id="lowerNav">
             <li className="tab">
               <Link
-                to="/computer"
+                to="/Computer"
+                
+                onClick={()=> {if(window.location.pathname === "/Computer"){window.location.href = "/Computer"}}}
                 className={
                   window.location.pathname === "/computer"
                     ? "nav-link active"
@@ -24,9 +26,10 @@ function Navbar2() {
             </li>
             <li className="tab">
               <Link
-                to="/xerox"
+                to="/Xerox"
+                onClick={()=> {if(window.location.pathname === "/Xerox"){window.location.href = "/Xerox"}}}
                 className={
-                  window.location.pathname === "/xerox"
+                  window.location.pathname === "/Xerox"
                     ? "nav-link active"
                     : "nav-link"
                 }
@@ -36,9 +39,10 @@ function Navbar2() {
             </li>
             <li className="tab">
               <Link
-                to="/cloud"
+                to="/Software"
+                onClick={()=> {if(window.location.pathname === "/Software"){window.location.href = "/Software"}}}
                 className={
-                  window.location.pathname === "/cloud"
+                  window.location.pathname === "/Software"
                     ? "nav-link active"
                     : "nav-link"
                 }
@@ -48,9 +52,10 @@ function Navbar2() {
             </li>
             <li className="tab">
               <Link
-                to="/security"
+                to="/Security"
+                onClick={()=> {if(window.location.pathname === "/Security"){window.location.href = "/Security"}}}
                 className={
-                  window.location.pathname === "/security"
+                  window.location.pathname === "/Security"
                     ? "nav-link active"
                     : "nav-link"
                 }
@@ -60,7 +65,8 @@ function Navbar2() {
             </li>
             <li className="tab">
               <Link
-                to="/services"
+                to="/Services"
+                onClick={()=> {if(window.location.pathname === "/Services"){window.location.href = "/Services"}}}
                 className={
                   window.location.pathname === "/services"
                     ? "nav-link active"

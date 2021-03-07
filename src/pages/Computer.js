@@ -12,6 +12,7 @@ import "react-dropdown/style.css";
 
 function Computers() {
   const [items, setItems] = useState({
+    category: "",
     item: [],
   });
 
@@ -19,17 +20,15 @@ function Computers() {
 
   const findProduct = (event) => {
     API.getOneProductPage(event.target.dataset.id).then((res) =>
-      setItems({ item: res.data, other: "" })
+      setItems({...items, item: res.data})
     );
   };
 
   const getSub = (data) => {
     let arr = [];
     for (let i = 0; i < data.length; i++) {
-      if (data[i].category === "computer") {
         arr.push(data[i].subCategory);
         console.log("this is ", data[i].subCategory);
-      }
     }
     let unique = [...new Set(arr)];
     setSub([...unique]);
@@ -48,39 +47,44 @@ function Computers() {
     window.location.reload();
   };
 
-  useEffect(() => {
-    API.getAllProduct().then((res) => {
+useEffect(() => {
+  let test = window.location.pathname.split("")
+   let slash = test.shift()
+   let exact = test.join("")
+   
+    API.getAllProductCategory(exact).then((res) => {
       console.log(res.data);
-      setItems({ ...items, item: res.data });
-
+      setItems({ ...items, category: exact, item: res.data });
       getSub(res.data);
     });
-  }, []);
+  
+}, [])
+  
 
   const subCatClick = (event) => {
     console.log(event.target.outerText);
     const subCatResult = items.item.filter(
       (obj) => obj.subCategory === event.target.outerText
     );
-    setItems({ ...items, other: subCatResult });
+    setItems({ ...items, item: subCatResult });
+    setSub([])
     console.log(items.other);
   };
 
   return (
     <div className="container page-container" id="computer-container">
       <div className="row" id="app-row">
-        {/* <div className="col s3 product-sidebar"></div> */}
         <div className="col s12">
           <div className="container" id="header-container">
-            <h2 className="product-header">{props.category}</h2>
+            <h2 className="product-header">{items.category}</h2>
           </div>
           <div className="row">
-            {props.items.item.length > 0 ? (
-              props.sub.map((item, index) => (
+            {items.item.length > 0 ? (
+              sub.map((item, index) => (
                 <div className="col s2">
                   <button
                     style={{ width: "100%", height: "40px" }}
-                    onClick={props.subCatClick}
+                    onClick={subCatClick}
                     key={index}
                   >
                     {item}
@@ -91,8 +95,8 @@ function Computers() {
               <></>
             )}
           </div>
-          {props.items.item.length > 0 ? (
-            props.items.item.map((item) => {
+          {items.item.length > 0 ? (
+            items.item.map((item) => {
               return (
                 <Product
                   key={item.id}
@@ -101,20 +105,20 @@ function Computers() {
                   identifier={item.title}
                   description={item.description.substring(0, 75) + "..."}
                   id={item.id}
-                  findProduct={props.findProduct}
+                  findProduct={findProduct}
                 />
               );
             })
           ) : (
             <IndividualProduct
-              src={props.items.item.image}
-              title={props.items.item.title}
-              category={props.items.item.category}
-              identifier={props.items.item.title}
-              description={props.items.item.description}
-              price={props.items.item.price}
-              id={props.items.item.id}
-              addToCardProduct={props.addToCardProduct}
+              src={items.item.image}
+              title={items.item.title}
+              category={items.item.category}
+              identifier={items.item.title}
+              description={items.item.description}
+              price={items.item.price}
+              id={items.item.id}
+              addToCardProduct={addToCardProduct}
             />
           )}
         </div>
