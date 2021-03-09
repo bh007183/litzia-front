@@ -19,9 +19,12 @@ export default {
   //     return axios.get("http://localhost:3005/api/product/" + featured);
   //   },
 
-  deleteOneProduct: function (title) {
-    return axios.delete("http://localhost:3005/api/product/" + title);
+  deleteOneProduct: function (id) {
+    return axios.delete("http://localhost:3005/api/product/delete/" + id, {
+      headers: {authorization: "Bearer: " + localStorage.getItem("Auth")}
+    });
   },
+
   getOneProduct: function (title) {
     return axios.get("http://localhost:3005/api/product/" + title);
   },
