@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext} from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
@@ -11,12 +11,11 @@ import IndividualProduct from "../../pages/IndividualProduct";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import CartAPI from "../../api/cart-routes";
+import { ContextSearch } from "../../pages/ContextSearch";
 Modal.setAppElement("#root");
 function Navbar1() {
-  const [searchItem, setSearchItem] = useState({
-    search: [],
-    searchResults: "",
-  });
+  const {searchItem,  setSearchItem} = useContext(ContextSearch)
+  
   const handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -25,75 +24,15 @@ function Navbar1() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
     API.getOneProductSearch(searchItem.searchResults)
       .then((res) => setSearchItem({ search: res.data, searchResults: "" }))
-      .then(openModal);
   };
 
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  const findProduct = (event) => {
-    API.getOneProductPage(event.target.dataset.id).then((res) =>
-      setSearchItem({ search: res.data })
-    );
-  };
-
-  const addToCardProduct = (event) => {
-    CartAPI.addCart({
-      title: searchItem.search.title,
-      image: searchItem.search.image,
-      description: searchItem.search.description.substring(0, 40),
-      price: searchItem.search.price,
-    }).then((res) => window.location.reload());
-  };
 
   return (
     <>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        // onAfterOpen={afterOpenModal}
-        contentLabel="Example Modal"
-      >
-        <div className="container">
-          <div className="row">
-            {!searchItem.search ? <p>"No Items Found"</p> : searchItem.search.length ? (
-              searchItem.search.map((item) => {
-                return (
-                  <Product
-                    key={item.id}
-                    src={item.image}
-                    category={item.category}
-                    identifier={item.title}
-                    description={item.description.substring(0, 75) + "..."}
-                    id={item.id}
-                    findProduct={findProduct}
-                  />
-                );
-              })
-            ) : (
-                <IndividualProduct
-                  src={searchItem.search.image}
-                  title={searchItem.search.title}
-                  category={searchItem.search.category}
-                  identifier={searchItem.search.title}
-                  description={searchItem.search.description}
-                  id={searchItem.search.id}
-                  addToCardProduct={addToCardProduct}
-                />
-              )}
-          </div>
-        </div>
-        <button onClick={closeModal}>Close</button>
-      </Modal>
-
       <div>
         <nav className="nav-extended" id="topNav">
           <div className="nav-wrapper">
@@ -132,9 +71,13 @@ function Navbar1() {
                             />
                           </div>
                           <div className="col s3 m3">
-                            <button className="modal-trigger" href="#search" onClick={handleSubmit} type="submit" id="searchButton">
+                            {window.location.pathname !== "/searchresults" ? 
+                            <Link to="/searchresults"   id="searchButton">
                               <i className="material-icons">search</i>
-                            </button>
+                            </Link> :
+                            <Link onClick={handleSubmit}   id="searchButton">
+                              <i className="material-icons">search</i>
+                            </Link>}
                           </div>
                         </div>
                       </form>
