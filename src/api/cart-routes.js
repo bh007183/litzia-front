@@ -22,4 +22,12 @@ export default {
   removeFromCart: function (id) {
     return axios.delete("http://localhost:3005/api/cart/items/" + id);
   },
+
+  EmptyCart: function () {
+    return axios.delete("http://localhost:3005/api/emptycart",{
+      headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
+    });
+  },
+
+
 };

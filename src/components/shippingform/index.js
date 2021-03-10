@@ -37,7 +37,7 @@ function ShippingForm() {
 
   useEffect(() => {
     var elems = document.querySelectorAll("select");
-    var instances = M.FormSelect.init(elems);
+    M.FormSelect.init(elems);
 
     API.myCart()
       .then((res) => {
@@ -61,8 +61,6 @@ function ShippingForm() {
       openModal();
       alert("*Must enter an email address to complete order")
     } else {
-      console.log(event);
-      window.location.href = "/confirmation";
       axios
         .post("http://localhost:3005/nodemailer", {
           firstName: userData.firstName,
@@ -77,8 +75,14 @@ function ShippingForm() {
           order: sendOrder,
         })
         .then((res) => {
-          console.log(res);
-        });
+          if(res.data === "Message Failed"){
+            alert(res.data + " Please contact Litzia or try again with valid email.")
+          }else{
+            console.log(res)
+            API.EmptyCart().then(res => window.location.href = "/confirmation")
+
+          }
+        }).catch(err => alert(err));
     }
   };
 
