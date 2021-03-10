@@ -20,9 +20,20 @@ function Product(props) {
               style={{ marginTop: "auto" }}
               onClick={props.findProduct}
               data-id={props.id}
-            >
-              View
+            > View
             </button>
+              {localStorage.getItem("Auth2") === "true" ? 
+              
+            <button
+              className="btn btn-large"
+              style={{ marginTop: "auto" }}
+              onClick={props.deleteProduct}
+              data-id={props.id}
+            >
+               Delete
+            </button>
+              : <></>}
+             
           </div>
         </div>
       </div>

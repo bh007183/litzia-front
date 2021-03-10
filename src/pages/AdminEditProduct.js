@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import M, { Modal } from "materialize-css";
 import API from "../api/product-routes"
+import Product from "../components/product"
 
 import axios from "axios";
 
 export default function AdminEditProduct() {
   const [product, setProduct] = useState({
+    results: [],
     id: "",
     title: "",
     image: "",
@@ -32,6 +34,25 @@ export default function AdminEditProduct() {
     });
   }
 /////////////////////////////////////////////////////////////////////////////
+const findProduct = (event) => {
+  API.getOneProductPage(event.target.dataset.id).then((res) =>
+  setProduct({ ...product, 
+    id: res.data.id,
+    title: res.data.title,
+    image: res.data.image,
+    description: res.data.description,
+    InventoryItem: res.data.InventoryItem,
+    category: res.data.category,
+    subCategory: res.data.subCategory,
+    price: res.data.price,
+    quantity: res.data.quantity,
+    tier: res.data.tier,
+    featured: res.data.featured,
+    updatedBy: res.data.updatedBy,
+    tax: res.data.tax,
+    shipping: res.data.shipping, }));
+ 
+};
  ///////////////////////Handle Edit Submit/////////////////////////////////
  const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -45,6 +66,9 @@ export default function AdminEditProduct() {
   };
 
 /////////////////////////////////////////////////////////////////////////////
+const deleteProduct = (event) =>{
+  API.deleteOneProduct(event.target.dataset.id).then(res => res.status !== 200 ? alert("There has been an error") : window.location.reload())
+}
 ////////////////////////Input Hnadle for Edit Search/////////////////////////
   const handleInputChangeEditSearch = (event) => {
     const name = event.target.name;
@@ -56,22 +80,9 @@ export default function AdminEditProduct() {
 
   const handleFormSearch = (event) => {
     event.preventDefault();
-    API.getOneProduct(editItem.searchToEdit).then((res) =>  
+    API.getOneProductSearch(editItem.searchToEdit).then((res) =>  
      setProduct({ ...product, 
-     id: res.data.id,
-     title: res.data.title,
-     image: res.data.image,
-     description: res.data.description,
-     InventoryItem: res.data.InventoryItem,
-     category: res.data.category,
-     subCategory: res.data.subCategory,
-     price: res.data.price,
-     quantity: res.data.quantity,
-     tier: res.data.tier,
-     featured: res.data.featured,
-     updatedBy: res.data.updatedBy,
-     tax: res.data.tax,
-     shipping: res.data.shipping, }));
+     results: res.data }));
   };
 
 ///////////Relocates if not logged in//////////////////
@@ -249,6 +260,20 @@ export default function AdminEditProduct() {
         >
           <i className="material-icons right">add</i>Edit Item
         </a>
+        
+        {product.results.map(item => <Product
+                  key={item.id}
+                  src={item.image}
+                  category={item.category}
+                  identifier={item.title}
+                  description={item.description.substring(0, 75) + "..."}
+                  id={item.id}
+                  findProduct={findProduct}
+                  deleteProduct={deleteProduct}
+                />)}
+
+
+
       </div>
      
     </div>
