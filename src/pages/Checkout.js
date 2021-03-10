@@ -44,7 +44,7 @@ function Checkout() {
 
       let counter = 0;
       for(let i = 0; i < arr.length; i++){
-        counter += parseInt(arr[i])
+        counter += parseFloat(arr[i])
       }
       setCheckoutItems({...checkoutitems, cartTotal: counter})
         setCheckoutItems({
