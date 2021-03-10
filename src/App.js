@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useMemo} from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar1 from "./components/navbar1";
 import Navbar2 from "./components/navbar2";
@@ -16,14 +16,34 @@ import AdminEditProduct from "./pages/AdminEditProduct";
 import IndividualProduct from "./pages/IndividualProduct";
 import Confirmation from "./pages/Confirmation";
 import "./App.css";
+import { ContextSearch } from "./pages/ContextSearch";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
- 
+
+  const [searchItem, setSearchItem] = useState({
+    search: [],
+    searchResults: "",
+  });
+
+
+  const memo = useMemo(() => ({searchItem, setSearchItem}), [searchItem, setSearchItem])
+  
+
   return (
     <Router>
       <div className="App">
+        <ContextSearch.Provider value={memo} >
         <Navbar1 />
+        
+        
+
+        
+        {/* <Navbar1 /> */}
         <Navbar2 />
+        <Route exact path="/searchresults" component={SearchPage} />
+        </ContextSearch.Provider>
+        
         <Route exact path="/" component={Landingpage} />
         <Route exact path="/product" component={Productpage} />
         <Route exact path="/computer" component={Computers} />
