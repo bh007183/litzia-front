@@ -15,15 +15,14 @@
   align-items: center;
 }
 
-
 @media only screen and (max-width: 600px) {
-  #lowerNav{
+  #lowerNav {
     overflow-x: scroll;
     display: flex;
     justify-content: space-between;
   }
 
-  .nav-content{
+  .nav-content {
     /* overflow-x: scroll; */
   }
 }
