@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import M, { Modal } from "materialize-css";
-import API from "../api/product-routes"
-import Product from "../components/product"
+import API from "../api/product-routes";
+import Product from "../components/product";
 
 import axios from "axios";
 
@@ -23,53 +23,63 @@ export default function AdminEditProduct() {
     tax: "",
     shipping: "",
   });
-/////////////////////Edit Item Search//////////////////////////////////
+  /////////////////////Edit Item Search//////////////////////////////////
   const [editItem, setEditItem] = useState({
     searchToEdit: "",
   });
-//////////////////////////Admin Edit Protected Route////////////////////////
+  //////////////////////////Admin Edit Protected Route////////////////////////
   function editProduct(product) {
-    return axios.put("https://localhost:3005/api/product/api/product/update", product, {
-      headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
-    });
+    return axios.put(
+      "https://localhost:3005/api/product/api/product/update",
+      product,
+      {
+        headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
+      }
+    );
   }
-/////////////////////////////////////////////////////////////////////////////
-const findProduct = (event) => {
-  API.getOneProductPage(event.target.dataset.id).then((res) =>
-  setProduct({ ...product, 
-    id: res.data.id,
-    title: res.data.title,
-    image: res.data.image,
-    description: res.data.description,
-    InventoryItem: res.data.InventoryItem,
-    category: res.data.category,
-    subCategory: res.data.subCategory,
-    price: res.data.price,
-    quantity: res.data.quantity,
-    tier: res.data.tier,
-    featured: res.data.featured,
-    updatedBy: res.data.updatedBy,
-    tax: res.data.tax,
-    shipping: res.data.shipping, }));
- 
-};
- ///////////////////////Handle Edit Submit/////////////////////////////////
- const handleFormSubmit = (event) => {
+  /////////////////////////////////////////////////////////////////////////////
+  const findProduct = (event) => {
+    API.getOneProductPage(event.target.dataset.id).then((res) =>
+      setProduct({
+        ...product,
+        id: res.data.id,
+        title: res.data.title,
+        image: res.data.image,
+        description: res.data.description,
+        InventoryItem: res.data.InventoryItem,
+        category: res.data.category,
+        subCategory: res.data.subCategory,
+        price: res.data.price,
+        quantity: res.data.quantity,
+        tier: res.data.tier,
+        featured: res.data.featured,
+        updatedBy: res.data.updatedBy,
+        tax: res.data.tax,
+        shipping: res.data.shipping,
+      })
+    );
+  };
+  ///////////////////////Handle Edit Submit/////////////////////////////////
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     editProduct(product).then((res) => console.log(res));
   };
-/////////////////////////Input Handle for Edit Form//////////////////////////
+  /////////////////////////Input Handle for Edit Form//////////////////////////
   const handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setProduct({ ...product, [name]: value });
   };
 
-/////////////////////////////////////////////////////////////////////////////
-const deleteProduct = (event) =>{
-  API.deleteOneProduct(event.target.dataset.id).then(res => res.status !== 200 ? alert("There has been an error") : window.location.reload())
-}
-////////////////////////Input Hnadle for Edit Search/////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
+  const deleteProduct = (event) => {
+    API.deleteOneProduct(event.target.dataset.id).then((res) =>
+      res.status !== 200
+        ? alert("There has been an error")
+        : (window.location.location = "/fourohone")
+    );
+  };
+  ////////////////////////Input Hnadle for Edit Search/////////////////////////
   const handleInputChangeEditSearch = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -80,20 +90,21 @@ const deleteProduct = (event) =>{
 
   const handleFormSearch = (event) => {
     event.preventDefault();
-    API.getOneProductSearch(editItem.searchToEdit).then((res) =>  
-     setProduct({ ...product, 
-     results: res.data }));
+    API.getOneProductSearch(editItem.searchToEdit).then((res) =>
+      setProduct({ ...product, results: res.data })
+    );
   };
 
-///////////Relocates if not logged in//////////////////
+  ///////////Relocates if not logged in//////////////////
   useEffect(() => {
-
-    if(window.location.pathname === "/edit" && localStorage.getItem("Auth2")  !== "true"){
+    if (
+      window.location.pathname === "/edit" &&
+      localStorage.getItem("Auth2") !== "true"
+    ) {
       window.location.replace("/");
-      alert("Must Be logged in!")
+      alert("Must Be logged in!");
     }
-   
-  },[])
+  }, []);
   //////////////////////////////////////////////////////////////////////////
   ////////////////////Cloudinary//////////////////////////
   let widget = window.cloudinary.createUploadWidget(
@@ -108,23 +119,27 @@ const deleteProduct = (event) =>{
       }
     }
   );
-///////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////
   return (
     <div className="">
-
       <div className="container" id="admin-container">
-      <div className="row">
+        <div className="row">
           <div className="col m4 s6">
-          <input
-          onChange={handleInputChangeEditSearch}
-          placeholder="Search Item To Edit"
-          name="searchToEdit"
-          value={editItem.searchToEdit}
-          className="admin-input admin-top-row">
-          </input>
-          <button className="waves-effect waves-light btn" id="admin-additem" onClick={handleFormSearch}>Search Item By Name</button>
-
-        </div>
+            <input
+              onChange={handleInputChangeEditSearch}
+              placeholder="Search Item To Edit"
+              name="searchToEdit"
+              value={editItem.searchToEdit}
+              className="admin-input admin-top-row"
+            ></input>
+            <button
+              className="waves-effect waves-light btn"
+              id="admin-additem"
+              onClick={handleFormSearch}
+            >
+              Search Item By Name
+            </button>
+          </div>
         </div>
         <div className="row">
           <div className="col m4 s6">
@@ -260,22 +275,20 @@ const deleteProduct = (event) =>{
         >
           <i className="material-icons right">add</i>Edit Item
         </a>
-        
-        {product.results.map(item => <Product
-                  key={item.id}
-                  src={item.image}
-                  category={item.category}
-                  identifier={item.title}
-                  description={item.description.substring(0, 75) + "..."}
-                  id={item.id}
-                  findProduct={findProduct}
-                  deleteProduct={deleteProduct}
-                />)}
 
-
-
+        {product.results.map((item) => (
+          <Product
+            key={item.id}
+            src={item.image}
+            category={item.category}
+            identifier={item.title}
+            description={item.description.substring(0, 75) + "..."}
+            id={item.id}
+            findProduct={findProduct}
+            deleteProduct={deleteProduct}
+          />
+        ))}
       </div>
-     
     </div>
   );
 }

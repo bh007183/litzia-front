@@ -20,23 +20,22 @@ export default function Admin() {
     shipping: "",
   });
 
-
   useEffect(() => {
-
-    if(window.location.pathname === "/admin" && localStorage.getItem("Auth2")  !== "true"){
+    if (
+      window.location.pathname === "/admin" &&
+      localStorage.getItem("Auth2") !== "true"
+    ) {
       window.location.replace("/");
-      alert("Must Be logged in!")
+      alert("Must Be logged in!");
     }
-   
-  },[])
-
-  
-
+  }, []);
 
   function createProduct(product) {
-    return axios.post("https://localhost:3005/api/product", product, {
-      headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
-    }).catch(err => alert("You either entered an item title that already exists or you are not authorized to creat products"));
+    return axios
+      .post("https://localhost:3005/api/product", product, {
+        headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
+      })
+      .catch((err) => (window.location.href = "/fourohthree"));
   }
 
   const handleInputChange = (event) => {
@@ -45,7 +44,6 @@ export default function Admin() {
 
     setProduct({ ...product, [name]: value });
   };
- 
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -67,7 +65,6 @@ export default function Admin() {
   );
 
   return (
-  
     <div className="">
       <div className="container" id="admin-container">
         <div className="row">
@@ -204,9 +201,7 @@ export default function Admin() {
         >
           <i className="material-icons right">add</i>Add Item
         </a>
-        
       </div>
-      
     </div>
   );
 }
