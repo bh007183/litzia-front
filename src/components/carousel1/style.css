@@ -117,29 +117,23 @@ margin: auto !important;
     margin-right: 4vw;
 }
 
-.ReactModal__Overlay--after-open{
-display: flex!important;
-   margin: 0 auto!important;
-   justify-content: center;
-}
+/* .ReactModal__Overlay--after-open{
 
-.ReactModal__Body--after-open{
-    display: flex!important;
-   margin: 0 auto!important;
-   justify-content: center;
-}
+} */
 
 .ReactModal__Content--after-open{
   width: 60vw;
+  height: 60vh;
   display: flex!important;
+  margin: 0 auto!important;
   justify-content: center!important;
     
 }
 
-#rowID{
+/* #rowID{
     
     
-}
+} */
 
 
 .itemImage{

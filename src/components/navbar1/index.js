@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
@@ -14,8 +14,8 @@ import CartAPI from "../../api/cart-routes";
 import { ContextSearch } from "../../pages/ContextSearch";
 Modal.setAppElement("#root");
 function Navbar1() {
-  const {searchItem,  setSearchItem} = useContext(ContextSearch)
-  
+  const { searchItem, setSearchItem } = useContext(ContextSearch)
+
   const handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -24,7 +24,7 @@ function Navbar1() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     API.getOneProductSearch(searchItem.searchResults)
       .then((res) => setSearchItem({ search: res.data, searchResults: "" }))
   };
@@ -36,7 +36,7 @@ function Navbar1() {
       <div>
         <nav className="nav-extended" id="topNav">
           <div className="nav-wrapper">
-            <div className="row" id="navRow">
+            <div className="tow" id="navRow">
               <div className="col s1 m2" id="logoColumn">
                 <Link
                   to="/"
@@ -54,13 +54,13 @@ function Navbar1() {
                 </Link>
               </div>
 
-              <div className="col s7 m8 searchCol">
+              <div className="col s6 m8 searchCol">
                 <ul id="nav-mobile" >
                   <li>
                     <div className="nav-wrapper" id="search">
                       <form action="/action_page.php">
-                        <div className="row">
-                          <div className="col s9 m9">
+                        <div className="row" id="searchRow">
+                          <div className="col s11 m10">
                             <input
                               type="text"
                               placeholder="Search..."
@@ -70,14 +70,14 @@ function Navbar1() {
                               onChange={handleInputChange}
                             />
                           </div>
-                          <div className="col s3 m3">
-                            {window.location.pathname !== "/searchresults" ? 
-                            <Link to="/searchresults"   id="searchButton">
-                              <i className="material-icons">search</i>
-                            </Link> :
-                            <Link onClick={handleSubmit}   id="searchButton">
-                              <i className="material-icons">search</i>
-                            </Link>}
+                          <div className="col s1 m2">
+                            {window.location.pathname !== "/searchresults" ?
+                              <Link to="/searchresults" id="searchButton">
+                                <i className="material-icons">search</i>
+                              </Link> :
+                              <Link onClick={handleSubmit} id="searchButton">
+                                <i className="material-icons">search</i>
+                              </Link>}
                           </div>
                         </div>
                       </form>
@@ -105,7 +105,7 @@ function Navbar1() {
                   }
                 ></Link>
               </div>
-              <div className="col s1" id="loginCol">
+              <div className="col s2" id="loginCol">
                 {/* <li id="loginMod"> */}
                 <LoginModal />
                 {localStorage.getItem("Auth2") === "true" ? (

@@ -56,3 +56,15 @@ margin-right: 0.6vw;
 #computerTag{
     margin-top: 2vh;
 }
+
+@media only screen and (max-width: 600px) {
+
+
+    #rowCategories{
+      width: 90%!important;
+    }
+    
+    
+  
+  
+  }
