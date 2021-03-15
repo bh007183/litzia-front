@@ -107,8 +107,8 @@ function Navbar1() {
               </div>
               <div className="col s1" id="loginCol">
                 {/* <li id="loginMod"> */}
-                <LoginModal />
-                {localStorage.getItem("Auth2") === "true" ? (
+                {localStorage.getItem("Auth2") !== "true" ? <LoginModal /> :
+                localStorage.getItem("Auth2") === "true" ? (
                   <CreateItem />
                 ) : (
                     <></>

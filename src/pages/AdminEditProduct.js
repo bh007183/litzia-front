@@ -57,7 +57,9 @@ export default function AdminEditProduct() {
         tax: res.data.tax,
         shipping: res.data.shipping,
       })
+      
     );
+    window.scrollTo(0, 0)
   };
   ///////////////////////Handle Edit Submit/////////////////////////////////
   const handleFormSubmit = (event) => {
