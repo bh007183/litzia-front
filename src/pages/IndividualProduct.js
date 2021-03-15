@@ -21,7 +21,7 @@ function IndividualProduct(props) {
                             <p>{props.description}</p>
                         </div>
                     </div>
-                    <div>
+                    <div id="priceDiv">
                         ${props.price}
                     </div>
                     <div>

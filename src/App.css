@@ -81,3 +81,14 @@ body {
 .addToCart:hover {
   cursor: pointer;
 }
+
+.addToCart{
+  background-color: #045db6!important;
+  color: white;
+  border-radius: 5px;
+  padding: 1vw;
+}
+
+#priceDiv{
+  margin-bottom: 6vh;
+}
