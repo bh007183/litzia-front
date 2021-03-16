@@ -1,22 +1,26 @@
 #navRow{
  display: flex;
  align-items: center!important;
- justify-content: center;
+ /* justify-content: center; */
 }
 
 #litziaImage {
   height: 6vh;
   margin-top: 2vh!important;
-  margin-right: 8vw;
+  margin-right: 12vw;
+  margin-left: 6vw;
 }
+
+
 
 
 #search {
   display: flex;
   justify-content: center;
-  width: 55vw;
+  width: 45vw;
   align-items: center;
   margin-left: 3vw;
+  margin-right: 3vw;
 }
 
 #searchButton {
@@ -29,17 +33,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  /* width: 50%; */
   border-radius: 0px 8px 8px 0px;
 }
 
 #searchInput {
-  width: 50vw;
+  width: 45vw;
   color: rgb(22, 22, 22);
   background-color: white;
   padding-left: 0.5vw;
   margin-bottom: 0%;
   border-radius: 8px 0px 0px 8px;
+  margin-left: 7vw;
 }
 
 #searchRow{
@@ -48,20 +53,31 @@
 }
 
 .shoppingIcon{
-  margin-left: 3vw;
+  margin-left: 12vw;
 }
 
 #loginBtn{
   border-radius: 5px;
-  margin-right: 0;
-  margin-left: 3vw;
+}
+
+
+#modalLog{
+  margin-left: 4vw;
+  }
+
+  
+#loginBtn{
+  display: flex;
+  text-align: left!important;
   
 }
 
-#modalLog{
-  margin-right: 0;
-  }
+.btn-large{
+  text-align: left!important;
 
+}
+
+  
 #topNav {
   background-color: #045db6;
 }
@@ -170,9 +186,33 @@
     width: 40vw;
   }
 
-  #nav-mobile{
-    
+  #searchInput {
+    margin-left: 2vw;
   }
+  
+
+  /* #nav-mobile{
+    
+  } */
+
+    
+#loginBtn{
+  width: 60%;
+  display: flex;
+  text-align: left!important;
+  margin-right: 0!important;
+  padding-left: 0;
+  font-size: 12px;
+}
+
+#modalLog{
+  margin-left: 2.5vw;
+  }
+
+
+.shoppingIcon{
+  margin-left: 4.8vw;
+}
 
   #searchCol{
     /* width: 20%!important; */

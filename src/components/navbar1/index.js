@@ -37,7 +37,7 @@ function Navbar1() {
         <nav className="nav-extended" id="topNav">
           <div className="nav-wrapper">
             <div className="tow" id="navRow">
-              <div className="col s1 m2" id="logoColumn">
+              <div className="" id="logoColumn">
                 <Link
                   to="/"
                   className={
@@ -54,12 +54,12 @@ function Navbar1() {
                 </Link>
               </div>
 
-              <div className="col s6 m8 searchCol">
+              <div className="searchCol">
                 <ul id="nav-mobile" >
                   <li>
                     <div className="nav-wrapper" id="search">
                       <form action="/action_page.php">
-                        <div className="row" id="searchRow">
+                        <div className="tow" id="searchRow">
                           <div className="col s11 m10">
                             <input
                               type="text"
@@ -70,7 +70,7 @@ function Navbar1() {
                               onChange={handleInputChange}
                             />
                           </div>
-                          <div className="col s1 m2">
+                          <div className="">
                             {window.location.pathname !== "/searchresults" ?
                               <Link to="/searchresults" id="searchButton">
                                 <i className="material-icons">search</i>
@@ -91,7 +91,7 @@ function Navbar1() {
 
               {/* <div className="col s2" id="rightCol"> */}
               {/* <div className="row" id="leftRow"> */}
-              <div className="col s1 m1" id="cartCol">
+              <div className="" id="cartCol">
 
                 <a href="/checkout" id="shoppingCart">
                   <i className="material-icons shoppingIcon">shopping_cart</i>
@@ -105,7 +105,7 @@ function Navbar1() {
                   }
                 ></Link>
               </div>
-              <div className="col s2" id="loginCol">
+              <div className="" id="loginCol">
                 {/* <li id="loginMod"> */}
                 <LoginModal />
                 {localStorage.getItem("Auth2") === "true" ? (
