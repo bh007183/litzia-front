@@ -1,3 +1,8 @@
+#topNav {
+  background-color: #044e97;
+  padding-bottom: 0vh;
+}
+
 #navRow{
  display: flex;
  align-items: center!important;
@@ -78,9 +83,6 @@
 }
 
   
-#topNav {
-  background-color: #045db6;
-}
 
 .row {
   margin-bottom: 0;
@@ -89,13 +91,7 @@
   width: 100%;
 }
 
-#loginMod {
-  text-align: left;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  
-}
+
 
 #modal,
 #rowModal {

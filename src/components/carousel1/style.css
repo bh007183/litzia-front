@@ -108,6 +108,19 @@ margin: auto !important;
     
 }
 
+#closeModal{
+    color: black!important;
+    background-color: black!important;
+}
+
+.modal-close{
+    position: absolute;
+    top:10px;
+    right:10px;
+    padding:0;
+    margin:0;
+  }
+
 
 .control-arrow{
     background-color: grey !important;

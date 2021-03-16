@@ -80,7 +80,7 @@ function LoginModal() {
             </div>
             <br></br>
 
-            <button onClick={hanldeFormSubmit} className="btn btn-large">
+            <button onClick={hanldeFormSubmit} className="btn btn-large" id="modalLogin">
               Login
             </button>
           </form>

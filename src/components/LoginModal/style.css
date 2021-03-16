@@ -7,7 +7,6 @@
    max-height:100%;
    overflow:hidden;
    color: white;
-   background-color:  rgb(80, 79, 79);
    border-radius: 1vw;
   }
   
@@ -30,7 +29,11 @@
 }
 
 .modal-content{
-    background-color:  rgb(80, 79, 79);
+    background-color:  rgb(161, 159, 159)!important;
+}
+
+.input-field .prefix.active{
+  color: #045db6!important;
 }
 
 
@@ -38,4 +41,9 @@
     backdrop-filter: blur(6px);
     opacity: 1 !important;
     background: rgba(0,0,0,0.3)
+}
+
+#modalLogin{
+  background-color: #045db6!important;
+  border-radius: 5px;
 }
