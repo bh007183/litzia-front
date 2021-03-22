@@ -16,25 +16,25 @@ function Product(props) {
           </div>
           <div className="card-action">
             <button
-              className="btn btn-large"
+              className="btn btn-large viewBtn"
               style={{ marginTop: "auto" }}
               onClick={props.findProduct}
               data-id={props.id}
             > View
             </button>
-              {localStorage.getItem("Auth2") === "true" ? 
-              
-            <button
-              className="btn btn-large"
-              style={{ marginTop: "auto" }}
-              onClick={props.deleteProduct}
-              data-id={props.id}
-              style={{marginLeft:"1vw"}}
-            >
-               Delete
+            {localStorage.getItem("Auth2") === "true" ?
+
+              <button
+                className="btn btn-large"
+                style={{ marginTop: "auto" }}
+                onClick={props.deleteProduct}
+                data-id={props.id}
+                style={{ marginLeft: "1vw" }}
+              >
+                Delete
             </button>
               : <></>}
-             
+
           </div>
         </div>
       </div>

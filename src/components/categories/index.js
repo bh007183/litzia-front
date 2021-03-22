@@ -25,7 +25,7 @@ function Categories() {
                 <div className="row" id="topRow">
                     <div className="col s6">
                         <a href="/xerox">
-                            <img src="https://s3.amazonaws.com/cms.ipressroom.com/84/files/20189/5bbb9b642cfac268dcf48840_New-Xerox-ConnectKey-Apps/New-Xerox-ConnectKey-Apps_mid.jpg" className="quarterImage"></img>
+                            <img src="https://thumbs.dreamstime.com/b/closeup-hand-press-button-to-using-photocopier-xerox-machine-office-work-tool-printer-equipment-copy-room-192332840.jpg" className="quarterImage"></img>
                         </a>
                     </div>
                     <div className="col s6">

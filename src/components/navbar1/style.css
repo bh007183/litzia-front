@@ -1,44 +1,88 @@
+#topNav {
+  background-color: #044e97;
+  padding-bottom: 0vh;
+}
+
 #navRow{
-  /* display: flex;
-  justify-content: space-evenly; */
+ display: flex;
+ align-items: center!important;
+ /* justify-content: center; */
 }
 
-#home {
-  padding-left: 2vw;
-}
-#litzia {
-  font-size: 3vw;
+#litziaImage {
+  height: 6vh;
+  margin-top: 2vh!important;
+  margin-right: 12vw;
+  margin-left: 6vw;
 }
 
-.navRightIcons {
-  padding-right: 2vw;
-}
+
+
 
 #search {
   display: flex;
   justify-content: center;
-  width: 60vw;
-}
-#searchButton {
-  background-color: transparent;
-  border: none;
-  margin-top: 4%;
-  margin-left: 55%;
-  color: rgb(145, 143, 143);
-}
-#searchInput {
-  width: 40vw;
-  color: rgb(22, 22, 22);
-  background-color: white;
-  padding: 0.3vw;
-  margin-bottom: 0%;
-  margin-top: 2vh;
-  /* margin-left: 10%; */
+  width: 45vw;
+  align-items: center;
+  margin-left: 3vw;
+  margin-right: 3vw;
 }
 
-#topNav {
-  background-color: rgb(4, 40, 107);
+#searchButton {
+  background-color: rgb(51, 51, 51);
+  border: none;
+  /* margin-top: 0.1rem; */
+  height: 3.2rem;
+  /* margin-left: 55%; */
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 50%; */
+  border-radius: 0px 8px 8px 0px;
 }
+
+#searchInput {
+  width: 45vw;
+  color: rgb(22, 22, 22);
+  background-color: white;
+  padding-left: 0.5vw;
+  margin-bottom: 0%;
+  border-radius: 8px 0px 0px 8px;
+  margin-left: 7vw;
+}
+
+#searchRow{
+  display: flex;
+  align-items: center;
+}
+
+.shoppingIcon{
+  margin-left: 12vw;
+}
+
+#loginBtn{
+  border-radius: 5px;
+}
+
+
+#modalLog{
+  margin-left: 4vw;
+  }
+
+  
+#loginBtn{
+  display: flex;
+  text-align: left!important;
+  
+}
+
+.btn-large{
+  text-align: left!important;
+
+}
+
+  
 
 .row {
   margin-bottom: 0;
@@ -47,11 +91,7 @@
   width: 100%;
 }
 
-#loginMod {
-  text-align: left;
-  display: flex;
-  justify-content: left;
-}
+
 
 #modal,
 #rowModal {
@@ -61,27 +101,6 @@
   right: auto;
 }
 
-.shoppingIcon {
-  /* display: flex;
-  align-items: center;
-  height: 100%; */
-  margin-top: 1vh;
-}
-
-#litzia {
-  font-size: 40px;
-}
-
-#litziaImage {
-  height: 6vh;
-  margin-top: 2vh!important;
-}
-
-#logoColumn {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-}
 
 #modal {
   margin-top: 1vh;
@@ -105,6 +124,7 @@
   display: flex;
   justify-content: center; */
   width: 90%!important;
+  
 }
 
 #nav-mobile{
@@ -116,13 +136,13 @@
 #rightCol{
   padding: 0!important;
 }
-
+/* 
 #cartCol{
   display: flex;
   justify-content: left;
   padding: 0;
   max-width: 5vw;
-}
+} */
 
 #loginCol{
   /* display: flex;
@@ -137,23 +157,23 @@
   
 } */
 
-#modalLog{
-  margin-left: 0;
-  margin-top: 1vh;
-  /* margin-right: 2vw; */
-  /* margin-right: 2vw; */
-}
+
 
 
 @media only screen and (max-width: 600px) {
 
   #searchButton {
-    background-color: transparent;
-    border: none;
-    margin-top: 1vh;
-    margin-left: 0%;
-    color: rgb(145, 143, 143);
-    display: none;
+    background-color: rgb(51, 51, 51);
+  border: none;
+  /* margin-top: 0.1rem; */
+  height: 3.2rem;
+  /* margin-left: 55%; */
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  border-radius: 0px 8px 8px 0px;
   }
   
   #search {
@@ -162,12 +182,37 @@
     width: 40vw;
   }
 
-  #nov-mobile{
-    width: 40% !important;
+  #searchInput {
+    margin-left: 2vw;
+  }
+  
+
+  /* #nav-mobile{
+    
+  } */
+
+    
+#loginBtn{
+  width: 60%;
+  display: flex;
+  text-align: left!important;
+  margin-right: 0!important;
+  padding-left: 0;
+  font-size: 12px;
+}
+
+#modalLog{
+  margin-left: 2.5vw;
   }
 
+
+.shoppingIcon{
+  margin-left: 4.8vw;
+}
+
   #searchCol{
-    width: 20%!important;
+    /* width: 20%!important; */
+    padding-right: 0!important;
   }
 
   #loginBtn {
@@ -175,6 +220,8 @@
    padding-left: none !important;
   }
 
+
+  
   
 
 

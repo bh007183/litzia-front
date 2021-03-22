@@ -21,10 +21,10 @@ function IndividualProduct(props) {
                             <p>{props.description}</p>
                         </div>
                     </div>
-                    <div>
+                    <div id="priceDiv">
                         ${props.price}
                     </div>
-                    <div>
+                    <div className="cartDiv">
                         <a onClick={props.addToCardProduct} className="addToCart" >Add to Cart</a>
                     </div>
                 </div>
