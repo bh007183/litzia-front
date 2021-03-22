@@ -24,7 +24,7 @@ function IndividualProduct(props) {
                     <div id="priceDiv">
                         ${props.price}
                     </div>
-                    <div>
+                    <div className="cartDiv">
                         <a onClick={props.addToCardProduct} className="addToCart" >Add to Cart</a>
                     </div>
                 </div>

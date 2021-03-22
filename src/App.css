@@ -92,3 +92,18 @@ body {
 #priceDiv{
   margin-bottom: 6vh;
 }
+
+@media only screen and (max-width: 600px) {
+  .addToCart{
+    background-color: #045db6!important;
+    color: white;
+    border-radius: 5px;
+    padding: 4vw;
+  }
+
+  .cartDiv{
+    margin-bottom: 4vh;
+  }
+  
+  
+}
