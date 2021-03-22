@@ -29,6 +29,7 @@ function Product(props) {
                 style={{ marginTop: "auto" }}
                 onClick={props.deleteProduct}
                 data-id={props.id}
+                style={{ marginLeft: "1vw" }}
               >
                 Delete
             </button>
