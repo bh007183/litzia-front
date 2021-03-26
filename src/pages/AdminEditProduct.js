@@ -30,7 +30,7 @@ export default function AdminEditProduct() {
   //////////////////////////Admin Edit Protected Route////////////////////////
   function editProduct(product) {
     return axios.put(
-      "https://litzia-b.herokuapp.com/api/product/api/product/update",
+      "https://litzia-b.herokuapp.com/api/product/update",
       product,
       {
         headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },

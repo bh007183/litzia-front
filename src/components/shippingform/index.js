@@ -62,7 +62,7 @@ function ShippingForm() {
       alert("*Must enter an email address to complete order")
     } else {
       axios
-        .post("http://localhost:3005/nodemailer", {
+        .post("https://litzia-b.herokuapp.com/nodemailer", {
           firstName: userData.firstName,
           lastName: userData.lastName,
           address: userData.address,
