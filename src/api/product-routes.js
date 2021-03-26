@@ -2,41 +2,41 @@ import axios from "axios";
 
 export default {
   getAllProduct: function () {
-    return axios.get("http://localhost:3005/api/product");
+    return axios.get("https://litzia-b.herokuapp.com/api/product");
   },
   getAllProductByFeatured: function () {
-    return axios.get("http://localhost:3005/api/product/featured");
+    return axios.get("https://litzia-b.herokuapp.com/api/product/featured");
   },
   getAllSubCategories: function () {
-    return axios.get("http://localhost:3005/api/subcategory");
+    return axios.get("https://litzia-b.herokuapp.com/api/subcategory");
   },
 
   getAllProductCategory: function (category) {
-    return axios.get("http://localhost:3005/api/product/category/" + category);
+    return axios.get("https://litzia-b.herokuapp.com/api/product/category/" + category);
   },
 
   //   getAllProductFeatured: function (featured) {
-  //     return axios.get("http://localhost:3005/api/product/" + featured);
+  //     return axios.get("https://litzia-b.herokuapp.com/api/product/" + featured);
   //   },
 
   deleteOneProduct: function (id) {
-    return axios.delete("http://localhost:3005/api/product/delete/" + id, {
+    return axios.delete("https://litzia-b.herokuapp.com/api/product/delete/" + id, {
       headers: {authorization: "Bearer: " + localStorage.getItem("Auth")}
     });
   },
 
   getOneProduct: function (title) {
-    return axios.get("http://localhost:3005/api/product/" + title);
+    return axios.get("https://litzia-b.herokuapp.com/api/product/" + title);
   },
 
   getOneProductPage: function (id) {
-    return axios.get("http://localhost:3005/api/product/singleItemPage/" + id);
+    return axios.get("https://litzia-b.herokuapp.com/api/product/singleItemPage/" + id);
   },
   getOneProductSearch: function (title) {
-    return axios.get("http://localhost:3005/api/product/search/" + title);
+    return axios.get("https://litzia-b.herokuapp.com/api/product/search/" + title);
   },
   updateOneProduct: function (title) {
-    return axios.put("http://localhost:3005/api/product/" + title);
+    return axios.put("https://litzia-b.herokuapp.com/api/product/" + title);
   },
 };
 ///////////////////////////////////////
