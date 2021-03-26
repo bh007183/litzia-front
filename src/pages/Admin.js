@@ -32,7 +32,7 @@ export default function Admin() {
 
   function createProduct(product) {
     return axios
-      .post("https://litzia-b.herokuapp.com/api/product", product, {
+      .post("http://localhost:3005/api/product", product, {
         headers: { authorization: "Bearer: " + localStorage.getItem("Auth") },
       })
       .catch((err) => (window.location.href = "/fourohthree"));
