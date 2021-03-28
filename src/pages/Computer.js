@@ -72,10 +72,10 @@ useEffect(() => {
   };
 
   return (
-    <div className="container page-container" id="computer-container">
+    <div className="container  pagecon page-container" id="computer-container">
       <div className="row" id="app-row">
-        <div className="col s12">
-          <div className="container" id="header-container">
+        <div className=" col s12">
+          <div style={{background: "url(https://cdn.pixabay.com/photo/2016/04/04/14/12/monitor-1307227_960_720.jpg)", backgroundSize: "cover", color:"white"}} className="container" id="header-container">
             <h2 className="product-header">{items.category}</h2>
           </div>
           <div className="row">
@@ -95,6 +95,7 @@ useEffect(() => {
               <></>
             )}
           </div>
+        
           {items.item.length > 0 ? (
             items.item.map((item) => {
               return (
@@ -121,9 +122,10 @@ useEffect(() => {
               addToCardProduct={addToCardProduct}
             />
           )}
+          </div>
         </div>
       </div>
-    </div>
+    
   );
 }
 

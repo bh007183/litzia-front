@@ -6,6 +6,7 @@ import "../App.css";
 import API from "../api/product-routes";
 import CartAPI from "../api/cart-routes";
 import IndividualProduct from "../pages/IndividualProduct";
+import "./style.css"
 
 function Xerox() {
   const [items, setItems] = useState({
@@ -72,7 +73,7 @@ useEffect(() => {
     <div className="container page-container" id="computer-container">
       <div className="row" id="app-row">
         <div className="col s12">
-          <div className="container" id="header-container">
+          <div className="container" style={{background: "url(https://marvel-b1-cdn.bc0a.com/f00000000213479/www.rms.com/sites/default/files/content/paragraph/banner-third-level/2020-04/cyber-hero%20%282%29.jpg)", backgroundSize: "cover", backgroundPosition: "center", color:"white"}} id="header-container">
             <h2 className="product-header">{items.category}</h2>
           </div>
           <div className="row">

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar1 from "./components/navbar1";
 import Navbar2 from "./components/navbar2";
 import Landingpage from "./pages/Landingpage";
-import Productpage from "./pages/Productpage";
+// import Productpage from "./pages/Productpage";
 import Computers from "./pages/Computer";
 import Xerox from "./pages/Xerox";
 import Cloud from "./pages/Cloud";
@@ -45,7 +45,7 @@ function App() {
         </ContextSearch.Provider>
         
         <Route exact path="/" component={Landingpage} />
-        <Route exact path="/product" component={Productpage} />
+        {/* <Route exact path="/product" component={Productpage} /> */}
         <Route exact path="/computer" component={Computers} />
         <Route exact path="/xerox" component={Xerox} />
         <Route exact path="/software" component={Cloud} />

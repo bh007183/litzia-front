@@ -72,7 +72,7 @@ useEffect(() => {
     <div className="container page-container" id="computer-container">
       <div className="row" id="app-row">
         <div className="col s12">
-          <div className="container" id="header-container">
+          <div className="container" style={{background: "url(https://csis-website-prod.s3.amazonaws.com/s3fs-public/styles/csis_banner/public/publication/AdobeStock_85241324.jpeg?itok=l4UBraCP)", backgroundSize: "cover", backgroundPosition: "bottom", color:"white"}} id="header-container">
             <h2 className="product-header">{items.category}</h2>
           </div>
           <div className="row">

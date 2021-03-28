@@ -1,7 +1,5 @@
 import React from "react";
 import CartButton from "../components/CartButton"
-import ProductDescription from "../components/ProductDescription"
-import ProductImage from "../components/ProductImage"
 import Recommended from "../components/Recommended"
 import "../App.css"
 

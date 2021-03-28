@@ -72,7 +72,7 @@ useEffect(() => {
     <div className="container page-container" id="computer-container">
       <div className="row" id="app-row">
         <div className="col s12">
-          <div className="container" id="header-container">
+          <div className="container" style={{background: "url(https://www.synopsys.com/blogs/software-security/wp-content/uploads/2019/12/information-technology-software-critical-infrastructure-header.jpg)", backgroundSize: "cover", backgroundPosition: "center", color:"white"}} id="header-container">
             <h2 className="product-header">{items.category}</h2>
           </div>
           <div className="row">

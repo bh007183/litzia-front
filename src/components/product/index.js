@@ -14,10 +14,11 @@ function Product(props) {
             <span className="card-title">{props.identifier}</span>
             <p>{props.description}</p>
           </div>
-          <div className="card-action">
+          <div id="buttonContain">
+            <hr/>
             <button
               className="btn btn-large viewBtn"
-              style={{ marginTop: "auto" }}
+              // style={{ marginTop: "auto" }}
               onClick={props.findProduct}
               data-id={props.id}
             > View
