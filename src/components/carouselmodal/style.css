@@ -1,0 +1,30 @@
+#cSingleProduct{
+    width: 100%;
+    /* padding: 2vw; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    
+}
+
+#cImage{
+   
+    width: 35%;
+    float: left;
+}
+
+.cItemImage{
+    width: 80%;
+}
+
+#cItem{
+    display: inline-block; 
+    width: 25%;
+}
+
+.cCartDiv{
+    width: 20%;
+    float: right;
+}
