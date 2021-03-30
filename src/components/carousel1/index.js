@@ -139,6 +139,7 @@ function Carousel1() {
                     style={{ marginTop: "auto" }}
                     onClick={findProduct}
                     data-id={item.id}
+                    id="largeViewBtn"
                   >
                     View
                   </button>

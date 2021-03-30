@@ -115,6 +115,8 @@ useEffect(() => {
             description={items.item.description}
             price={items.item.price}
             id={items.item.id}
+            tax={items.item.tax}
+            shipping={items.item.shipping}
             addToCardProduct={addToCardProduct}
           />
         )}

@@ -7,6 +7,7 @@
  display: flex;
  align-items: center!important;
  /* justify-content: center; */
+ /* contain: content; */
 }
 
 #litziaImage {
@@ -144,23 +145,29 @@
   max-width: 5vw;
 } */
 
-#loginCol{
-  /* display: flex;
-  justify-content: left; */
+/* #loginCol{
+  display: flex;
+  justify-content: left; 
   padding-left: 0;
-  /* padding-right: 4vw!important; */
-  /* position: relative;
-  overflow: hidden; */
-}
-
-/* .loginModal{
-  
+  padding-right: 4vw!important; 
+  position: relative;
+  overflow: hidden;
 } */
 
 
 
 
+
 @media only screen and (max-width: 600px) {
+
+  #loginCol{
+  display: flex;
+  justify-content: left; 
+  padding-left: 0;
+  padding-right: 4vw!important; 
+  position: relative;
+  overflow: hidden;
+}
 
   #searchButton {
     background-color: rgb(51, 51, 51);
@@ -193,12 +200,15 @@
 
     
 #loginBtn{
-  width: 60%;
+  width: 70%;
   display: flex;
-  text-align: left!important;
-  margin-right: 0!important;
-  padding-left: 0;
-  font-size: 12px;
+ 
+  /* text-align: center!important; */
+  /* /* margin-right: 0!important; */
+  padding-left: 0px ; 
+  font-size: 8px;
+  contain: content;
+
 }
 
 #modalLog{
@@ -217,6 +227,7 @@
 
   #loginBtn {
    margin-left: 1vw;
+   
    padding-left: none !important;
   }
   .loginModal{
