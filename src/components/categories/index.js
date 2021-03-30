@@ -11,7 +11,7 @@ function Categories() {
             <div className="col s6" id="one">
                 <div className="row">
                     <a href="/computer">
-                        <img src="https://media.gcflearnfree.org/content/55e0730c7dd48174331f5164_01_17_2014/whatisacomputer_mac.jpg" id="halfImage"></img>
+                        <img src="https://cdn.pixabay.com/photo/2016/04/04/14/12/monitor-1307227_960_720.jpg" id="halfImage"></img>
 
                     </a>
                 </div>
@@ -30,7 +30,7 @@ function Categories() {
                     </div>
                     <div className="col s6">
                         <a href="/software">
-                            <img src="https://www.fastmetrics.com/blog/wp-content/uploads/2014/10/cloud-computing-service-types-including-IoT-1024x706.png" className="quarterImage"></img>
+                            <img src="https://chiefexecutive.net/wp-content/uploads/2018/11/AdobeStock_92323963-compressor-1024x662.jpeg" className="quarterImage"></img>
                         </a>
                     </div>
                 </div>
@@ -53,19 +53,19 @@ function Categories() {
                         </a>
                     </div>
                     <div className="col s6">
-                        <a href="/services">
+                        <a href="/Service">
                             <img src="http://www.letsbegamechangers.com/wp-content/uploads/2019/08/tech_support_1000_579_85.jpg" className="quarterImage"></img>
                         </a>
                     </div>
                 </div>
                 <div className="row" id="lastRow">
                     <div className="col s6">
-                        <a href="/security">
+                        <a href="/Security">
                             <h5 className="bottomTag">Security</h5>
                         </a>
                     </div>
                     <div className="col s6">
-                        <a href="/services">
+                        <a href="/Service">
                             <h5 className="bottomTag">Services</h5>
                         </a>
                     </div>

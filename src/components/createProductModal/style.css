@@ -1,1 +1,9 @@
-.adminHamberger{background-color: rgb(4, 40, 107)}
+.adminHamberger{
+   
+    margin-left: 2vw;
+    margin-right: 2vw;
+    display: flex;
+    text-align: left!important;
+    border-radius: 5px;
+    align-items: center;
+}

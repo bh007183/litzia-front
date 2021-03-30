@@ -52,6 +52,7 @@ export default function SearchPage() {
                   category={searchItem.search.category}
                   identifier={searchItem.search.title}
                   description={searchItem.search.description}
+                  price={searchItem.search.price}
                   id={searchItem.search.id}
                   addToCardProduct={addToCardProduct}
                 />
