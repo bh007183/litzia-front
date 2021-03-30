@@ -78,6 +78,7 @@ function Carousel1() {
           description={modalState.description}
           id={modalState.id}
           addToCardProduct={addToCardProduct}
+          closeModal={closeModal}
         />
       </Modal>
       {/* <h4 id="carouselHeading">Featured Items</h4> */}

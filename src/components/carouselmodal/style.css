@@ -6,7 +6,6 @@
     align-items: center;
     text-align: center;
     height: 100%;
-    
 }
 
 #cImage{
@@ -17,14 +16,81 @@
 
 .cItemImage{
     width: 80%;
+    border: solid 2px black!important;
 }
 
 #cItem{
     display: inline-block; 
     width: 25%;
+
+}
+
+#itemDescription{
+    text-align: center;
 }
 
 .cCartDiv{
     width: 20%;
     float: right;
 }
+
+#close{
+    margin-bottom: 0;
+    margin-top: 4px;
+    float: right;
+    margin-right: 8px;
+    position: fixed; right:20vw;
+    background-color: rgba(104, 103, 103, 0.699);
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 6px;  
+    color: black; 
+}
+
+#close:hover{
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+
+    #cSingleProduct{
+        width: 100%;
+        display: block;
+        height: 100%;
+    }
+
+    #cImage{
+        width: 100%;
+    }
+    
+    .cItemImage{
+        width: 100%;
+        border: solid 2px black!important;
+    }
+    
+    #cItem{ 
+        width: 100%;
+        text-align: center;
+    }
+    
+    .cCartDiv{
+        width: inherit;
+        
+    }
+
+    #itemDescription{
+        text-align: center;
+    }
+
+    .addToCart{
+        padding: 3.5vw;
+    }
+
+    #priceDiv{
+        margin-bottom: 3vh;
+      }
+    
+
+
+
+  }
