@@ -47,6 +47,7 @@ function Checkout() {
       for(let i = 0; i < arr.length; i++){
         counter += parseFloat(arr[i])
       }
+      // 
       setCheckoutItems({...checkoutitems, cartTotal: counter})
         setCheckoutItems({
           ...checkoutitems,
@@ -65,7 +66,7 @@ function Checkout() {
       console.log(res);
       let counter = 0;
       for(let i = 0; i < res.data.length; i++){
-        counter += parseInt(res.data[i])
+        counter += parseFloat(res.data[i])
       }
       setCheckoutItems({...checkoutitems, cartTotal: counter})
     });
@@ -79,8 +80,8 @@ function Checkout() {
     const cartCopy = checkoutitems.cartDisplay.slice();
     cartCopy.map((item) => {
       if (item.title === name) {
-        item.quantity = parseInt(value) || 0;
-        item.totalCost = parseInt(item.quantity * item.price);
+        item.quantity = parseFloat(value) || 0;
+        item.totalCost = parseFloat(item.quantity * item.price);
 
       }
       return item;
@@ -100,7 +101,7 @@ function Checkout() {
                 <div className="col s3 underline">Price</div>
                 <div className="col s3"></div>
                 <div>
-                  <p>Cart Total = $ {parseInt(checkoutitems.cartTotal).toFixed(2)}</p>
+                  <p>Cart Total = $ {parseFloat(checkoutitems.cartTotal).toFixed(2)}</p>
                 </div>
                 <hr></hr>
               </div>
