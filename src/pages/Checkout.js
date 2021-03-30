@@ -77,7 +77,7 @@ function Checkout() {
     const cartCopy = checkoutitems.cartDisplay.slice();
     cartCopy.map((item) => {
       if (item.title === name) {
-        item.quantity = parseInt(value);
+        item.quantity = parseInt(value) || 0;
         item.totalCost = item.quantity * item.price;
 
       }
@@ -100,19 +100,20 @@ function Checkout() {
                 <div>
                   <p>Cart Total = $ {checkoutitems.cartTotal}</p>
                 </div>
+                <hr></hr>
               </div>
               {checkoutitems.cartDisplay.length ? (
                 checkoutitems.cartDisplay.map(
                   (items, idx) =>
                     console.log(checkoutitems[items.title]) || (
-                      <div className="row" id={items.id} key={items.id}>
+                      <div className="row itemRow" id={items.id} key={items.id}>
                         <div className="col s3">
                           <p>{items.title}</p>
                         </div>
                         <div className="col s3 input-field">
                           <input
                             onChange={handleInputChangeItems}
-                            defaultValue="1"
+                            defaultValue={1}
                             value={checkoutitems.cartDisplay[idx].quantity}
                             name={items.title}
                             id="quantity"
@@ -123,7 +124,7 @@ function Checkout() {
 
                         <div className="col s3">
                           <p>
-                            ${items.price * items.quantity || items.price * 1}
+                            ${(items.price * items.quantity).toFixed(2) || items.price * 1}
                           </p>
                         </div>
                         <div className="col s3">
@@ -141,7 +142,9 @@ function Checkout() {
                             </i>
                           </a>
                         </div>
+                        <hr/>
                       </div>
+                      
                     )
                 )
               ) : (

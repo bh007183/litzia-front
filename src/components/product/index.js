@@ -19,9 +19,10 @@ function Product(props) {
               <button
                 className="btn btn-large viewBtn primaryView"
                 onClick={props.findProduct}
+                style={{textAlign:"center"}}
                 data-id={props.id}
               >
-                {" "}
+                {/* {" "} */}
                 View
               </button>
               {localStorage.getItem("Auth2") === "true" &&
@@ -30,7 +31,7 @@ function Product(props) {
                   className="btn btn-large  primaryDelette"
                   onClick={props.deleteProduct}
                   data-id={props.id}
-                  style={{ marginLeft: "1vw" }}
+                  style={{textAlign:"center"}}
                 >
                   Delete
                 </button>

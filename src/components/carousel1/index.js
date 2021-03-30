@@ -49,7 +49,9 @@ function Carousel1() {
       image: modalState.image,
       description: modalState.description.substring(0, 40),
       price: modalState.price,
-    }).then((res) => window.location.reload());
+    }).then((res) => console.log(res))
+    .catch((err) => alert("Please Make Sure To LogIn to add to Cart."));
+  window.location.reload();
   };
 
   function trial() {
