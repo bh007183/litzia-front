@@ -1,10 +1,7 @@
 import React from "react";
-import CartButton from "../CartButton"
-import ProductDescription from "../ProductDescription"
-import ProductImage from "../ProductImage"
-import Recommended from "../Recommended"
+
 import "./style.css"
-import Modal from "react-modal";
+
 
 function CarouselModal(props) {
     return (
