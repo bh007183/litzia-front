@@ -168,10 +168,12 @@ margin: auto !important;
         background-color: #045db6!important;
         border-radius: 5px;
     }
-
-    .viewBtn{
+    #largeViewBtn{
+        
         display: none;
+        
     }
+    
 
     #topImage{
         display: none;

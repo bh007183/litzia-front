@@ -1,10 +1,11 @@
 .product-header {
-  text-decoration: underline;
+  font-family: 'Times New Roman', Times, serif;
   margin-top: 0%;
   margin-bottom: 0%;
 }
 .product-card {
   height: 500px;
+  border-radius: 5px;
 }
 .product-image {
   /* ... */
@@ -26,4 +27,38 @@
 
 .product-margin {
   margin-bottom: 3%;
+}
+
+.itemImage{
+  width: 100%;
+  margin-top: 7vw;
+  height: 100%;
+}
+#buttonContain{
+  position: relative;
+}
+.primaryView{
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  text-align: center !important;
+  border-top-left-radius: 0px  !important;
+  border-top-right-radius: 0px  !important;
+  width: 100%
+}
+.primaryDelette{
+  position: absolute;
+  bottom: 54px;
+  right: 0;
+  text-align: center !important;
+  border-top-left-radius: 0px  !important;
+  border-top-right-radius: 0px  !important;
+  width: 100%
+}
+
+.primaryView:hover{
+  color: #ceedf0;
+  border: #2400c7 solid 1.5px;
+  background:#fff;
+  
 }

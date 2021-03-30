@@ -74,6 +74,7 @@ function Carousel1() {
           category={modalState.category}
           identifier={modalState.title}
           description={modalState.description}
+          price={modalState.price}
           id={modalState.id}
           addToCardProduct={addToCardProduct}
         />
@@ -138,6 +139,7 @@ function Carousel1() {
                     style={{ marginTop: "auto" }}
                     onClick={findProduct}
                     data-id={item.id}
+                    id="largeViewBtn"
                   >
                     View
                   </button>

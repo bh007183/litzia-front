@@ -85,12 +85,7 @@ function Navbar1() {
                   </li>
                 </ul>
               </div>
-              {/* <div className="col s8" id="modal">
-              <ul id="nav-mobile" className="right ">
-                <div className="row" id="modalRow"> */}
-
-              {/* <div className="col s2" id="rightCol"> */}
-              {/* <div className="row" id="leftRow"> */}
+              
               <div className="" id="cartCol">
 
                 <a href="/checkout" id="shoppingCart">

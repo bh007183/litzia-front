@@ -72,15 +72,15 @@ useEffect(() => {
     <div className="container page-container" id="computer-container">
       <div className="row" id="app-row">
         <div className="col s12">
-          <div className="container" id="header-container">
+          <div className="container" style={{background: "url(https://csis-website-prod.s3.amazonaws.com/s3fs-public/styles/csis_banner/public/publication/AdobeStock_85241324.jpeg?itok=l4UBraCP)", backgroundSize: "cover", backgroundPosition: "bottom", color:"white"}} id="header-container">
             <h2 className="product-header">{items.category}</h2>
           </div>
           <div className="row">
             {items.item.length > 0 ? (
               sub.map((item, index) => (
-                <div className="col s2">
+                <div className="subCatButton col s4 m2">
                   <button
-                    style={{ width: "100%", height: "40px" }}
+                    style={{contain:"content", width: "100%", height: "40px" }}
                     onClick={subCatClick}
                     key={index}
                   >
@@ -116,6 +116,8 @@ useEffect(() => {
               price={items.item.price}
               id={items.item.id}
               addToCardProduct={addToCardProduct}
+              tax={items.item.tax}
+              shipping={items.item.shipping}
             />
           )}
         </div>
