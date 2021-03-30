@@ -75,7 +75,7 @@ function Navbar1() {
                               <Link to="/searchresults" id="searchButton">
                                 <i className="material-icons">search</i>
                               </Link> :
-                              <Link onClick={handleSubmit} id="searchButton">
+                              <Link onClick={handleSubmit} onKeyPress={handleSubmit} id="searchButton">
                                 <i className="material-icons">search</i>
                               </Link>}
                           </div>
@@ -85,7 +85,7 @@ function Navbar1() {
                   </li>
                 </ul>
               </div>
-              
+
               <div className="" id="cartCol">
 
                 <a href="/checkout" id="shoppingCart">
@@ -103,11 +103,11 @@ function Navbar1() {
               <div className="" id="loginCol">
                 {/* <li id="loginMod"> */}
                 {localStorage.getItem("Auth2") !== "true" ? <LoginModal /> :
-                localStorage.getItem("Auth2") === "true" ? (
-                  <CreateItem />
-                ) : (
-                    <></>
-                  )}
+                  localStorage.getItem("Auth2") === "true" ? (
+                    <CreateItem />
+                  ) : (
+                      <></>
+                    )}
                 {/* </li> */}
               </div>
               {/* </div> */}

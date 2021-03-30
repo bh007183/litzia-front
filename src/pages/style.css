@@ -6,4 +6,10 @@
   contain: content;
 }
 
-
+.categoryButton{
+  background-color: #ffffff;
+  color: black!important;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.226);
+  
+}

@@ -20,15 +20,15 @@ function Computers() {
 
   const findProduct = (event) => {
     API.getOneProductPage(event.target.dataset.id).then((res) =>
-      setItems({...items, item: res.data})
+      setItems({ ...items, item: res.data })
     );
   };
 
   const getSub = (data) => {
     let arr = [];
     for (let i = 0; i < data.length; i++) {
-        arr.push(data[i].subCategory);
-        console.log("this is ", data[i].subCategory);
+      arr.push(data[i].subCategory);
+      console.log("this is ", data[i].subCategory);
     }
     let unique = [...new Set(arr)];
     setSub([...unique]);
@@ -47,19 +47,19 @@ function Computers() {
     window.location.reload();
   };
 
-useEffect(() => {
-  let test = window.location.pathname.split("")
-   let slash = test.shift()
-   let exact = test.join("")
-   
+  useEffect(() => {
+    let test = window.location.pathname.split("")
+    let slash = test.shift()
+    let exact = test.join("")
+
     API.getAllProductCategory(exact).then((res) => {
       console.log(res.data);
       setItems({ ...items, category: exact, item: res.data });
       getSub(res.data);
     });
-  
-}, [])
-  
+
+  }, [])
+
 
   const subCatClick = (event) => {
     console.log(event.target.outerText);
@@ -75,7 +75,7 @@ useEffect(() => {
     <div className="container page-container" id="computer-container">
       <div className="row" id="app-row">
         <div className=" col s12">
-          <div style={{background: "url(https://cdn.pixabay.com/photo/2016/04/04/14/12/monitor-1307227_960_720.jpg)", backgroundSize: "cover", color:"white"}} className="container" id="header-container">
+          <div style={{ background: "url(https://cdn.pixabay.com/photo/2016/04/04/14/12/monitor-1307227_960_720.jpg)", backgroundSize: "cover", color: "white" }} className="container" id="header-container">
             <h2 className="product-header">{items.category}</h2>
           </div>
           <div className="row">
@@ -83,19 +83,20 @@ useEffect(() => {
               sub.map((item, index) => (
                 <div className="subCatButton col s4 m2">
                   <button
-                    style={{ width: "100%",  height: "40px" }}
+                    style={{ width: "100%", height: "40px" }}
                     onClick={subCatClick}
                     key={index}
+                    className="categoryButton"
                   >
                     {item}
                   </button>
                 </div>
               ))
             ) : (
-              <></>
-            )}
+                <></>
+              )}
           </div>
-        
+
           {items.item.length > 0 ? (
             items.item.map((item) => {
               return (
@@ -111,23 +112,23 @@ useEffect(() => {
               );
             })
           ) : (
-            <IndividualProduct
-              src={items.item.image}
-              title={items.item.title}
-              category={items.item.category}
-              identifier={items.item.title}
-              description={items.item.description}
-              price={items.item.price}
-              id={items.item.id}
-              addToCardProduct={addToCardProduct}
-              tax={items.item.tax}
-              shipping={items.item.shipping}
-            />
-          )}
-          </div>
+              <IndividualProduct
+                src={items.item.image}
+                title={items.item.title}
+                category={items.item.category}
+                identifier={items.item.title}
+                description={items.item.description}
+                price={items.item.price}
+                id={items.item.id}
+                addToCardProduct={addToCardProduct}
+                tax={items.item.tax}
+                shipping={items.item.shipping}
+              />
+            )}
         </div>
       </div>
-    
+    </div>
+
   );
 }
 
