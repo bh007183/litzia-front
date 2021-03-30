@@ -23,6 +23,7 @@ function Checkout() {
     CartAPI.removeFromCart(event.target.attributes[0].value).then((res) =>
       console.log(res)
     );
+    
   };
 
   useEffect(() => {
@@ -46,6 +47,7 @@ function Checkout() {
       for(let i = 0; i < arr.length; i++){
         counter += parseFloat(arr[i])
       }
+      // 
       setCheckoutItems({...checkoutitems, cartTotal: counter})
         setCheckoutItems({
           ...checkoutitems,
@@ -53,6 +55,7 @@ function Checkout() {
           cartDisplay: res.data,
           arrayOfPrice: arr,
         });
+
       })
       .catch((err) => alert("Please Login To View Your Cart" + err));
   }, []);
@@ -63,7 +66,7 @@ function Checkout() {
       console.log(res);
       let counter = 0;
       for(let i = 0; i < res.data.length; i++){
-        counter += parseInt(res.data[i])
+        counter += parseFloat(res.data[i])
       }
       setCheckoutItems({...checkoutitems, cartTotal: counter})
     });
@@ -77,8 +80,8 @@ function Checkout() {
     const cartCopy = checkoutitems.cartDisplay.slice();
     cartCopy.map((item) => {
       if (item.title === name) {
-        item.quantity = parseInt(value);
-        item.totalCost = item.quantity * item.price;
+        item.quantity = parseFloat(value) || 0;
+        item.totalCost = parseFloat(item.quantity * item.price);
 
       }
       return item;
@@ -98,21 +101,22 @@ function Checkout() {
                 <div className="col s3 underline">Price</div>
                 <div className="col s3"></div>
                 <div>
-                  <p>Cart Total = $ {checkoutitems.cartTotal}</p>
+                  <p>Cart Total = $ {parseFloat(checkoutitems.cartTotal).toFixed(2)}</p>
                 </div>
+                <hr></hr>
               </div>
               {checkoutitems.cartDisplay.length ? (
                 checkoutitems.cartDisplay.map(
                   (items, idx) =>
                     console.log(checkoutitems[items.title]) || (
-                      <div className="row" id={items.id} key={items.id}>
+                      <div className="row itemRow" id={items.id} key={items.id}>
                         <div className="col s3">
                           <p>{items.title}</p>
                         </div>
                         <div className="col s3 input-field">
                           <input
                             onChange={handleInputChangeItems}
-                            defaultValue="1"
+                            defaultValue={1}
                             value={checkoutitems.cartDisplay[idx].quantity}
                             name={items.title}
                             id="quantity"
@@ -123,7 +127,7 @@ function Checkout() {
 
                         <div className="col s3">
                           <p>
-                            ${items.price * items.quantity || items.price * 1}
+                            ${(items.price * items.quantity).toFixed(2) || items.price * 1}
                           </p>
                         </div>
                         <div className="col s3">
@@ -141,7 +145,9 @@ function Checkout() {
                             </i>
                           </a>
                         </div>
+                        <hr/>
                       </div>
+                      
                     )
                 )
               ) : (

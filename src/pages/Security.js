@@ -38,6 +38,7 @@ function Security() {
       image: items.item.image,
       description: items.item.description.substring(0, 40),
       price: items.item.price,
+      totalCost: items.item.price
     })
       .then((res) => console.log(res))
       .catch((err) => alert("Please Make Sure To LogIn to add to Cart."));

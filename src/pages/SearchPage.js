@@ -25,13 +25,16 @@ export default function SearchPage() {
           image: searchItem.search.image,
           description: searchItem.search.description.substring(0, 40),
           price: searchItem.search.price,
-        }).then((res) => window.location.reload());
+          totalCost: searchItem.search.price
+        }).then((res) => console.log(res))
+        .catch((err) => alert("Please Make Sure To LogIn to add to Cart."));
+      window.location.reload();
       };
     return (
         <div>
             <div className="container">
           <div className="row">
-            {!searchItem.search ? <p>"No Items Found"</p> : searchItem.search.length ? (
+            {!searchItem.search || searchItem.search.length === 0 ? <p>"No Items Found"</p> : searchItem.search.length ? (
               searchItem.search.map((item) => {
                 return (
                   <Product
