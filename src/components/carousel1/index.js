@@ -8,6 +8,7 @@ import { Carousel } from "react-responsive-carousel";
 import Modal from "react-modal";
 import CartAPI from "../../api/cart-routes";
 import IndividualProduct from "../../pages/IndividualProduct";
+import CarouselModal from "../carouselmodal"
 
 function Carousel1() {
   const [items, setItems] = useState({
@@ -70,7 +71,8 @@ function Carousel1() {
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       >
-        <IndividualProduct
+        {/* this is where you want to change it so that instead of injecting individual product, you're injecting a component that is essentially a copy of that with all the same props. You have to create that component */}
+        <CarouselModal
           src={modalState.image}
           title={modalState.title}
           category={modalState.category}
@@ -79,6 +81,7 @@ function Carousel1() {
           price={modalState.price}
           id={modalState.id}
           addToCardProduct={addToCardProduct}
+          closeModal={closeModal}
         />
       </Modal>
       {/* <h4 id="carouselHeading">Featured Items</h4> */}
