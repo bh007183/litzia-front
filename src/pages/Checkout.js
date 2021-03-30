@@ -23,6 +23,7 @@ function Checkout() {
     CartAPI.removeFromCart(event.target.attributes[0].value).then((res) =>
       console.log(res)
     );
+    
   };
 
   useEffect(() => {
@@ -53,6 +54,7 @@ function Checkout() {
           cartDisplay: res.data,
           arrayOfPrice: arr,
         });
+
       })
       .catch((err) => alert("Please Login To View Your Cart" + err));
   }, []);
@@ -78,7 +80,7 @@ function Checkout() {
     cartCopy.map((item) => {
       if (item.title === name) {
         item.quantity = parseInt(value) || 0;
-        item.totalCost = item.quantity * item.price;
+        item.totalCost = parseInt(item.quantity * item.price);
 
       }
       return item;
@@ -98,7 +100,7 @@ function Checkout() {
                 <div className="col s3 underline">Price</div>
                 <div className="col s3"></div>
                 <div>
-                  <p>Cart Total = $ {checkoutitems.cartTotal}</p>
+                  <p>Cart Total = $ {parseInt(checkoutitems.cartTotal).toFixed(2)}</p>
                 </div>
                 <hr></hr>
               </div>
