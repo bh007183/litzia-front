@@ -53,19 +53,19 @@ function Categories() {
                         </a>
                     </div>
                     <div className="col s6">
-                        <a href="/services">
+                        <a href="/Service">
                             <img src="http://www.letsbegamechangers.com/wp-content/uploads/2019/08/tech_support_1000_579_85.jpg" className="quarterImage"></img>
                         </a>
                     </div>
                 </div>
                 <div className="row" id="lastRow">
                     <div className="col s6">
-                        <a href="/security">
+                        <a href="/Security">
                             <h5 className="bottomTag">Security</h5>
                         </a>
                     </div>
                     <div className="col s6">
-                        <a href="/services">
+                        <a href="/Service">
                             <h5 className="bottomTag">Services</h5>
                         </a>
                     </div>

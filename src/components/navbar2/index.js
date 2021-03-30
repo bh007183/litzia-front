@@ -65,10 +65,10 @@ function Navbar2() {
             </li>
             <li className="tab">
               <Link
-                to="/Services"
-                onClick={() => { if (window.location.pathname === "/Services") { window.location.href = "/Services" } }}
+                to="/Service"
+                onClick={() => { if (window.location.pathname === "/Service") { window.location.href = "/Service" } }}
                 className={
-                  window.location.pathname === "/services"
+                  window.location.pathname === "/service"
                     ? "nav-link active"
                     : "nav-link"
                 }

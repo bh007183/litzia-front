@@ -79,7 +79,7 @@ useEffect(() => {
           <div className="row">
             {items.item.length > 0 ? (
               sub.map((item, index) => (
-                <div className="col s2">
+                <div className="subCatButton col s4 m2">
                   <button
                     style={{ width: "100%", height: "40px" }}
                     onClick={subCatClick}

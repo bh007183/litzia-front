@@ -72,7 +72,7 @@ useEffect(() => {
   };
 
   return (
-    <div className="container  pagecon page-container" id="computer-container">
+    <div className="container page-container" id="computer-container">
       <div className="row" id="app-row">
         <div className=" col s12">
           <div style={{background: "url(https://cdn.pixabay.com/photo/2016/04/04/14/12/monitor-1307227_960_720.jpg)", backgroundSize: "cover", color:"white"}} className="container" id="header-container">
@@ -81,9 +81,9 @@ useEffect(() => {
           <div className="row">
             {items.item.length > 0 ? (
               sub.map((item, index) => (
-                <div className="col s2">
+                <div className="subCatButton col s4 m2">
                   <button
-                    style={{ width: "100%", height: "40px" }}
+                    style={{ width: "100%",  height: "40px" }}
                     onClick={subCatClick}
                     key={index}
                   >

@@ -25,7 +25,7 @@ function CreateItem() {
 
 <div className="center">
 
-    <a className='dropdown-trigger btn-large adminHamberger' href='#' data-target='dropdown2'><i className="material-icons">menu</i></a>
+    <a className='dropdown-trigger btn btn-large adminHamberger transparent' href='#' data-target='dropdown2'><i className="material-icons">menu</i></a>
     <ul id='dropdown2' className='dropdown-content'>
       <li><a href="#!"onClick={()=> {localStorage.clear(); window.location.reload()}}>LOGOUT</a></li>
       <li><Link to="./admin" 

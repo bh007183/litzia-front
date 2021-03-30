@@ -50,7 +50,7 @@ function App() {
         <Route exact path="/xerox" component={Xerox} />
         <Route exact path="/software" component={Cloud} />
         <Route exact path="/security" component={Security} />
-        <Route exact path="/services" component={Services} />
+        <Route exact path="/service" component={Services} />
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/item" component={IndividualProduct} />
         <Route exact path="/admin" component={Admin} />

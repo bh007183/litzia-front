@@ -6,7 +6,7 @@ function Product(props) {
     <div className="product">
       {/* <div className="row"> */}
       <div className="col s12 m6 l4 product-margin">
-        <div className="card product-card hoverable">
+        <div className="card product-card hoverable" id="buttonContain">
           <div className="card-image">
             <img className="product-image" src={props.src} />
           </div>
@@ -14,28 +14,30 @@ function Product(props) {
             <span className="card-title">{props.identifier}</span>
             <p>{props.description}</p>
           </div>
-          <div id="buttonContain">
-            <hr/>
-            <button
-              className="btn btn-large viewBtn"
-              // style={{ marginTop: "auto" }}
-              onClick={props.findProduct}
-              data-id={props.id}
-            > View
-            </button>
-            {localStorage.getItem("Auth2") === "true" ?
-
+          <div className="row">
+            <div className="col s12">
               <button
-                className="btn btn-large"
-                style={{ marginTop: "auto" }}
-                onClick={props.deleteProduct}
+                className="btn btn-large viewBtn primaryView"
+                onClick={props.findProduct}
                 data-id={props.id}
-                style={{ marginLeft: "1vw" }}
               >
-                Delete
-            </button>
-              : <></>}
-
+                {" "}
+                View
+              </button>
+              {localStorage.getItem("Auth2") === "true" &&
+              window.location.pathname === "/edit" ? (
+                <button
+                  className="btn btn-large  primaryDelette"
+                  onClick={props.deleteProduct}
+                  data-id={props.id}
+                  style={{ marginLeft: "1vw" }}
+                >
+                  Delete
+                </button>
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
         </div>
       </div>

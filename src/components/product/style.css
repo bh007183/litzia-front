@@ -5,6 +5,7 @@
 }
 .product-card {
   height: 500px;
+  border-radius: 5px;
 }
 .product-image {
   /* ... */
@@ -33,9 +34,31 @@
   margin-top: 7vw;
   height: 100%;
 }
-/* .viewBtn{
+#buttonContain{
+  position: relative;
+}
+.primaryView{
   position: absolute;
-  right:38%;
-  top: 87%
+  bottom: 0px;
+  right: 0;
+  text-align: center !important;
+  border-top-left-radius: 0px  !important;
+  border-top-right-radius: 0px  !important;
+  width: 100%
+}
+.primaryDelette{
+  position: absolute;
+  bottom: 54px;
+  right: 0;
+  text-align: center !important;
+  border-top-left-radius: 0px  !important;
+  border-top-right-radius: 0px  !important;
+  width: 100%
+}
+
+.primaryView:hover{
+  color: #ceedf0;
+  border: #2400c7 solid 1.5px;
+  background:#fff;
   
-} */
+}

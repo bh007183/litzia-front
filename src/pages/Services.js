@@ -9,6 +9,7 @@ import IndividualProduct from "../pages/IndividualProduct";
 
 function Service() {
   const [items, setItems] = useState({
+    category: "",
     item: [],
   });
 
@@ -16,17 +17,15 @@ function Service() {
 
   const findProduct = (event) => {
     API.getOneProductPage(event.target.dataset.id).then((res) =>
-      setItems({ item: res.data, other: "" })
+      setItems({...items, item: res.data})
     );
   };
 
   const getSub = (data) => {
     let arr = [];
     for (let i = 0; i < data.length; i++) {
-      if (data[i].category === "Service") {
         arr.push(data[i].subCategory);
         console.log("this is ", data[i].subCategory);
-      }
     }
     let unique = [...new Set(arr)];
     setSub([...unique]);
@@ -45,35 +44,41 @@ function Service() {
     window.location.reload();
   };
 
-  useEffect(() => {
-    API.getAllProduct().then((res) => {
+useEffect(() => {
+  let test = window.location.pathname.split("")
+   let slash = test.shift()
+   let exact = test.join("")
+   console.log(exact)
+    API.getAllProductCategory(exact).then((res) => {
       console.log(res.data);
-      setItems({ ...items, item: res.data });
-
+      setItems({ ...items, category: exact, item: res.data });
       getSub(res.data);
     });
-  }, []);
+  
+}, [])
+  
 
   const subCatClick = (event) => {
     console.log(event.target.outerText);
     const subCatResult = items.item.filter(
       (obj) => obj.subCategory === event.target.outerText
     );
-    setItems({ ...items, other: subCatResult });
+    setItems({ ...items, item: subCatResult });
+    setSub([])
     console.log(items.other);
   };
-
+  
   return (
-    <div className="container page-container">
-      <div className="row" id="app-row">
-        <div className="col s12">
-          <div className="container" style={{background: "url(https://www.mycloudstar.com/wp-content/uploads/2020/01/cyber-security-banner3.jpg)", backgroundSize: "cover", backgroundPosition: "center", color:"white"}} id="header-container">
-            <h2 className="product-header">Services</h2>
-          </div>
-          <div className="row">
-            <p className="filter-by">Filter by:</p>
-            {sub.map((item, index) => (
-              <div className="col s2">
+    <div className="container page-container" id="computer-container">
+    <div className="row" id="app-row">
+      <div className="col s12">
+        <div className="container" style={{background: "url(https://www.mycloudstar.com/wp-content/uploads/2020/01/cyber-security-banner3.jpg)", backgroundSize: "cover", backgroundPosition: "center", color:"white"}} id="header-container">
+          <h2 className="product-header">{items.category}</h2>
+        </div>
+        <div className="row">
+          {items.item.length > 0 ? (
+            sub.map((item, index) => (
+              <div className="subCatButton col s4 m2">
                 <button
                   style={{ width: "100%", height: "40px" }}
                   onClick={subCatClick}
@@ -82,50 +87,38 @@ function Service() {
                   {item}
                 </button>
               </div>
-            ))}
-          </div>
-
-          {items.item.length && !items.other ? (
-            items.item.map((item) => {
-              if (item.category === "Service" && items.item.length > 1) {
-                return (
-                  <Product
-                    key={item.id}
-                    src={item.image}
-                    category={item.category}
-                    identifier={item.title}
-                    description={item.description.substring(0, 75) + "..."}
-                    id={item.id}
-                    findProduct={findProduct}
-                  />
-                );
-              }
-            })
-          ) : items.other ? (
-            items.other.map((item) => {
-              return (
-                <Product
-                  key={item.id}
-                  src={item.image}
-                  category={item.category}
-                  identifier={item.title}
-                  description={item.description.substring(0, 75) + "..."}
-                  id={item.id}
-                  findProduct={findProduct}
-                />
-              );
-            })
+            ))
           ) : (
-            <IndividualProduct
-              src={items.item.image}
-              title={items.item.title}
-              category={items.item.category}
-              identifier={items.item.title}
-              description={items.item.description}
-              id={items.id}
-              addToCardProduct={addToCardProduct}
-            />
+            <></>
           )}
+        </div>
+        {items.item.length > 0 ? (
+          items.item.map((item) => {
+            return (
+              <Product
+                key={item.id}
+                src={item.image}
+                category={item.category}
+                identifier={item.title}
+                description={item.description.substring(0, 75) + "..."}
+                id={item.id}
+                findProduct={findProduct}
+              />
+            );
+          })
+        ) : (
+          <IndividualProduct
+            src={items.item.image}
+            title={items.item.title}
+            category={items.item.category}
+            identifier={items.item.title}
+            description={items.item.description}
+            price={items.item.price}
+            id={items.item.id}
+            addToCardProduct={addToCardProduct}
+          />
+        )}
+    
         </div>
       </div>
     </div>
